@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://api.github.com/repos/ComposioHQ/awesome-claude-skills)",
+      "Bash(curl -s https://api.github.com/repos/ComposioHQ/awesome-claude-skills/contents/)",
+      "Bash(python3 -c \"import sys,json; [print\\(x['type'], x['name']\\) for x in json.load\\(sys.stdin\\)]\")",
+      "Bash(sed -i '' 's|EAANtjASOhLIBRQc4YdWEx8I1ehP2IL5AC0Uk6pZBk9iOz2xkbTGwLFnxlJlT0FAdKd26ZAfzxgGJySd2XQsxT4H99ZCd4comAAbZAZCrPoZByFQZCAlkULpEhlIonqShZBrvtkx9HKZABiPRRFy0pq4kegQth9mU1v1VJTK3LYslmUgB28VXG49lJjdxM5u1eeiZAl3SGHD8tWkuZAKcJlNRgZDZD|EAAYpU56qr5IBRQJT6ZCbJJ2ppKTSnZCZBi9GJlZA1k9VjUBg1Db9NaZCPvOEOXObmlEPGjXTGzyLBHcvLZAlZCK8zRBDRx7ausMfxHAAl5ALBsSQZCzb3g36gKskaXHZC6vqnWVEMnsIVZCABfBRW37YvmZABNHyrDJjfZBxNLpDMVhdLFYZCNBO0LP9F5p6JyzAIMMrafdEDgXywW8130ZAYojmJMeZBfv4BiCr5YwkKGZBAKtsm0Ie8FBymOQX87V7NZCaxhiBlO9fHf4CzupEnX8CZCJjvQ86ZBmqd4avta4IIU1gAZDZD|' ~/.zshrc)",
+      "Read(//Users/joaoquintana/**)",
+      "Bash(claude mcp *)",
+      "Bash(npm view *)",
+      "Bash(npm search *)",
+      "Read(//private/tmp/**)",
+      "Bash(npm pack *)",
+      "Bash(tar -xzf getscaleforge-mcp-meta-ads-*.tgz)"
+    ]
+  }
+}

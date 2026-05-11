@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Atelie Madah Santana • Nail Designer Premium</title>
+
+  <meta name="description"
+    content="Especialista em unhas de alto padrão em São Caetano do Sul. Alongamento, manicure russa, esmaltação em gel e acabamento refinado." />
+
+  <meta name="theme-color" content="#7A3B3B" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+
+      --color-primary: #7A3B3B;
+      --color-primary-hover: #5F2E2E;
+
+      --color-bg: #FDFBF7;
+      --color-bg-alt: #F5EEE8;
+
+      --color-text: #1F1C1C;
+      --color-muted: #655E5E;
+
+      --color-accent: #C9A46A;
+
+      --shadow-soft:
+        0 14px 40px rgba(122, 59, 59, .10);
+
+      --shadow-hover:
+        0 24px 60px rgba(122, 59, 59, .14);
+
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+
+      --container: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 120px 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Sora", sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(58px, 9vw, 110px);
+      line-height: .94;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--color-muted);
+    }
+
+    .accent {
+      color: var(--color-accent);
+      font-style: italic;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      background: rgba(122, 59, 59, .08);
+
+      color: var(--color-primary);
+
+      padding: 10px 18px;
+
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      margin-bottom: 28px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 42px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 18px 36px;
+
+      border-radius: 999px;
+
+      font-size: 16px;
+      font-weight: 600;
+
+      transition: .3s ease;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+
+      box-shadow:
+        0 14px 32px rgba(122, 59, 59, .20);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: var(--color-primary-hover);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(122, 59, 59, .06);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .blob {
+      position: absolute;
+
+      width: 900px;
+      height: 900px;
+
+      right: -300px;
+      top: -260px;
+
+      background:
+        radial-gradient(circle,
+          rgba(122, 59, 59, .14),
+          transparent 70%);
+
+      animation: blob 20s ease-in-out infinite alternate;
+
+      pointer-events: none;
+    }
+
+    @keyframes blob {
+      from {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(40px) rotate(8deg);
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 540px;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .hero-content p {
+      max-width: 620px;
+      margin-top: 28px;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 760px;
+
+      object-fit: cover;
+
+      border-radius: 36px;
+
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      border-radius: 36px;
+
+      background:
+        linear-gradient(to top,
+          rgba(0, 0, 0, .18),
+          rgba(0, 0, 0, 0));
+    }
+
+    .floating-card {
+      position: absolute;
+
+      left: -24px;
+      bottom: 28px;
+
+      background: white;
+
+      padding: 24px;
+
+      border-radius: 24px;
+
+      width: 230px;
+
+      box-shadow: var(--shadow-soft);
+
+      z-index: 2;
+    }
+
+    .floating-card strong {
+      display: block;
+
+      font-size: 54px;
+
+      line-height: 1;
+
+      margin-bottom: 10px;
+
+      color: var(--color-primary);
+
+      font-family: "Sora";
+    }
+
+    /* SERVICES */
+
+    .services {
+      background: var(--color-bg-alt);
+    }
+
+    .section-header {
+      max-width: 760px;
+    }
+
+    .services-grid {
+      margin-top: 60px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: white;
+
+      border-radius: 28px;
+
+      padding: 34px;
+
+      transition: .35s ease;
+
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+
+      border-radius: 18px;
+
+      background: rgba(122, 59, 59, .08);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 24px;
+
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    /* DIFFERENTIAL */
+
+    .differentials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+
+      margin-top: 60px;
+    }
+
+    .diff {
+      background: white;
+
+      padding: 36px;
+
+      border-radius: 28px;
+
+      box-shadow: var(--shadow-soft);
+    }
+
+    .diff strong {
+      display: block;
+
+      font-size: 22px;
+
+      margin-bottom: 14px;
+
+      font-family: "Sora";
+    }
+
+    /* STATS */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat {
+      background: white;
+
+      padding: 38px;
+
+      border-radius: 24px;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 54px;
+
+      line-height: 1;
+
+      margin-bottom: 10px;
+
+      color: var(--color-primary);
+
+      font-family: "Sora";
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      margin-top: 50px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 420px;
+
+      object-fit: cover;
+
+      border-radius: 26px;
+
+      transition: .35s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonials {
+      background: var(--color-primary);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonials p {
+      color: rgba(255, 255, 255, .82);
+    }
+
+    .featured-review {
+
+      margin-top: 60px;
+      margin-bottom: 34px;
+
+      background: rgba(255, 255, 255, .08);
+
+      border: 1px solid rgba(255, 255, 255, .08);
+
+      backdrop-filter: blur(12px);
+
+      border-radius: 34px;
+
+      padding: 42px;
+
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+    }
+
+    .featured-left span {
+      font-size: 82px;
+      line-height: 1;
+
+      font-family: "Sora";
+      font-weight: 800;
+    }
+
+    .featured-right p {
+      color: white;
+
+      font-size: 24px;
+      line-height: 1.6;
+
+      margin-bottom: 28px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-author img {
+      width: 58px;
+      height: 58px;
+
+      border-radius: 50%;
+    }
+
+    .review-author strong {
+      display: block;
+    }
+
+    .review-author small {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, .08);
+
+      border: 1px solid rgba(255, 255, 255, .08);
+
+      border-radius: 26px;
+
+      padding: 30px;
+
+      transition: .35s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 20px;
+    }
+
+    .testimonial-header img {
+      width: 56px;
+      height: 56px;
+
+      border-radius: 50%;
+    }
+
+    .review-stars {
+      color: #FFD978;
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .review-date {
+      font-size: 13px;
+      opacity: .75;
+    }
+
+    /* CTA */
+
+    .cta-box {
+      background:
+        linear-gradient(135deg,
+          var(--color-primary),
+          #9B6464);
+
+      border-radius: 36px;
+
+      padding: 90px 40px;
+
+      text-align: center;
+
+      color: white;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box p {
+      color: rgba(255, 255, 255, .84);
+
+      max-width: 720px;
+
+      margin: 22px auto 0;
+    }
+
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 15px;
+    }
+
+    /* ANIM */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 700ms ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1100px) {
+
+      .hero-grid,
+      .services-grid,
+      .gallery-grid,
+      .stats-grid,
+      .differentials-grid,
+      .testimonial-grid,
+      .featured-review {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image img {
+        height: 520px;
+      }
+
+      .floating-card {
+        left: 16px;
+      }
+    }
+
+    @media(max-width:600px) {
+
+      section {
+        padding: 80px 0;
+      }
+
+      h1 {
+        font-size: 54px;
+      }
+
+      h2 {
+        font-size: 36px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .cta-box {
+        padding: 60px 24px;
+      }
+
+      .featured-review {
+        padding: 28px;
+      }
+
+      .featured-left span {
+        font-size: 58px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media(max-width:900px) {
+
+      footer .container>div:first-child {
+        grid-template-columns: 1fr !important;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="blob"></div>
+
+    <div class="container hero-grid">
+
+      <div class="hero-content reveal">
+
+        <div class="tag">
+          ✨ Nail Designer Premium • São Caetano
+        </div>
+
+        <h1>
+          Unhas elegantes. <span class="accent">Sem exagero.</span>
+        </h1>
+
+        <p>
+          Especialista em alongamento de alto padrão, manicure russa e esmaltação premium com acabamento refinado.
+        </p>
+
+        <div class="btn-group">
+
+          <a class="btn-primary"
+            href="https://wa.me/5511961543396?text=Oi%20Madah!%20Quero%20agendar%20meu%20hor%C3%A1rio." target="_blank">
+            Quero agendar
+          </a>
+
+          <a class="btn-secondary" href="#servicos">
+            Ver serviços
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-image reveal">
+
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1400&auto=format&fit=crop"
+          alt="Nail designer profissional" />
+
+        <div class="floating-card">
+
+          <strong>4.9 ★</strong>
+
+          <span>
+            191 avaliações reais no Google
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicos">
+
+    <div class="container">
+
+      <div class="section-header reveal">
+
+        <div class="tag">
+          💅 Serviços Premium
+        </div>
+
+        <h2>
+          Técnica refinada. <br>
+          Resultado impecável.
+        </h2>
+
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✦</div>
+
+          <h3>Unhas de Gel</h3>
+
+          <p>
+            Alongamento elegante, resistente e natural com acabamento fino.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">♡</div>
+
+          <h3>Extensão em Gel</h3>
+
+          <p>
+            Estrutura premium com durabilidade e estética sofisticada.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✺</div>
+
+          <h3>Manicure Russa</h3>
+
+          <p>
+            Técnica precisa para acabamento limpo, delicado e extremamente refinado.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✧</div>
+
+          <h3>Esmaltação em Gel</h3>
+
+          <p>
+            Brilho intenso, longa duração e unhas impecáveis por semanas.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✿</div>
+
+          <h3>Manicure</h3>
+
+          <p>
+            Cuidado completo para mãos bonitas, saudáveis e sofisticadas.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">❋</div>
+
+          <h3>Pedicure</h3>
+
+          <p>
+            Pés bem cuidados com acabamento impecável e sensação de leveza.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✹</div>
+
+          <h3>Manicure & Pedicure</h3>
+
+          <p>
+            Experiência completa para renovar mãos e pés no mesmo atendimento.
+          </p>
+
+        </div>
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">✷</div>
+
+          <h3>Unhas de Acrílico</h3>
+
+          <p>
+            Estrutura resistente e sofisticada com alta durabilidade.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DIFFERENTIALS -->
+  <section>
+
+    <div class="container">
+
+      <div class="section-header reveal">
+
+        <div class="tag">
+          🤌 Diferenciais
+        </div>
+
+        <h2>
+          O detalhe muda tudo.
+        </h2>
+
+      </div>
+
+      <div class="differentials-grid">
+
+        <div class="diff reveal">
+
+          <strong>
+            Alongamento de Alto Padrão
+          </strong>
+
+          <p>
+            Estruturas leves, sofisticadas e naturais — sem aspecto artificial exagerado.
+          </p>
+
+        </div>
+
+        <div class="diff reveal">
+
+          <strong>
+            Acabamento Refinado
+          </strong>
+
+          <p>
+            Precisão em cada detalhe para unhas delicadas, elegantes e impecáveis.
+          </p>
+
+        </div>
+
+        <div class="diff reveal">
+
+          <strong>
+            Certificações Internacionais
+          </strong>
+
+          <p>
+            Especializações e técnicas avançadas com referências internacionais em (🇧🇷🇷🇺🇮🇹🇵🇹🇦🇷🇲🇽):
+          </p>
+
+          <div style="
+    margin-top:16px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  ">
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇧🇷 Brasil
+            </span>
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇷🇺 Rússia
+            </span>
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇮🇹 Itália
+            </span>
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇵🇹 Portugal
+            </span>
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇦🇷 Argentina
+            </span>
+
+            <span style="
+      background:rgba(122,59,59,.08);
+      color:var(--color-primary);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    ">
+              🇲🇽 México
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+  <section class="services">
+
+    <div class="container">
+
+      <div class="stats-grid">
+
+        <div class="stat reveal">
+          <strong>+500</strong>
+          <p>clientes atendidas</p>
+        </div>
+
+        <div class="stat reveal">
+          <strong>4.9★</strong>
+          <p>avaliação no Google</p>
+        </div>
+
+        <div class="stat reveal">
+          <strong>191</strong>
+          <p>reviews reais</p>
+        </div>
+
+        <div class="stat reveal">
+          <strong>🇧🇷🇷🇺🇮🇹</strong>
+          <p>certificações internacionais</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+  <section>
+
+    <div class="container">
+
+      <div class="section-header reveal">
+
+        <div class="tag">
+          📸 Resultados
+        </div>
+
+        <h2>
+          Bonita na foto. <br>
+          Impressionante ao vivo.
+        </h2>
+
+      </div>
+
+      <div class="gallery-grid">
+
+        <img loading="lazy" class="reveal"
+          src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=80&w=1200&auto=format&fit=crop"
+          alt="Alongamento premium" />
+
+        <img loading="lazy" class="reveal"
+          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+          alt="Manicure sofisticada" />
+
+        <img loading="lazy" class="reveal"
+          src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200&auto=format&fit=crop"
+          alt="Esmaltação em gel" />
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+
+    <div class="container">
+
+      <div class="section-header reveal">
+
+        <div class="tag" style="background:rgba(255,255,255,.12);color:white;">
+          ⭐ Google Reviews
+        </div>
+
+        <h2>
+          As clientes voltam. <br>
+          E recomendam.
+        </h2>
+
+      </div>
+
+      <div class="featured-review reveal">
+
+        <div class="featured-left">
+
+          <span>4.9 ★</span>
+
+          <p style="margin-top:12px;">
+            191 avaliações reais
+          </p>
+
+        </div>
+
+        <div class="featured-right">
+
+          <p>
+            “Uma profissional super dedicada, que faz tudo com amor, excelência e perfeccionismo. O espaço é limpo,
+            organizado e acolhedor.”
+          </p>
+
+          <div class="review-author">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Cliente" />
+
+            <div>
+
+              <strong>Nilda B Conte</strong>
+
+              <small>
+                ★★★★★ • 6 meses atrás
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="testimonial-grid">
+
+        <div class="testimonial reveal">
+
+          <div class="testimonial-header">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Cliente" />
+
+            <div>
+
+              <strong>Silvana Cruz</strong>
+
+              <div class="review-stars">
+                ★★★★★
+              </div>
+
+              <div class="review-date">
+                2 meses atrás
+              </div>
+
+            </div>
+
+          </div>
+
+          <p>
+            “Rápida, organizada e o studio é uma gracinha. Trabalho impecável.”
+          </p>
+
+        </div>
+
+        <div class="testimonial reveal">
+
+          <div class="testimonial-header">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Cliente" />
+
+            <div>
+
+              <strong>Michele Cristina Augusto</strong>
+
+              <div class="review-stars">
+                ★★★★★
+              </div>
+
+              <div class="review-date">
+                3 meses atrás
+              </div>
+
+            </div>
+
+          </div>
+
+          <p>
+            “Atendimento impecável, caprichosa e detalhista. Ambiente muito acolhedor.”
+          </p>
+
+        </div>
+
+        <div class="testimonial reveal">
+
+          <div class="testimonial-header">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Cliente" />
+
+            <div>
+
+              <strong>Mariana Mendrone</strong>
+
+              <div class="review-stars">
+                ★★★★★
+              </div>
+
+              <div class="review-date">
+                5 meses atrás
+              </div>
+
+            </div>
+
+          </div>
+
+          <p>
+            “Unhas super naturais e finas. Atendimento impecável. Não troco mais.”
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section>
+
+    <div class="container">
+
+      <div class="cta-box reveal">
+
+        <h2>
+          Bora deixar essa unha <br>
+          inesquecível?
+        </h2>
+
+        <p>
+          Agenda limitada durante a semana. Chama no WhatsApp e garante seu horário 💅
+        </p>
+
+        <div class="btn-group" style="justify-content:center;">
+
+          <a class="btn-primary" style="background:white;color:var(--color-primary);"
+            href="https://wa.me/5511961543396?text=Oi%20Madah!%20Quero%20agendar%20meu%20hor%C3%A1rio." target="_blank">
+            Vem pro estúdio
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container">
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:32px;
+        align-items:start;
+        margin-bottom:40px;
+      ">
+
+        <!-- INFO -->
+        <div>
+
+          <p style="margin-bottom:18px;">
+            Madah Santana • Nail Designer
+          </p>
+
+          <p style="margin-bottom:10px;">
+            Av. Sen. Roberto Símonsen, 828 <br>
+            São Caetano do Sul/SP
+          </p>
+
+          <p style="margin-bottom:20px;">
+            Atendimento com horário agendado ✨
+          </p>
+
+          <a href="https://wa.me/5511961543396?text=Oi%20Madah!%20Quero%20agendar%20meu%20hor%C3%A1rio." target="_blank"
+            class="btn-primary" style="
+            display:inline-flex;
+            width:auto;
+          ">
+            Agendar horário
+          </a>
+
+        </div>
+
+        <!-- MAP -->
+        <div>
+
+          <iframe title="Mapa Madah Santana Nail Designer"
+            src="https://www.google.com/maps?q=Av.+Senador+Roberto+Simonsen,+828,+São+Caetano+do+Sul&output=embed"
+            width="100%" height="320" style="
+            border:0;
+            border-radius:24px;
+            box-shadow:var(--shadow-soft);
+          " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+      </div>
+
+      <div style="
+        border-top:1px solid rgba(0,0,0,.08);
+        padding-top:24px;
+        text-align:center;
+      ">
+
+        <p style="font-size:14px;color:var(--color-muted);">
+          ©
+          <script>document.write(new Date().getFullYear())</script>
+          Madah Santana • Todos os direitos reservados
+        </p>
+
+        <p style="
+        margin-top:10px;
+        font-size:14px;
+        color:var(--color-muted);
+      ">
+          Site desenvolvido por
+          <a href="https://eabc.com.br" target="_blank" rel="noopener noreferrer" style="
+            color:var(--color-primary);
+            font-weight:600;
+          ">
+            EABC Digital
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+  <!-- SEO -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"NailSalon",
+    "name":"Madah Santana Nail Designer",
+    "telephone":"+55-11-96154-3396",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Av. Sen. Roberto Símonsen, 828",
+      "addressLocality":"São Caetano do Sul",
+      "addressRegion":"SP",
+      "postalCode":"09530-435",
+      "addressCountry":"BR"
+    },
+    "aggregateRating":{
+      "@type":"AggregateRating",
+      "ratingValue":"4.9",
+      "reviewCount":"191"
+    }
+  }
+  </script>
+
+  <!-- ANIMATION -->
+  <script>
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+
+      });
+
+    }, {
+      threshold: 0.12
+    });
+
+    reveals.forEach((el) => observer.observe(el));
+
+  </script>
+
+</body>
+
+</html>
