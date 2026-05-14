@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Beatriz Pinheiro — Esmalteria de Luxo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #C5A368;
+            --color-primary-hover: #A6864F;
+            --color-bg: #F9F7F2;
+            --color-bg-alt: #F0EBE0;
+            --color-text: #2D2926;
+            --color-text-muted: #5C5651;
+            --color-accent: #E2B4B1;
+            --color-brand-green: #2A4D4D; /* Baseado no fundo verde azulado solicitado */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero-bg {
+            background-color: var(--color-brand-green);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+        .card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-black/5 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold brand-font">
+                Espaço <span style="color: var(--color-primary);">Beatriz Pinheiro</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+            <a href="https://wa.me/5511969900766" class="btn-gold px-6 py-2 rounded-full text-sm font-bold shadow-lg">Agendar</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg pt-32 pb-20 px-6 lg:pt-48 lg:pb-32">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="z-10">
+                <span class="uppercase tracking-[0.3em] text-xs text-white/70 mb-4 block">Esmalteria & Bem-estar</span>
+                <h1 class="text-6xl lg:text-8xl leading-tight font-bold mb-6">Suas unhas, seu momento.</h1>
+                <p class="text-lg text-white/80 mb-10 max-w-lg leading-relaxed">
+                    Um ambiente sofisticado em Santo André pensado para transformar o cuidado com as unhas em uma experiência única de relaxamento.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="btn-gold px-8 py-4 rounded-lg font-bold">Ver Serviços</a>
+                    <a href="#" class="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 rounded-lg font-bold transition">Nossa Unidade</a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 transform rotate-2">
+                    <div class="bg-[#2A4D4D] h-[600px] flex items-center justify-center text-center p-10">
+                         <p class="text-white italic">
+                            [AQUI ENTRA A FOTO DA BEATRIZ COM POSE PROFISSIONAL, MÃOS À FRENTE E FUNDO VERDE AZULADO]
+                         </p>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-white p-6 rounded-full shadow-2xl flex items-center justify-center">
+                    <div class="text-center">
+                        <span class="brand-font text-4xl block font-bold" style="color: var(--color-primary);">BP</span>
+                        <span class="text-[8px] uppercase tracking-tighter">Espaço Beatriz Pinheiro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">Cuidado em cada detalhe</h2>
+                <div class="h-1 w-20 bg-[var(--color-primary)] mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-4xl mb-6">✨</div>
+                    <h3 class="text-2xl font-bold mb-4">Esmaltação em Gel</h3>
+                    <p class="text-[var(--color-text-muted)]">Brilho intenso e durabilidade superior para o seu dia a dia.</p>
+                </div>
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-4xl mb-6">💎</div>
+                    <h3 class="text-2xl font-bold mb-4">Alongamento</h3>
+                    <p class="text-[var(--color-text-muted)]">Técnicas modernas para unhas naturais e sofisticadas.</p>
+                </div>
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-4xl mb-6">🌸</div>
+                    <h3 class="text-2xl font-bold mb-4">Spa dos Pés</h3>
+                    <p class="text-[var(--color-text-muted)]">Um ritual de hidratação e relaxamento profundo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 px-6 bg-[var(--color-bg-alt)]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                 <div class="bg-white p-4 rounded-3xl shadow-xl transform -rotate-1">
+                    <div class="bg-[var(--color-brand-green)] h-[500px] rounded-2xl flex items-center justify-center text-white text-center p-8">
+                         <p class="italic">[FOTO DA EQUIPE OU AMBIENTE COM LOGOTIPO BP EM DESTAQUE]</p>
+                    </div>
+                 </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-5xl font-bold mb-8">Um espaço feito para você se sentir linda.</h2>
+                <p class="text-lg text-[var(--color-text-muted)] mb-6 leading-relaxed">
+                    O Espaço Beatriz Pinheiro não é apenas sobre estética. É sobre autoestima. Nossa equipe é constantemente treinada para oferecer as técnicas mais atuais do mercado em um ambiente climatizado e acolhedor.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3">
+                        <span class="text-[var(--color-primary)] text-xl">✔</span> Atendimento humanizado e personalizado.
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-[var(--color-primary)] text-xl">✔</span> Materiais 100% esterilizados.
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-[var(--color-primary)] text-xl">✔</span> Ambiente exclusivo no coração de Santo André.
+                    </li>
+                </ul>
+                <a href="#" class="text-[var(--color-primary)] font-bold border-b-2 border-[var(--color-primary)] pb-1 hover:opacity-70 transition">Conheça nossa história →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+             <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">O que nossas clientes dizem</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl italic border border-black/5">
+                    "Ambiente muito agradável e acolhedor. As meninas são sensacionais e dão um show de bola no atendimento."
+                    <div class="mt-4 font-bold not-italic">— Carolina Garcia</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl italic border border-black/5">
+                    "Lugar maravilhoso, unhas impecáveis e um café delicioso! Super recomendo."
+                    <div class="mt-4 font-bold not-italic">— Larissa Costa</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl italic border border-black/5">
+                    "A Beatriz é uma profissional incrível, o espaço reflete todo o cuidado dela."
+                    <div class="mt-4 font-bold not-italic">— Elaine Moreto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="bg-[#1F1A17] text-white py-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 border-b border-white/10 pb-16">
+            <div class="col-span-2">
+                <div class="text-3xl font-bold brand-font mb-6">
+                    Espaço <span style="color: var(--color-primary);">Beatriz Pinheiro</span>
+                </div>
+                <p class="text-white/60 max-w-sm">
+                    Esmalteria Santo André. Atendimento de excelência, equipe atualizada e ambiente acolhedor.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase tracking-widest text-sm">Contatos</h4>
+                <p class="text-white/60 mb-2">(11) 96990-0766</p>
+                <p class="text-white/60">contato@espacobeatrizpinheiro.com.br</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase tracking-widest text-sm">Localização</h4>
+                <p class="text-white/60">Av. Padre Manuel da Nóbrega, 494<br>Santo André - SP</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-10 flex justify-between items-center text-xs text-white/40 uppercase tracking-widest">
+            <p>© 2026 Espaço Beatriz Pinheiro. Todos os direitos reservados.</p>
+            <p>Desenvolvido por EABC Digital</p>
+        </div>
+    </footer>
+
+</body>
+</html>

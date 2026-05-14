@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carol Barreto — Nail Designer</title>
+
+<meta name="description" content="Alongamentos sofisticados, nail art premium e atendimento exclusivo com Carol Barreto.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --primary:#b38ae3;
+  --primary-dark:#9a70ce;
+  --bg:#faf8fd;
+  --bg-alt:#f2edf9;
+  --text:#2b2336;
+  --muted:#6f6480;
+  --white:#ffffff;
+  --accent:#d8c3f5;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1200px,92%);
+  margin:auto;
+}
+
+h1,h2,h3,.logo{
+  font-family:'Playfair Display',serif;
+}
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+  backdrop-filter:blur(18px);
+  background:rgba(250,248,253,.88);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.navbar{
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--primary-dark);
+}
+
+nav{
+  display:flex;
+  gap:40px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:var(--primary);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 28px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:.35s;
+  box-shadow:0 15px 35px rgba(179,138,227,.25);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.hero{
+  padding:180px 0 120px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-flex;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(179,138,227,.12);
+  color:var(--primary-dark);
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:5rem;
+  line-height:.95;
+  margin:28px 0;
+}
+
+.hero p{
+  font-size:1.15rem;
+  color:var(--muted);
+  line-height:1.8;
+  max-width:560px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:20px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.link-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:700;
+}
+
+.hero-image{
+  position:relative;
+}
+
+.hero-image img{
+  border-radius:40px;
+  height:760px;
+  width:100%;
+  object-fit:cover;
+  box-shadow:0 40px 60px rgba(0,0,0,.12);
+}
+
+.hero-card{
+  position:absolute;
+  bottom:30px;
+  left:-40px;
+  background:white;
+  padding:24px;
+  border-radius:28px;
+  width:240px;
+  box-shadow:0 25px 45px rgba(0,0,0,.08);
+}
+
+.hero-card strong{
+  font-size:2rem;
+  color:var(--primary-dark);
+}
+
+section{
+  padding:110px 0;
+}
+
+.section-head{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 70px;
+}
+
+.section-head span{
+  color:var(--primary-dark);
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font-size:.8rem;
+  font-weight:700;
+}
+
+.section-head h2{
+  font-size:3.5rem;
+  margin-top:18px;
+}
+
+.section-head p{
+  margin-top:20px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.card{
+  background:white;
+  padding:40px;
+  border-radius:30px;
+  transition:.35s;
+  border:1px solid rgba(179,138,227,.08);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 50px rgba(179,138,227,.12);
+}
+
+.card .icon{
+  width:72px;
+  height:72px;
+  border-radius:22px;
+  background:rgba(179,138,227,.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+}
+
+.card h3{
+  margin-top:28px;
+  font-size:2rem;
+}
+
+.card p{
+  margin-top:18px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.about{
+  background:var(--bg-alt);
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.about-image img{
+  border-radius:40px;
+  height:720px;
+  object-fit:cover;
+}
+
+.about-content h2{
+  font-size:4rem;
+  line-height:1;
+}
+
+.about-content p{
+  margin-top:26px;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:1.05rem;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:40px;
+}
+
+.stat{
+  background:white;
+  padding:28px;
+  border-radius:24px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:2rem;
+  color:var(--primary-dark);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.gallery img{
+  height:420px;
+  object-fit:cover;
+  border-radius:30px;
+}
+
+.testimonials{
+  background:var(--bg-alt);
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.testimonial{
+  background:white;
+  padding:36px;
+  border-radius:30px;
+}
+
+.testimonial p{
+  margin-top:18px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.cta{
+  padding:120px 0;
+}
+
+.cta-box{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  border-radius:40px;
+  padding:90px 60px;
+  text-align:center;
+  color:white;
+}
+
+.cta-box h2{
+  font-size:4rem;
+  max-width:700px;
+  margin:auto;
+  line-height:1;
+}
+
+.cta-box p{
+  max-width:700px;
+  margin:28px auto 0;
+  line-height:1.8;
+  color:rgba(255,255,255,.82);
+}
+
+.cta-box .btn{
+  margin-top:40px;
+  background:white;
+  color:var(--primary-dark);
+  box-shadow:none;
+}
+
+footer{
+  padding:60px 0;
+  background:#1f1828;
+  color:white;
+}
+
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.footer-grid p,
+.footer-grid a{
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  line-height:1.8;
+}
+
+@media(max-width:980px){
+
+  .hero-grid,
+  .about-grid,
+  .services,
+  .gallery,
+  .testimonial-grid{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero h1,
+  .about-content h2,
+  .section-head h2,
+  .cta-box h2{
+    font-size:3rem;
+  }
+
+  .hero-image img,
+  .about-image img{
+    height:auto;
+  }
+
+  .hero-card{
+    position:relative;
+    left:0;
+    bottom:0;
+    margin-top:20px;
+    width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .cta-box{
+    padding:60px 30px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <div class="logo">Carol Barreto</div>
+
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="https://wa.me/5511999999999" class="btn" target="_blank">
+      Agendar Horário
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="badge">Nail Designer Premium</div>
+
+      <h1>
+        Sofisticação em cada detalhe das suas unhas
+      </h1>
+
+      <p>
+        Atendimento exclusivo, acabamento impecável e técnicas modernas para realçar sua beleza com elegância e personalidade.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn">
+          💬 Agendar Agora
+        </a>
+
+        <a href="#servicos" class="link-btn">
+          Ver Serviços →
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1400&auto=format&fit=crop" alt="Carol Barreto">
+
+      <div class="hero-card">
+        <strong>+350</strong>
+        <p>Clientes atendidas com excelência e acabamento premium.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+
+    <div class="section-head">
+      <span>Serviços</span>
+      <h2>Beleza e elegância para suas unhas</h2>
+      <p>
+        Técnicas modernas e atendimento personalizado para proporcionar unhas sofisticadas, resistentes e naturais.
+      </p>
+    </div>
+
+    <div class="services">
+
+      <div class="card">
+        <div class="icon">💅</div>
+        <h3>Fibra de Vidro</h3>
+        <p>
+          Alongamentos resistentes com aparência natural e acabamento refinado.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Blindagem</h3>
+        <p>
+          Proteção e fortalecimento para unhas duradouras e impecáveis.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Nail Art</h3>
+        <p>
+          Designs exclusivos e delicados para destacar sua personalidade.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container about-grid">
+
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1400&auto=format&fit=crop" alt="Sobre Carol Barreto">
+    </div>
+
+    <div class="about-content">
+      <div class="badge">Sobre</div>
+
+      <h2>
+        Atendimento pensado para você se sentir incrível
+      </h2>
+
+      <p>
+        Carol Barreto trabalha com foco em naturalidade, elegância e qualidade. Cada atendimento é realizado com atenção aos detalhes, proporcionando uma experiência confortável e exclusiva.
+      </p>
+
+      <p>
+        O espaço foi desenvolvido para unir beleza, acolhimento e sofisticação em cada momento do atendimento.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>5★</strong>
+          Avaliações no Google
+        </div>
+
+        <div class="stat">
+          <strong>+4</strong>
+          Anos de experiência
+        </div>
+
+        <div class="stat">
+          <strong>100%</strong>
+          Atendimento personalizado
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="trabalhos">
+  <div class="container">
+
+    <div class="section-head">
+      <span>Galeria</span>
+      <h2>Trabalhos realizados</h2>
+      <p>
+        Um pouco do cuidado, elegância e acabamento presentes em cada atendimento.
+      </p>
+    </div>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200&auto=format&fit=crop">
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonials" id="avaliacoes">
+  <div class="container">
+
+    <div class="section-head">
+      <span>Avaliações</span>
+      <h2>O que as clientes dizem</h2>
+    </div>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial">
+        <strong>★★★★★</strong>
+        <p>
+          “Atendimento impecável e unhas perfeitas. A Carol é extremamente cuidadosa e talentosa.”
+        </p>
+      </div>
+
+      <div class="testimonial">
+        <strong>★★★★★</strong>
+        <p>
+          “Ambiente lindo, confortável e um acabamento maravilhoso. Recomendo muito.”
+        </p>
+      </div>
+
+      <div class="testimonial">
+        <strong>★★★★★</strong>
+        <p>
+          “A melhor experiência que já tive em atendimento de unhas. Tudo muito sofisticado.”
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <div class="container">
+
+    <div class="cta-box">
+
+      <h2>
+        Agende seu horário e transforme suas unhas
+      </h2>
+
+      <p>
+        Atendimento premium com técnicas modernas, acabamento impecável e muito cuidado em cada detalhe.
+      </p>
+
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn">
+        💬 Falar no WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <div class="logo">Carol Barreto</div>
+      <p>
+        Sofisticação, elegância e beleza em cada detalhe.
+      </p>
+    </div>
+
+    <div>
+      <p>📍 Santo André — SP</p>
+      <p>📞 (11) 99999-9999</p>
+      <p>
+        <a href="https://instagram.com" target="_blank">
+          @carol.barreto
+        </a>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

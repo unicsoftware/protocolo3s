@@ -21,7 +21,7 @@
 
 <style>
 
-:root{
+:root-old{
   --gold:#c6a44a;
   --gold-dark:#a78631;
   --bg:#f7f2ea;
@@ -29,6 +29,16 @@
   --text:#1f1f1f;
   --muted:#666;
   --dark:#0f0f0f;
+}
+
+:root {
+  --gold: #8E72B5;
+  --gold-dark: #7859A3;
+  --bg: #F8F7FA;
+  --bg-soft: #F1EEF7;
+  --text: #2D2438;
+  --muted: #5A4E6B;
+  --accent: #C3B1E1;
 }
 
 *{
@@ -146,48 +156,43 @@ details{
 
 <body>
 
-<header class="fixed top-0 left-0 w-full bg-[#f7f2ea]/90 backdrop-blur z-50 border-b border-black/5">
-
+<header class="fixed top-0 left-0 w-full bg-[var(--color-bg)]/90 backdrop-blur z-50 border-b border-black/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
 
-    <a href="#inicio" class="flex items-center gap-5">
+    <!-- Bloco Unificado: Logo + Texto -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      
+      <!-- Container do Ícone (Parte esquerda do logo) -->
+      <div class="flex-shrink-0">
+        <img 
+          src="image/logo.png" 
+          alt="Gatashow Icon" 
+          class="h-16 w-auto object-contain"
+          style="image-rendering: -webkit-optimize-contrast;"
+        >
+      </div>
 
-      <div class="logo-symbol"></div>
-
-      <div>
-
-        <div class="logo-font text-5xl leading-none text-[var(--gold)] font-semibold">
+      <!-- Container do Texto (Parte direita do logo) -->
+      <div class="flex flex-col justify-center border-l border-[var(--gold)]/20 pl-3">
+        <div class="logo-font text-4xl lg:text-5xl leading-none text-[var(--gold)] font-semibold tracking-tight">
           gatashow
         </div>
-
-        <div class="uppercase tracking-[0.35em] text-[10px] text-black/60 mt-1">
+        <div class="uppercase tracking-[0.3em] text-[9px] text-[var(--color-text-muted)] mt-1 font-medium">
           By Camila Santos
         </div>
-
       </div>
 
     </a>
 
+    <!-- Navegação Desk -->
     <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
-
-      <a href="#servicos" class="hover:text-[var(--gold)] transition">
-        Serviços
-      </a>
-
-      <a href="#sobre" class="hover:text-[var(--gold)] transition">
-        Sobre
-      </a>
-
-      <a href="#avaliacoes" class="hover:text-[var(--gold)] transition">
-        Avaliações
-      </a>
-
-      <a href="#contato" class="hover:text-[var(--gold)] transition">
-        Contato
-      </a>
-
+      <a href="#servicos" class="hover:text-[var(--color-primary)] transition">Serviços</a>
+      <a href="#sobre" class="hover:text-[var(--color-primary)] transition">Sobre</a>
+      <a href="#avaliacoes" class="hover:text-[var(--color-primary)] transition">Avaliações</a>
+      <a href="#contato" class="hover:text-[var(--color-primary)] transition">Contato</a>
     </nav>
 
+    <!-- Botão CTA -->
     <a
       href="https://wa.me/5511986017431?text=Olá!%20Vim%20pelo%20site%20e%20quero%20agendar."
       target="_blank"
@@ -197,7 +202,6 @@ details{
     </a>
 
   </div>
-
 </header>
 
 <section
@@ -353,9 +357,9 @@ details{
   <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
 
     <div class="fade-in">
-
+    <!-- https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop-->
       <img
-        src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"
+        src="image/logos.png"
         alt="Atendimento Nail Designer"
         class="rounded-[40px] shadow-2xl w-full h-[700px] object-cover"
       >
@@ -677,7 +681,9 @@ details{
         </div>
 
         <p class="mt-5 text-white/75 leading-relaxed">
-          @camila.gatashow
+          <a href="https://www.instagram.com/camila.gatashow" target="_blank" class="text-[var(--gold)] hover:opacity-80 transition">
+            @camila.gatashow
+          </a>
         </p>
 
       </div>
@@ -720,19 +726,30 @@ details{
 
         <div class="flex items-center gap-5">
 
-          <div class="logo-symbol"></div>
+         <!-- Bloco Unificado: Logo + Texto -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      
+      <!-- Container do Ícone (Parte esquerda do logo) -->
+      <div class="flex-shrink-0">
+        <img 
+          src="image/logo.png" 
+          alt="Gatashow Icon" 
+          class="h-16 w-auto object-contain"
+          style="image-rendering: -webkit-optimize-contrast;"
+        >
+      </div>
 
-          <div>
+      <!-- Container do Texto (Parte direita do logo) -->
+      <div class="flex flex-col justify-center border-l border-[var(--gold)]/20 pl-3">
+        <div class="logo-font text-4xl lg:text-5xl leading-none text-[var(--gold)] font-semibold tracking-tight">
+          gatashow
+        </div>
+        <div class="uppercase tracking-[0.3em] text-[9px] text-[var(--color-text-muted)] mt-1 font-medium">
+          By Camila Santos
+        </div>
+      </div>
 
-            <div class="logo-font text-5xl leading-none text-[var(--gold)] font-semibold">
-              gatashow
-            </div>
-
-            <div class="uppercase tracking-[0.35em] text-[10px] text-white/50 mt-1">
-              By Camila Santos
-            </div>
-
-          </div>
+    </a>
 
         </div>
 
@@ -785,7 +802,9 @@ details{
           </p>
 
           <p>
-            @camila.gatashow
+            <a href="https://www.instagram.com/camila.gatashow" target="_blank" class="text-[var(--gold)] hover:opacity-80 transition">
+              @camila.gatashow
+            </a>
           </p>
 
         </div>
