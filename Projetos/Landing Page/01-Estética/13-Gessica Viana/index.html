@@ -1,752 +1,718 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Géssica Vianna Beauty Clinic — Design de Sobrancelhas em Santo André</title>
+    <title>Géssica Vianna — Brow Lamination em São Paulo</title>
 
-  <meta name="description" content="Design de sobrancelhas, brow lamination e cuidados estéticos em Santo André com atendimento detalhista e acolhedor.">
+    <meta name="description"
+        content="Especialista em Brow Lamination no ABC Paulista. Atendimento sofisticado, design natural e técnicas modernas para sobrancelhas." />
 
-  <meta property="og:title" content="Géssica Vianna Beauty Clinic">
-  <meta property="og:description" content="Design de sobrancelhas e cuidados estéticos em Santo André.">
-  <meta property="og:type" content="website">
+    <meta property="og:title" content="Géssica Vianna — Brow Lamination em São Paulo" />
+    <meta property="og:description"
+        content="Naturalidade é atemporal. Atendimento especializado em brow lamination e design de sobrancelhas." />
+    <meta property="og:type" content="website" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#fffaf8;
-      --text:#241d1b;
-      --accent:#c48b7a;
-      --neutral:#efe6e2;
-      --dark:#1f1a18;
-    }
+    <style>
+        :root {
+            --color-primary: #1493A3;
+            --color-primary-hover: #107582;
+            --color-bg: #F7F9F9;
+            --color-bg-alt: #EAF4F5;
+            --color-text: #111E25;
+            --color-text-muted: #4A5B66;
+            --color-accent: #D4AF37;
+            --color-accent-hover: #BFA030;
+        }
 
-    *{
-      scroll-behavior:smooth;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body{
-      font-family:'Manrope', sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .fade-in{
-      opacity:0;
-      transform:translateY(20px);
-      transition:all .7s ease;
-    }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
 
-    .fade-in.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
 
-    .btn-primary{
-      background:var(--accent);
-      color:white;
-      padding:14px 24px;
-      border-radius:12px;
-      font-weight:700;
-      transition:.3s;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: .25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 12px 30px rgba(20, 147, 163, .20);
+        }
 
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 20px rgba(0,0,0,.08);
-    }
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
 
-    .btn-secondary{
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
+        .btn-secondary {
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: .25s ease;
+        }
 
-    .service-card{
-      background:white;
-      border:1px solid #eee;
-      border-radius:20px;
-      padding:28px;
-      transition:.3s;
-    }
+        .btn-secondary:hover {
+            transform: translateX(4px);
+        }
 
-    .service-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 15px 30px rgba(0,0,0,.06);
-    }
+        .card-soft {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, .05);
+            overflow: hidden;
+            transition: .25s ease;
+        }
 
-    .placeholder{
-      background:var(--neutral);
-      border:2px dashed #d7c6c0;
-      border-radius:24px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px;
-      min-height:300px;
-      color:#7b6a65;
-      font-weight:600;
-    }
+        .card-soft:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .06);
+        }
 
-    .review-card{
-      background:white;
-      border:1px solid #eee;
-      border-radius:18px;
-      padding:24px;
-    }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .7s ease;
+        }
 
-    .google-badge{
-      width:32px;
-      height:32px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid #ddd;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      color:#4285F4;
-      font-size:18px;
-      flex-shrink:0;
-    }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    details{
-      background:white;
-      border-radius:16px;
-      padding:20px;
-      border:1px solid #eee;
-    }
+        .faq details {
+            background: white;
+            border-radius: 18px;
+            padding: 22px;
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
 
-    summary{
-      cursor:pointer;
-      font-weight:700;
-      list-style:none;
-    }
+        .faq summary {
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none;
+        }
 
-    summary::-webkit-details-marker{
-      display:none;
-    }
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
 
-    .mobile-menu{
-      display:none;
-    }
+        .mobile-nav {
+            display: none;
+        }
 
-    @media(max-width:768px){
+        .mobile-nav.active {
+            display: flex;
+        }
 
-      .mobile-menu{
-        display:flex;
-      }
+        .hero-glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 999px;
+            background: rgba(20, 147, 163, .12);
+            filter: blur(70px);
+            z-index: -1;
+        }
 
-      .desktop-menu{
-        display:none;
-      }
+        .logo-full {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+        }
 
-      #mobileNav{
-        display:none;
-      }
+        .logo-mobile {
+            display: none;
+            height: 42px;
+            width: auto;
+        }
 
-      #mobileNav.active{
-        display:flex;
-      }
-    }
-  </style>
+        .footer-logo {
+            width: 220px;
+            filter: brightness(0) invert(1);
+            opacity: .95;
+        }
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Géssica Vianna Beauty Clinic",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Rua Giovanni Battista Pirelli, 271 - sala 812",
-      "addressLocality":"Santo André",
-      "addressRegion":"SP"
-    },
-    "telephone":"+55 11 99434-7656",
-    "openingHours":"Mo-Fr 09:00-19:00"
-  }
-  </script>
+        .footer-logo-g {
+            width: 70px;
+            filter: brightness(0) invert(1);
+            opacity: .9;
+            margin-bottom: 18px;
+        }
+
+        @media(max-width:768px) {
+
+            .menu-desktop {
+                display: none;
+            }
+
+            .logo-full {
+                display: none;
+            }
+
+            .logo-mobile {
+                display: block;
+            }
+
+            .hero-mobile-image {
+                height: 520px !important;
+            }
+
+            h1 {
+                font-size: 42px !important;
+                line-height: 1.1 !important;
+            }
+
+        }
+    </style>
 
 </head>
+
 <body>
 
-<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur z-50 border-b border-[#eee]">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
-    <div class="flex items-center justify-between py-5">
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-black/5 z-50">
 
-      <a href="#" class="text-xl font-extrabold tracking-tight">
-        Géssica Vianna
-      </a>
+        <div class="container-custom py-5 flex items-center justify-between">
 
-      <nav class="desktop-menu flex items-center gap-8 font-medium">
-        <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato">Contato</a>
+            <a href="#" class="flex items-center">
 
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar."
-          class="btn-primary"
-          target="_blank"
-        >
-          Agendar horário
-        </a>
-      </nav>
+                <!-- LOGO COMPLETA DESKTOP -->
+                <img src="image/logo-vazado.png" alt="Géssica Vianna Logo" class="logo-full" />
 
-      <button id="menuBtn" class="mobile-menu">
-        ☰
-      </button>
+                <!-- LOGO G MOBILE -->
+                <img src="image/logo-g-vazado.png" alt="Géssica Vianna Logo" class="logo-mobile" />
 
-    </div>
+            </a>
 
-    <div id="mobileNav" class="flex-col gap-5 pb-6 font-medium">
-      <a href="#servicos">Serviços</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contato">Contato</a>
+            <nav class="menu-desktop flex items-center gap-8">
 
-      <a
-        href="https://wa.me/5511994347656?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar."
-        class="btn-primary w-full"
-        target="_blank"
-      >
-        Agendar horário
-      </a>
-    </div>
+                <a href="#servicos" class="hover:opacity-70 transition">
+                    Serviços
+                </a>
 
-  </div>
-</header>
+                <a href="#sobre" class="hover:opacity-70 transition">
+                    Sobre
+                </a>
 
-<section class="pt-40 pb-24">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-14 items-center">
+                <a href="#faq" class="hover:opacity-70 transition">
+                    FAQ
+                </a>
 
-    <div class="fade-in">
-      <span class="uppercase tracking-[3px] text-sm text-[#9f7a6d] font-bold">
-        Beauty Clinic • Santo André
-      </span>
+                <a href="#contato" class="hover:opacity-70 transition">
+                    Contato
+                </a>
 
-      <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mt-5">
-        Sobrancelhas que valorizam tua beleza natural
-      </h1>
+            </nav>
 
-      <p class="text-lg text-[#5c514d] mt-6 leading-relaxed">
-        Atendimento detalhista, espaço acolhedor e técnicas modernas para realçar teu olhar com naturalidade.
-      </p>
+            <a href="https://wa.me/5511994347656?text=Olá!%20Gostaria%20de%20agendar%20um%20horário."
+                class="btn-primary hidden md:inline-flex" target="_blank">
+                Agendar horário
+            </a>
 
-      <div class="flex flex-wrap gap-4 mt-10">
+            <button id="menuBtn" class="md:hidden text-3xl">
+                ☰
+            </button>
 
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Quero%20agendar%20um%20horário."
-          target="_blank"
-          class="btn-primary"
-        >
-          Agendar agora
-        </a>
-
-        <a href="#servicos" class="btn-secondary">
-          Ver serviços →
-        </a>
-
-      </div>
-    </div>
-
-    <div class="fade-in">
-      <div class="placeholder">
-        <span>
-          [IMAGEM: foto elegante da Géssica atendendo uma cliente em ambiente sofisticado e iluminado]
-        </span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="servicos" class="py-24">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
-
-    <div class="text-center fade-in">
-      <span class="uppercase tracking-[3px] text-sm text-[#9f7a6d] font-bold">
-        Serviços
-      </span>
-
-      <h2 class="text-4xl font-extrabold mt-4">
-        Cuidados que fazem diferença no espelho
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-16">
-
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">✨</div>
-        <h3 class="text-xl font-bold">
-          Design de sobrancelhas
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Modelagem personalizada respeitando o formato do teu rosto e a naturalidade dos fios.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20design%20de%20sobrancelhas."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Agendar →
-        </a>
-      </div>
-
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">💫</div>
-        <h3 class="text-xl font-bold">
-          Brow Lamination
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Técnica para alinhar e valorizar os fios, criando efeito sofisticado e natural.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20brow%20lamination."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Agendar →
-        </a>
-      </div>
-
-      <!-- INFERIDO: revisar com cliente -->
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">🎨</div>
-        <h3 class="text-xl font-bold">
-          Henna para sobrancelhas
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Preenchimento suave para destacar o desenho das sobrancelhas com equilíbrio.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20henna%20para%20sobrancelhas."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Agendar →
-        </a>
-      </div>
-
-      <!-- INFERIDO: revisar com cliente -->
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">🌿</div>
-        <h3 class="text-xl font-bold">
-          Spa facial
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Momento de cuidado e revitalização para deixar a pele mais leve e iluminada.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20spa%20facial."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Agendar →
-        </a>
-      </div>
-
-      <!-- INFERIDO: revisar com cliente -->
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">🖌️</div>
-        <h3 class="text-xl font-bold">
-          Correção de sobrancelhas
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Ajustes pensados para recuperar harmonia e simetria dos fios.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20correção%20de%20sobrancelhas."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Agendar →
-        </a>
-      </div>
-
-      <div class="service-card fade-in">
-        <div class="text-3xl mb-5">🤍</div>
-        <h3 class="text-xl font-bold">
-          Atendimento personalizado
-        </h3>
-        <p class="mt-3 text-[#655956] leading-relaxed">
-          Cada detalhe do atendimento é pensado para deixar tu confortável e segura.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20atendimentos."
-          class="inline-block mt-5 font-bold"
-          target="_blank"
-        >
-          Conversar →
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="sobre" class="py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
-
-    <div class="fade-in">
-
-      <span class="uppercase tracking-[3px] text-sm text-[#9f7a6d] font-bold">
-        Quem somos
-      </span>
-
-      <h2 class="text-4xl font-extrabold mt-4 leading-tight">
-        Por que clientes confiam na Géssica
-      </h2>
-
-      <p class="mt-6 text-[#5c514d] leading-relaxed">
-        O atendimento da Géssica Vianna Beauty Clinic combina técnica, cuidado e atenção aos detalhes para valorizar a beleza natural de cada cliente.
-      </p>
-
-      <p class="mt-5 text-[#5c514d] leading-relaxed">
-        As avaliações destacam o olhar minucioso, o ambiente agradável e a confiança construída em cada atendimento.
-      </p>
-
-      <p class="mt-5 text-[#5c514d] leading-relaxed">
-        A proposta aqui é simples: fazer tu se sentir bem toda vez que olhar no espelho.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
-
-        <div class="bg-[#faf4f1] rounded-2xl p-5 font-semibold text-center">
-          Atendimento acolhedor
         </div>
 
-        <div class="bg-[#faf4f1] rounded-2xl p-5 font-semibold text-center">
-          Técnica detalhista
+        <div id="mobileNav" class="mobile-nav flex-col gap-4 px-6 pb-6 bg-white">
+
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contato">Contato</a>
+
         </div>
 
-        <div class="bg-[#faf4f1] rounded-2xl p-5 font-semibold text-center">
-          Ambiente confortável
+    </header>
+
+    <section class="pt-40 pb-24 overflow-hidden">
+
+        <div class="container-custom grid lg:grid-cols-2 gap-16 items-center">
+
+            <div class="fade-in relative">
+
+                <div class="hero-glow -top-10 -left-10"></div>
+
+                <span
+                    class="inline-flex bg-[var(--color-bg-alt)] text-[var(--color-primary)] font-bold px-4 py-2 rounded-full text-sm mb-6">
+                    Brow Lamination • ABC Paulista
+                </span>
+
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                    Sobrancelhas naturais que valorizam teu rosto
+                </h1>
+
+                <p class="text-lg text-[var(--color-text-muted)] leading-relaxed mb-10 max-w-xl">
+                    Atendimento sofisticado e personalizado para quem busca definição, alinhamento e leveza sem perder a
+                    naturalidade.
+                </p>
+
+                <div class="flex flex-wrap gap-5">
+
+                    <a href="https://wa.me/5511994347656?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar."
+                        class="btn-primary" target="_blank">
+                        Agendar horário
+                    </a>
+
+                    <a href="#servicos" class="btn-secondary">
+                        Ver serviços →
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="fade-in">
+
+                <div class="relative overflow-hidden rounded-[36px] shadow-2xl border border-white/40 bg-white">
+
+                    <img src="image/foto1.png" alt="Géssica Vianna"
+                        class="w-full h-[680px] hero-mobile-image object-cover object-top" />
+
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-8">
+
+                        <p class="text-white text-sm uppercase tracking-[0.2em] mb-2">
+                            Brow Artist
+                        </p>
+
+                        <h3 class="text-white text-3xl font-extrabold">
+                            Géssica Vianna
+                        </h3>
+
+                        <p class="text-white/80 mt-2">
+                            Naturalidade, alinhamento e sofisticação em cada detalhe.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
+    </section>
 
-    </div>
+    <section id="servicos" class="py-24 bg-white">
 
-    <div class="fade-in">
-      <div class="placeholder">
-        <span>
-          [IMAGEM: foto da clínica com iluminação elegante e ambiente clean]
-        </span>
-      </div>
-    </div>
+        <div class="container-custom">
 
-  </div>
-</section>
+            <div class="text-center mb-16 fade-in">
 
-<section class="py-24">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
+                <span class="text-[var(--color-primary)] font-bold uppercase tracking-wider text-sm">
+                    Serviços
+                </span>
 
-    <div class="text-center fade-in">
-      <span class="uppercase tracking-[3px] text-sm text-[#9f7a6d] font-bold">
-        Avaliações
-      </span>
+                <h2 class="text-4xl font-extrabold mt-4">
+                    Cuidado pensado nos detalhes
+                </h2>
 
-      <h2 class="text-4xl font-extrabold mt-4">
-        O que estão falando
-      </h2>
-    </div>
+            </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <div class="review-card fade-in">
-        <div class="flex items-center gap-3">
-          <div class="google-badge">G</div>
-          <div>
-            <h4 class="font-bold">Vanessa Martins</h4>
-            <div>★★★★★</div>
-          </div>
+                <div class="card-soft fade-in">
+
+                    <img src="image/foto2.png" alt="Brow lamination" class="w-full h-60 object-cover" />
+
+                    <div class="p-8">
+
+                        <div class="text-3xl mb-5">✨</div>
+
+                        <h3 class="text-2xl font-bold mb-3">
+                            Brow Lamination
+                        </h3>
+
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Alinhamento e definição dos fios com acabamento leve e elegante.
+                        </p>
+
+                        <a href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20Brow%20Lamination."
+                            class="font-bold text-[var(--color-primary)]" target="_blank">
+                            Pedir informações →
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="card-soft fade-in">
+
+                    <img src="image/foto7.png" alt="Design natural" class="w-full h-60 object-cover" />
+
+                    <div class="p-8">
+
+                        <div class="text-3xl mb-5">🤍</div>
+
+                        <h3 class="text-2xl font-bold mb-3">
+                            Design Natural
+                        </h3>
+
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Estrutura personalizada respeitando o formato do teu rosto.
+                        </p>
+
+                        <a href="https://wa.me/5511994347656?text=Olá!%20Gostaria%20de%20saber%20sobre%20Design%20Natural."
+                            class="font-bold text-[var(--color-primary)]" target="_blank">
+                            Pedir informações →
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="card-soft fade-in">
+
+                    <img src="image/foto8.png" alt="Line Up Brows" class="w-full h-60 object-cover" />
+
+                    <div class="p-8">
+
+                        <div class="text-3xl mb-5">💎</div>
+
+                        <h3 class="text-2xl font-bold mb-3">
+                            Line Up Brows
+                        </h3>
+
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Técnica moderna para sobrancelhas alinhadas com efeito sofisticado.
+                        </p>
+
+                        <a href="https://wa.me/5511994347656?text=Olá!%20Tenho%20interesse%20em%20Line%20Up%20Brows."
+                            class="font-bold text-[var(--color-primary)]" target="_blank">
+                            Pedir informações →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <p class="mt-5 text-[#5f5551] leading-relaxed">
-          “Sensacional, mudou minhas sobrancelhas. Resultado maravilhoso.”
-        </p>
-      </div>
+    </section>
 
-      <div class="review-card fade-in">
-        <div class="flex items-center gap-3">
-          <div class="google-badge">G</div>
-          <div>
-            <h4 class="font-bold">Thaina Figueiredo</h4>
-            <div>★★★★★</div>
-          </div>
+    <section id="sobre" class="py-24">
+
+        <div class="container-custom grid lg:grid-cols-2 gap-16 items-center">
+
+            <div class="fade-in">
+
+                <span class="text-[var(--color-primary)] uppercase tracking-wider font-bold text-sm">
+                    Quem somos
+                </span>
+
+                <h2 class="text-4xl font-extrabold leading-tight mt-4 mb-8">
+                    Naturalidade é atemporal
+                </h2>
+
+                <div class="space-y-5 text-[var(--color-text-muted)] leading-relaxed text-lg">
+
+                    <p>
+                        Cada atendimento é pensado para valorizar teus traços naturais com leveza, sofisticação e
+                        cuidado nos detalhes.
+                    </p>
+
+                    <p>
+                        As técnicas utilizadas priorizam acabamento elegante, alinhamento dos fios e um resultado
+                        harmonioso.
+                    </p>
+
+                    <p>
+                        O foco é fazer tu se sentir bem desde o primeiro atendimento até o resultado final.
+                    </p>
+
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4 mt-10">
+
+                    <div class="card-soft p-5 text-center font-semibold">
+                        Atendimento humanizado
+                    </div>
+
+                    <div class="card-soft p-5 text-center font-semibold">
+                        Técnicas modernas
+                    </div>
+
+                    <div class="card-soft p-5 text-center font-semibold">
+                        Ambiente acolhedor
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="fade-in relative">
+
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-3xl">
+                </div>
+
+                <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-[var(--color-accent)]/10 rounded-full blur-3xl">
+                </div>
+
+                <div class="relative overflow-hidden rounded-[36px] shadow-2xl border border-white/40 bg-white">
+
+                    <img src="image/foto11.png" alt="Géssica Vianna" class="w-full h-[620px] object-cover object-top" />
+
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-8">
+
+                        <p class="text-white text-sm uppercase tracking-[0.2em] mb-2">
+                            Brow Artist
+                        </p>
+
+                        <h3 class="text-white text-3xl font-extrabold">
+                            Géssica Vianna
+                        </h3>
+
+                        <p class="text-white/80 mt-2">
+                            Naturalidade, alinhamento e sofisticação em cada detalhe.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <p class="mt-5 text-[#5f5551] leading-relaxed">
-          “Trabalho impecável, nunca tinha visto uma técnica como a dela.”
-        </p>
-      </div>
+    </section>
 
-      <div class="review-card fade-in">
-        <div class="flex items-center gap-3">
-          <div class="google-badge">G</div>
-          <div>
-            <h4 class="font-bold">Jessica Santos Mendes</h4>
-            <div>★★★★★</div>
-          </div>
+    <section id="faq" class="py-24 bg-white faq">
+
+        <div class="container-custom">
+
+            <div class="text-center mb-16 fade-in">
+
+                <span class="text-[var(--color-primary)] uppercase tracking-wider font-bold text-sm">
+                    FAQ
+                </span>
+
+                <h2 class="text-4xl font-extrabold mt-4">
+                    Dúvidas frequentes
+                </h2>
+
+            </div>
+
+            <div class="space-y-5 max-w-4xl mx-auto">
+
+                <details class="fade-in">
+                    <summary>Quanto tempo dura o Brow Lamination?</summary>
+                    <p class="mt-4 text-[var(--color-text-muted)]">
+                        A duração pode variar conforme os cuidados e tipo de fio, mas normalmente permanece por semanas.
+                    </p>
+                </details>
+
+                <details class="fade-in">
+                    <summary>O resultado fica muito marcado?</summary>
+                    <p class="mt-4 text-[var(--color-text-muted)]">
+                        Não. O objetivo é valorizar os fios mantendo naturalidade e leveza.
+                    </p>
+                </details>
+
+                <details class="fade-in">
+                    <summary>Precisa agendar com antecedência?</summary>
+                    <p class="mt-4 text-[var(--color-text-muted)]">
+                        O ideal é reservar teu horário antecipadamente para garantir disponibilidade.
+                    </p>
+                </details>
+
+                <details class="fade-in">
+                    <summary>Quais formas de pagamento são aceitas?</summary>
+                    <p class="mt-4 text-[var(--color-text-muted)]">
+                        Consulte diretamente pelo WhatsApp as opções disponíveis.
+                    </p>
+                </details>
+
+                <details class="fade-in">
+                    <summary>Como funciona o atendimento?</summary>
+                    <p class="mt-4 text-[var(--color-text-muted)]">
+                        O atendimento é personalizado conforme teu estilo e objetivo.
+                    </p>
+                </details>
+
+            </div>
+
         </div>
 
-        <p class="mt-5 text-[#5f5551] leading-relaxed">
-          “Profissional super qualificada, detalhista, caprichosa e cuidadosa.”
-        </p>
-      </div>
+    </section>
 
-    </div>
+    <section id="contato" class="py-24">
 
-  </div>
-</section>
+        <div class="container-custom">
 
-<section id="faq" class="py-24 bg-white">
-  <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="rounded-[32px] bg-[var(--color-primary)] text-white p-10 lg:p-16">
 
-    <div class="text-center fade-in">
-      <span class="uppercase tracking-[3px] text-sm text-[#9f7a6d] font-bold">
-        FAQ
-      </span>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
 
-      <h2 class="text-4xl font-extrabold mt-4">
-        Dúvidas frequentes
-      </h2>
-    </div>
+                    <div class="fade-in">
 
-    <div class="space-y-5 mt-14">
+                        <span class="uppercase tracking-wider text-sm font-bold opacity-80">
+                            Contato
+                        </span>
 
-      <details class="fade-in">
-        <summary>
-          Precisa agendar horário?
-        </summary>
+                        <h2 class="text-5xl font-extrabold leading-tight mt-4 mb-6">
+                            Vamos conversar?
+                        </h2>
 
-        <p class="mt-4 text-[#5d5450]">
-          Sim. O agendamento ajuda a garantir um atendimento mais tranquilo e personalizado.
-        </p>
-      </details>
+                        <p class="text-lg opacity-90 leading-relaxed mb-8">
+                            Tire dúvidas, consulte horários disponíveis ou peça mais informações diretamente pelo
+                            WhatsApp.
+                        </p>
 
-      <details class="fade-in">
-        <summary>
-          Quanto tempo dura o atendimento?
-        </summary>
+                        <a href="https://wa.me/5511994347656?text=Olá,%20vamos%20conversar?"
+                            class="inline-flex items-center gap-3 bg-white text-[var(--color-primary)] font-bold px-8 py-5 rounded-2xl text-lg hover:scale-[1.02] transition"
+                            target="_blank">
+                            💬 (11) 99434-7656
+                        </a>
 
-        <p class="mt-4 text-[#5d5450]">
-          O tempo varia conforme o procedimento escolhido, mas normalmente dura entre 40 minutos e 1h30.
-        </p>
-      </details>
+                    </div>
 
-      <details class="fade-in">
-        <summary>
-          A técnica fica natural?
-        </summary>
+                    <div class="fade-in">
 
-        <p class="mt-4 text-[#5d5450]">
-          Sim. O foco é valorizar teu rosto sem exageros, respeitando teu estilo e formato natural.
-        </p>
-      </details>
+                        <img src="image/foto12.png" alt="Géssica Vianna"
+                            class="w-full h-[340px] object-cover object-top rounded-[28px]" />
 
-      <details class="fade-in">
-        <summary>
-          Quais formas de pagamento são aceitas?
-        </summary>
+                    </div>
 
-        <p class="mt-4 text-[#5d5450]">
-          Pix, cartão e dinheiro. Confirmar opções disponíveis no agendamento.
-        </p>
-      </details>
+                </div>
 
-      <details class="fade-in">
-        <summary>
-          Onde fica a clínica?
-        </summary>
+            </div>
 
-        <p class="mt-4 text-[#5d5450]">
-          A clínica fica no Century Plaza Business, em Santo André.
-        </p>
-      </details>
-
-    </div>
-
-  </div>
-</section>
-
-<section id="contato" class="py-24">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
-
-    <div class="bg-[#c48b7a] rounded-[32px] p-10 lg:p-16 text-white">
-
-      <div class="max-w-3xl">
-        <span class="uppercase tracking-[3px] text-sm font-bold opacity-80">
-          Contato
-        </span>
-
-        <h2 class="text-4xl lg:text-5xl font-extrabold mt-4 leading-tight">
-          Vamos cuidar da tua autoestima?
-        </h2>
-
-        <p class="mt-5 text-lg opacity-90">
-          Agende teu horário e conheça um atendimento pensado nos mínimos detalhes.
-        </p>
-
-        <a
-          href="https://wa.me/5511994347656?text=Olá!%20Gostaria%20de%20agendar%20um%20horário."
-          class="inline-flex items-center gap-3 bg-white text-[#241d1b] px-7 py-4 rounded-xl font-extrabold mt-10"
-          target="_blank"
-        >
-          📲 (11) 99434-7656
-        </a>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 mt-16">
-
-        <div>
-          <h3 class="font-bold text-xl mb-3">
-            Endereço
-          </h3>
-
-          <p class="opacity-90 leading-relaxed">
-            Rua Giovanni Battista Pirelli, 271 - sala 812<br>
-            Vila Homero Thon<br>
-            Santo André - SP
-          </p>
         </div>
 
-        <div>
-          <h3 class="font-bold text-xl mb-3">
-            Horários
-          </h3>
+    </section>
 
-          <p class="opacity-90 leading-relaxed">
-            Seg–Sex • 9h às 19h<br>
-            Sáb • consultar agenda
-          </p>
+    <footer class="bg-[#0F171C] text-white py-16">
+
+        <div class="container-custom">
+
+            <div class="grid md:grid-cols-3 gap-12">
+
+                <div>
+
+                    <img src="image/logo-vazado.png" alt="Géssica Vianna Logo" class="footer-logo mb-6" />
+
+                    <p class="text-white/70 leading-relaxed">
+                        Atendimento especializado em brow lamination e design natural no ABC Paulista.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h4 class="font-bold mb-4">
+                        Navegação
+                    </h4>
+
+                    <ul class="space-y-3 text-white/70">
+
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contato">Contato</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div>
+
+                    <h4 class="font-bold mb-4">
+                        Contato
+                    </h4>
+
+                    <ul class="space-y-3 text-white/70">
+
+                        <li>(11) 99434-7656</li>
+                        <li><a href="https://www.instagram.com/gessicaviannaa" target="_blank">@gessicaviannaa</a></li>
+                        <li>São Paulo • SP</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div
+                class="border-t border-white/10 mt-14 pt-8 flex flex-col md:flex-row gap-4 justify-between text-sm text-white/50">
+
+                <p>
+                    © <span id="year"></span> Géssica Vianna. Todos os direitos reservados.
+                </p>
+
+                <p>
+                    Site desenvolvido por
+                    <a href="https://eabc.com.br" target="_blank" class="underline hover:text-white transition">
+                        EABC Digital
+                    </a>
+                </p>
+
+            </div>
+
         </div>
 
-        <div>
-          <h3 class="font-bold text-xl mb-3">
-            Localização
-          </h3>
+    </footer>
 
-          <div class="bg-white/15 rounded-2xl p-6">
-            [MAPA: incorporar Google Maps via iframe]
-          </div>
-        </div>
+    <script>
 
-      </div>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
 
-    </div>
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
 
-  </div>
-</section>
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-<footer class="bg-[#1f1a18] text-white py-16">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: .12 });
 
-    <div class="grid md:grid-cols-3 gap-12">
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-      <div>
-        <h3 class="text-2xl font-extrabold">
-          Géssica Vianna
-        </h3>
-
-        <p class="mt-4 text-white/70 leading-relaxed">
-          Design de sobrancelhas e cuidados estéticos com atenção aos detalhes.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-lg">
-          Navegação
-        </h4>
-
-        <div class="flex flex-col gap-3 mt-5 text-white/70">
-          <a href="#servicos">Serviços</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contato">Contato</a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-lg">
-          Contato
-        </h4>
-
-        <div class="flex flex-col gap-3 mt-5 text-white/70">
-          <span>(11) 99434-7656</span>
-          <span>Santo André • SP</span>
-          <span>Century Plaza Business</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="border-t border-white/10 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/60">
-
-      <p>
-        © <span id="year"></span> Géssica Vianna Beauty Clinic. Todos os direitos reservados.
-      </p>
-
-      <p>
-        Site desenvolvido por
-        <a
-          href="https://eabc.com.br"
-          target="_blank"
-          class="underline hover:text-white"
-        >
-          EABC Digital
-        </a>
-      </p>
-
-    </div>
-
-  </div>
-</footer>
-
-<script>
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("show");
-      }
-    });
-  });
-
-  document.querySelectorAll(".fade-in").forEach((el)=>{
-    observer.observe(el);
-  });
-
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileNav = document.getElementById("mobileNav");
-
-  menuBtn.addEventListener("click", ()=>{
-    mobileNav.classList.toggle("active");
-  });
-
-</script>
+    </script>
 
 </body>
+
 </html>
