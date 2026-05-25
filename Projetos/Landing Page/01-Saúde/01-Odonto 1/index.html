@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://clinicadentistacentro.vercel.app/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorriso Centro | Clínica Odontológica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e5a96;
+            --secondary: #00a8cc;
+            --accent: #ff6b6b;
+            --text-dark: #2c3e50;
+            --text-light: #95a5a6;
+            --bg-light: #f8fafb;
+            --border-light: #e8ecf1;
+            --success: #27ae60;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(100px, -50px);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 2px solid white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* SERVICOS */
+        .servicos {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .servicos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .servico-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .servico-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-left-color: var(--accent);
+        }
+
+        .servico-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .servico-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .servico-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .servico-features {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            list-style: none;
+        }
+
+        .servico-features li {
+            padding: 0.3rem 0;
+        }
+
+        .servico-features li:before {
+            content: '✓ ';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* CONVENIOS */
+        .convenios {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .convenios-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .convenios-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .convenios-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .convenios-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .convenios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .convenio-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .convenio-item:hover {
+            border-color: var(--secondary);
+            background: white;
+        }
+
+        .convenio-item h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .convenio-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .convenios-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .convenios-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .convenios-banner p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        /* DIFERENCIAIS */
+        .diferenciais {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .diferenciais-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .diferenciais h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .diferencial-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .diferencial-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .diferencial-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .diferencial-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CONTATO */
+        .contato {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .contato-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contato h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contato-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contato-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contato-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contato-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .contato-text h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contato-text p {
+            color: var(--text-light);
+        }
+
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.9rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 90, 150, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* ANIMACOES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .servico-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .servico-card:nth-child(2) { animation-delay: 0.1s; }
+        .servico-card:nth-child(3) { animation-delay: 0.2s; }
+        .servico-card:nth-child(4) { animation-delay: 0.3s; }
+        .servico-card:nth-child(5) { animation-delay: 0.4s; }
+
+        /* ===== MEDIA QUERIES - RESPONSIVO ===== */
+
+        /* TABLETS E TELAS MÉDIAS */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-badges {
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-buttons {
+                gap: 0.8rem;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .servicos {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title p {
+                font-size: 0.95rem;
+            }
+
+            .servicos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .servico-card {
+                padding: 2rem;
+            }
+
+            .servico-icon {
+                font-size: 2.5rem;
+            }
+
+            .servico-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .servico-card p {
+                font-size: 0.9rem;
+            }
+
+            .servico-features li {
+                font-size: 0.85rem;
+            }
+
+            .convenios {
+                padding: 3rem 1.5rem;
+            }
+
+            .convenios-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .convenios-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .convenio-item {
+                padding: 1.5rem;
+            }
+
+            .convenio-item h4 {
+                font-size: 1rem;
+            }
+
+            .convenios-banner {
+                padding: 1.5rem;
+            }
+
+            .convenios-banner h3 {
+                font-size: 1.2rem;
+            }
+
+            .diferenciais {
+                padding: 3rem 1.5rem;
+            }
+
+            .diferenciais h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .diferencial-item {
+                padding: 1.2rem;
+                gap: 1rem;
+            }
+
+            .diferencial-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+
+            .diferencial-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .diferencial-content p {
+                font-size: 0.9rem;
+            }
+
+            .contato {
+                padding: 3rem 1.5rem;
+            }
+
+            .contato h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .contato-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contato-item {
+                gap: 1rem;
+            }
+
+            .contato-icon {
+                font-size: 1.8rem;
+            }
+
+            .contato-text h3 {
+                font-size: 1rem;
+            }
+
+            .contato-text p {
+                font-size: 0.9rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* CELULARES PEQUENOS */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .logo-icon {
+                font-size: 1.4rem;
+            }
+
+            nav {
+                gap: 0.5rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-badges {
+                gap: 0.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .badge {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.65rem;
+            }
+
+            .hero-buttons {
+                gap: 0.6rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .servicos {
+                padding: 2rem 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .section-title p {
+                font-size: 0.85rem;
+            }
+
+            .servicos-grid {
+                gap: 1.2rem;
+            }
+
+            .servico-card {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .servico-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .servico-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .servico-card p {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .servico-features li {
+                font-size: 0.8rem;
+                padding: 0.2rem 0;
+            }
+
+            .convenios {
+                padding: 2rem 1rem;
+            }
+
+            .convenios-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .convenios-header p {
+                font-size: 0.85rem;
+            }
+
+            .convenios-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .convenio-item {
+                padding: 1.2rem;
+            }
+
+            .convenio-item h4 {
+                font-size: 0.95rem;
+            }
+
+            .convenio-item p {
+                font-size: 0.8rem;
+            }
+
+            .convenios-banner {
+                padding: 1.2rem;
+            }
+
+            .convenios-banner h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .convenios-banner p {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+
+            .diferenciais {
+                padding: 2rem 1rem;
+            }
+
+            .diferenciais h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .diferencial-item {
+                padding: 1rem;
+                gap: 0.8rem;
+            }
+
+            .diferencial-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+
+            .diferencial-content h3 {
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .diferencial-content p {
+                font-size: 0.8rem;
+            }
+
+            .contato {
+                padding: 2rem 1rem;
+            }
+
+            .contato h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contato-info {
+                gap: 1rem;
+            }
+
+            .contato-item {
+                gap: 0.8rem;
+            }
+
+            .contato-icon {
+                font-size: 1.5rem;
+            }
+
+            .contato-text h3 {
+                font-size: 0.95rem;
+            }
+
+            .contato-text p {
+                font-size: 0.85rem;
+            }
+
+            .form-group {
+                margin-bottom: 0.8rem;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.75rem;
+                font-size: 16px; /* Evita zoom no iOS */
+            }
+
+            .form-button {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.2rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* EXTRA PEQUENO - Smartphones antigos */
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1rem;
+            }
+
+            nav a {
+                font-size: 0.65rem;
+            }
+
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 0.85rem;
+            }
+
+            .badge {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+
+            .servico-icon {
+                font-size: 1.8rem;
+            }
+
+            .servico-card h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🦷</span>
+                <span>Sorriso Centro</span>
+            </div>
+            <nav>
+                <a href="https://clinicadentistacentro.vercel.app/#servicos">Serviços</a>
+                <a href="https://clinicadentistacentro.vercel.app/#convenios">Convênios</a>
+                <a href="https://clinicadentistacentro.vercel.app/#diferenciais">Por que nós?</a>
+                <a href="https://clinicadentistacentro.vercel.app/#contato">Contato</a>
+                <a href="https://clinicadentistacentro.vercel.app/#contato" class="cta-button">Marcar Consulta</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Seu Sorriso é Nossa Prioridade</h1>
+            <p>Clínica odontológica moderna no coração do Centro com atendimento de sábado e aceita os principais convênios</p>
+            <div class="hero-badges">
+                <span class="badge">📅 Atendimento Sábado</span>
+                <span class="badge">🤝 Convênios</span>
+                <span class="badge">👨‍⚕️ Especialistas</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://clinicadentistacentro.vercel.app/#contato" class="btn-primary">Agendar Consulta</a>
+                <a href="https://clinicadentistacentro.vercel.app/#convenios" class="btn-secondary">Ver Convênios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICOS -->
+    <section class="servicos" id="servicos">
+        <div class="servicos-container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos uma completa gama de tratamentos odontológicos com tecnologia de ponta</p>
+            </div>
+
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">🪥</div>
+                    <h3>Limpeza e Profilaxia</h3>
+                    <p>Limpeza profissional completa para remover tártaro e placa bacteriana, deixando seus dentes brilhando e saudáveis.</p>
+                    <ul class="servico-features">
+                        <li>Remoção de tártaro</li>
+                        <li>Polimento profissional</li>
+                        <li>Aplicação de flúor</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">🪥</div>
+                    <h3>Tratamento de Cárie</h3>
+                    <p>Restauração de dentes com cárie usando materiais de última geração, preservando a estrutura dentária natural.</p>
+                    <ul class="servico-features">
+                        <li>Diagnóstico com tecnologia digital</li>
+                        <li>Materiais compostos de qualidade</li>
+                        <li>Restaurações estéticas</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">✨</div>
+                    <h3>Clareamento Dental</h3>
+                    <p>Dentes mais brancos e radiantes com nosso protocolo de clareamento profissional seguro e eficaz.</p>
+                    <ul class="servico-features">
+                        <li>Clareamento em consultório</li>
+                        <li>Resultados rápidos e duradouros</li>
+                        <li>Seguro e supervisionado</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">⚙️</div>
+                    <h3>Tratamento Endodôntico</h3>
+                    <p>Tratamento de canal indolor com equipamento moderno, salvando dentes que poderiam ser perdidos.</p>
+                    <ul class="servico-features">
+                        <li>Anestesia eficaz</li>
+                        <li>Tecnologia localizadora</li>
+                        <li>Recuperação rápida</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-icon">👑</div>
+                    <h3>Implantes Dentários</h3>
+                    <p>Substituição de dentes perdidos com implantes de última geração que parecem e funcionam como dentes naturais.</p>
+                    <ul class="servico-features">
+                        <li>Planejamento digital 3D</li>
+                        <li>Implantes de qualidade premium</li>
+                        <li>Duração prolongada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONVENIOS -->
+    <section class="convenios" id="convenios">
+        <div class="convenios-container">
+            <div class="convenios-header">
+                <h2>Convênios Aceitos</h2>
+                <p>Trabalhamos com os principais convênios odontológicos para facilitar seu acesso ao tratamento</p>
+            </div>
+
+            <div class="convenios-grid">
+                <div class="convenio-item">
+                    <h4>Bradesco Saúde</h4>
+                    <p>Cobertura completa em tratamentos</p>
+                </div>
+                <div class="convenio-item">
+                    <h4>Unimed</h4>
+                    <p>Rede credenciada com benefícios</p>
+                </div>
+                <div class="convenio-item">
+                    <h4>Amil</h4>
+                    <p>Acesso rápido e facilidades</p>
+                </div>
+                <div class="convenio-item">
+                    <h4>Sulamerica</h4>
+                    <p>Planos personalizados disponíveis</p>
+                </div>
+                <div class="convenio-item">
+                    <h4>Odonto System</h4>
+                    <p>Cobertura especializada</p>
+                </div>
+                <div class="convenio-item">
+                    <h4>Outros Convênios</h4>
+                    <p>Consulte para sua cobertura</p>
+                </div>
+            </div>
+
+            <div class="convenios-banner">
+                <h3>💳 Não tem convênio?</h3>
+                <p>Oferecemos planos de pagamento personalizados e preços acessíveis para pacientes particulares</p>
+                <a href="https://clinicadentistacentro.vercel.app/#contato" class="btn-secondary">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="diferenciais-container">
+            <h2>Por que Escolher Sorriso Centro?</h2>
+
+            <div class="diferenciais-grid">
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">📅</div>
+                    <div class="diferencial-content">
+                        <h3>Atendimento Sábado</h3>
+                        <p>Oferecemos expediente no sábado para facilitar seu agendamento, sem prejudicar sua semana.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">📍</div>
+                    <div class="diferencial-content">
+                        <h3>Localização Centro</h3>
+                        <p>Estamos no coração do Centro, fácil acesso por transporte público e estacionamento disponível.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">👨‍⚕️</div>
+                    <div class="diferencial-content">
+                        <h3>Profissionais Experientes</h3>
+                        <p>Equipe de cirurgiões-dentistas especialistas com formação contínua em novas técnicas.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">🔬</div>
+                    <div class="diferencial-content">
+                        <h3>Tecnologia Moderna</h3>
+                        <p>Equipamentos de última geração garantindo diagnósticos precisos e tratamentos eficientes.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">💰</div>
+                    <div class="diferencial-content">
+                        <h3>Preços Acessíveis</h3>
+                        <p>Aceitamos convênios e oferecemos planos de pagamento para todos os orçamentos.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">😊</div>
+                    <div class="diferencial-content">
+                        <h3>Ambiente Acolhedor</h3>
+                        <p>Consultório confortável e acolhedor para que você se sinta seguro e tranquilo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+        <div class="contato-container">
+            <h2>Agende Sua Consulta</h2>
+
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="contato-item">
+                        <div class="contato-icon">📞</div>
+                        <div class="contato-text">
+                            <h3>Telefone</h3>
+                            <p>(19) 3232-5555</p>
+                            <p>(19) 99999-8888 (WhatsApp)</p>
+                        </div>
+                    </div>
+
+                    <div class="contato-item">
+                        <div class="contato-icon">📍</div>
+                        <div class="contato-text">
+                            <h3>Endereço</h3>
+                            <p>Rua Barão de Jaguara, 1234</p>
+                            <p>Centro - Campinas, SP</p>
+                        </div>
+                    </div>
+
+                    <div class="contato-item">
+                        <div class="contato-icon">🕐</div>
+                        <div class="contato-text">
+                            <h3>Horário de Funcionamento</h3>
+                            <p>Segunda a Sexta: 8h às 18h</p>
+                            <p>Sábado: 8h às 13h</p>
+                        </div>
+                    </div>
+
+                    <div class="contato-item">
+                        <div class="contato-icon">✉️</div>
+                        <div class="contato-text">
+                            <h3>Email</h3>
+                            <p>contato@sorrisocentro.com.br</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contato-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(19) 99999-8888">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servico">Serviço de Interesse</label>
+                        <select id="servico" name="servico" required="">
+                            <option value="">Selecione um serviço</option>
+                            <option value="limpeza">Limpeza e Profilaxia</option>
+                            <option value="carie">Tratamento de Cárie</option>
+                            <option value="clareamento">Clareamento Dental</option>
+                            <option value="endodontia">Tratamento Endodôntico</option>
+                            <option value="implante">Implantes Dentários</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem (Opcional)</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos mais sobre sua necessidade..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-button">📧 Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2024 Sorriso Centro - Clínica Odontológica. Todos os direitos reservados.</p>
+        <p>Desenvolvido com dedicação ao seu sorriso 😊</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const servico = document.getElementById('servico').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            const texto = `Olá! Meu nome é ${nome}. Gostaria de agendar uma consulta para o serviço: ${servico}. Meu email é ${email} e telefone ${telefone}. ${mensagem ? 'Detalhes adicionais: ' + mensagem : ''}`;
+            const whatsappUrl = `https://wa.me/5519999998888?text=${encodeURIComponent(texto)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            event.target.reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

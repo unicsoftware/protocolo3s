@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Camila GataShow — Nail Designer em São Caetano do Sul</title>
+
+<meta name="description" content="Unhas sofisticadas, resistentes e com acabamento impecável em São Caetano do Sul. Atendimento acolhedor e agendamento via WhatsApp.">
+
+<meta property="og:title" content="Camila GataShow — Nail Designer">
+<meta property="og:description" content="Naturalidade, resistência e atendimento premium em cada detalhe.">
+<meta property="og:type" content="website">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root-old{
+  --gold:#c6a44a;
+  --gold-dark:#a78631;
+  --bg:#f7f2ea;
+  --bg-soft:#efe7da;
+  --text:#1f1f1f;
+  --muted:#666;
+  --dark:#0f0f0f;
+}
+
+:root {
+  --gold: #8E72B5;
+  --gold-dark: #7859A3;
+  --bg: #F8F7FA;
+  --bg-soft: #F1EEF7;
+  --text: #2D2438;
+  --muted: #5A4E6B;
+  --accent: #C3B1E1;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.logo-font{
+  font-family:'Cormorant Garamond',serif;
+}
+
+.fade-in{
+  opacity:0;
+  transform:translateY(30px);
+  transition:.8s ease;
+}
+
+.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:white;
+  padding:16px 30px;
+  border-radius:14px;
+  font-weight:600;
+  transition:.3s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn-primary:hover{
+  background:var(--gold-dark);
+  transform:translateY(-2px);
+  box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+
+.card{
+  background:white;
+  border-radius:28px;
+  padding:32px;
+  border:1px solid rgba(0,0,0,.05);
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 45px rgba(0,0,0,.08);
+}
+
+.review-card{
+  background:white;
+  border-radius:28px;
+  padding:32px;
+  border:1px solid rgba(0,0,0,.05);
+}
+
+summary{
+  cursor:pointer;
+  font-weight:600;
+  list-style:none;
+}
+
+summary::-webkit-details-marker{
+  display:none;
+}
+
+details{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  border:1px solid rgba(0,0,0,.05);
+}
+
+.gold-line{
+  width:90px;
+  height:1px;
+  background:var(--gold);
+}
+
+.logo-symbol{
+  width:56px;
+  height:56px;
+  position:relative;
+  border:3px solid var(--gold);
+  transform:rotate(45deg);
+  border-radius:6px;
+}
+
+.logo-symbol::before{
+  content:'';
+  position:absolute;
+  inset:10px;
+  border:3px solid white;
+  background:transparent;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="fixed top-0 left-0 w-full bg-[var(--color-bg)]/90 backdrop-blur z-50 border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
+
+    <!-- Bloco Unificado: Logo + Texto -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      
+      <!-- Container do Ícone (Parte esquerda do logo) -->
+      <div class="flex-shrink-0">
+        <img 
+          src="image/logo.png" 
+          alt="Gatashow Icon" 
+          class="h-16 w-auto object-contain"
+          style="image-rendering: -webkit-optimize-contrast;"
+        >
+      </div>
+
+      <!-- Container do Texto (Parte direita do logo) -->
+      <div class="flex flex-col justify-center border-l border-[var(--gold)]/20 pl-3">
+        <div class="logo-font text-4xl lg:text-5xl leading-none text-[var(--gold)] font-semibold tracking-tight">
+          gatashow
+        </div>
+        <div class="uppercase tracking-[0.3em] text-[9px] text-[var(--color-text-muted)] mt-1 font-medium">
+          By Camila Santos
+        </div>
+      </div>
+
+    </a>
+
+    <!-- Navegação Desk -->
+    <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
+      <a href="#servicos" class="hover:text-[var(--color-primary)] transition">Serviços</a>
+      <a href="#sobre" class="hover:text-[var(--color-primary)] transition">Sobre</a>
+      <a href="#avaliacoes" class="hover:text-[var(--color-primary)] transition">Avaliações</a>
+      <a href="#contato" class="hover:text-[var(--color-primary)] transition">Contato</a>
+    </nav>
+
+    <!-- Botão CTA -->
+    <a
+      href="https://wa.me/5511986017431?text=Olá!%20Vim%20pelo%20site%20e%20quero%20agendar."
+      target="_blank"
+      class="hidden md:inline-flex btn-primary"
+    >
+      Agendar horário
+    </a>
+
+  </div>
+</header>
+
+<section
+  id="inicio"
+  class="pt-48 pb-28 bg-[#f6f1e8]"
+>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
+
+    <div class="fade-in">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        Nail Designer Premium
+      </span>
+
+      <h1 class="text-6xl lg:text-7xl leading-[0.95] mt-8 font-semibold max-w-xl">
+        Unhas sofisticadas com acabamento impecável
+      </h1>
+
+      <p class="text-lg text-black/65 mt-8 leading-relaxed max-w-lg">
+        Atendimento acolhedor, naturalidade e resistência pra tu sair se sentindo ainda mais linda.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5 mt-12">
+
+        <a
+          href="https://wa.me/5511986017431?text=Olá!%20Quero%20agendar%20um%20horário."
+          target="_blank"
+          class="btn-primary text-center"
+        >
+          💬 Agendar horário
+        </a>
+
+        <a
+          href="#servicos"
+          class="font-semibold flex items-center gap-2 hover:translate-x-1 transition"
+        >
+          Ver serviços →
+        </a>
+
+      </div>
+
+      <div class="flex flex-wrap gap-8 mt-14 text-sm text-black/60">
+
+        <div>
+          ⭐ 4.9 no Google
+        </div>
+
+        <div>
+          💅 Naturalidade e resistência
+        </div>
+
+        <div>
+          📍 São Caetano do Sul
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="relative fade-in">
+
+      <div class="absolute -top-8 -right-8 w-full h-full border border-[var(--gold)] rounded-[40px]"></div>
+
+      <img
+        src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1200&auto=format&fit=crop"
+        alt="Nail Designer"
+        class="relative rounded-[40px] shadow-2xl w-full h-[720px] object-cover"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="servicos" class="py-28">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="fade-in max-w-2xl">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        Serviços
+      </span>
+
+      <h2 class="text-5xl mt-5 font-semibold">
+        Beleza pensada nos detalhes
+      </h2>
+
+      <div class="gold-line mt-7"></div>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-16">
+
+      <div class="card fade-in">
+
+        <div class="text-4xl">
+          💅
+        </div>
+
+        <h3 class="text-3xl mt-6 font-semibold">
+          Fibra de vidro
+        </h3>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          Alongamento elegante, resistente e com acabamento natural.
+        </p>
+
+      </div>
+
+      <div class="card fade-in">
+
+        <div class="text-4xl">
+          ✨
+        </div>
+
+        <h3 class="text-3xl mt-6 font-semibold">
+          Blindagem
+        </h3>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          Proteção ideal pra manter as unhas bonitas por mais tempo.
+        </p>
+
+      </div>
+
+      <div class="card fade-in">
+
+        <div class="text-4xl">
+          🎨
+        </div>
+
+        <h3 class="text-3xl mt-6 font-semibold">
+          Nail Art
+        </h3>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          Detalhes delicados e personalizados com acabamento sofisticado.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="sobre" class="py-28 bg-[var(--bg-soft)]">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
+
+    <div class="fade-in">
+    <!-- https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop-->
+      <img
+        src="image/logos.png"
+        alt="Atendimento Nail Designer"
+        class="rounded-[40px] shadow-2xl w-full h-[700px] object-cover"
+      >
+
+    </div>
+
+    <div class="fade-in">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        Quem somos
+      </span>
+
+      <h2 class="text-5xl mt-5 leading-tight font-semibold">
+        Um atendimento que faz tu querer voltar
+      </h2>
+
+      <div class="gold-line mt-7"></div>
+
+      <div class="space-y-6 mt-10 text-lg text-[var(--muted)] leading-relaxed">
+
+        <p>
+          A Camila trabalha com foco em unhas bonitas, resistentes e naturais.
+        </p>
+
+        <p>
+          O ambiente é aconchegante, organizado e pensado pra tu relaxar enquanto cuida de si.
+        </p>
+
+        <p>
+          Quem passa por aqui destaca o capricho, a leveza do atendimento e o acabamento impecável.
+        </p>
+
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4 mt-12">
+
+        <div class="bg-white rounded-2xl p-5 border border-black/5 text-center font-medium">
+          Atendimento acolhedor
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 border border-black/5 text-center font-medium">
+          Acabamento natural
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 border border-black/5 text-center font-medium">
+          Ambiente confortável
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="avaliacoes" class="py-28">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="fade-in text-center max-w-2xl mx-auto">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        Avaliações reais
+      </span>
+
+      <h2 class="text-5xl mt-5 font-semibold">
+        O que as clientes falam
+      </h2>
+
+      <div class="gold-line mt-7 mx-auto"></div>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-16">
+
+      <div class="review-card fade-in">
+
+        <div class="flex items-center gap-4">
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+            class="w-11 h-11"
+            alt="Google"
+          >
+
+          <div>
+
+            <div class="font-semibold">
+              Evelin Araujo
+            </div>
+
+            <div class="text-sm text-black/50">
+              há 3 semanas
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mt-5 text-[var(--gold)]">
+          ★★★★★
+        </div>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          “Camila é extremamente responsável, com um trabalho impecável.”
+        </p>
+
+      </div>
+
+      <div class="review-card fade-in">
+
+        <div class="flex items-center gap-4">
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+            class="w-11 h-11"
+            alt="Google"
+          >
+
+          <div>
+
+            <div class="font-semibold">
+              Laura Bassotto
+            </div>
+
+            <div class="text-sm text-black/50">
+              há 1 mês
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mt-5 text-[var(--gold)]">
+          ★★★★★
+        </div>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          “O lugar é lindo e muito organizado. Dá pra ver o capricho em cada detalhe.”
+        </p>
+
+      </div>
+
+      <div class="review-card fade-in">
+
+        <div class="flex items-center gap-4">
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+            class="w-11 h-11"
+            alt="Google"
+          >
+
+          <div>
+
+            <div class="font-semibold">
+              Roseli Portela
+            </div>
+
+            <div class="text-sm text-black/50">
+              há 1 mês
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mt-5 text-[var(--gold)]">
+          ★★★★★
+        </div>
+
+        <p class="mt-5 text-[var(--muted)] leading-relaxed">
+          “Serviço impecável, ambiente aconchegante e trabalho maravilhoso.”
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="py-28 bg-[var(--bg-soft)]">
+
+  <div class="max-w-4xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center fade-in">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        FAQ
+      </span>
+
+      <h2 class="text-5xl mt-5 font-semibold">
+        Dúvidas frequentes
+      </h2>
+
+      <div class="gold-line mt-7 mx-auto"></div>
+
+    </div>
+
+    <div class="space-y-5 mt-16">
+
+      <details class="fade-in">
+
+        <summary>
+          Quanto tempo dura o alongamento?
+        </summary>
+
+        <p class="mt-4 text-[var(--muted)] leading-relaxed">
+          A manutenção costuma ser feita entre 15 e 20 dias.
+        </p>
+
+      </details>
+
+      <details class="fade-in">
+
+        <summary>
+          Precisa agendar antes?
+        </summary>
+
+        <p class="mt-4 text-[var(--muted)] leading-relaxed">
+          Sim. O atendimento funciona com horário marcado.
+        </p>
+
+      </details>
+
+      <details class="fade-in">
+
+        <summary>
+          As unhas ficam naturais?
+        </summary>
+
+        <p class="mt-4 text-[var(--muted)] leading-relaxed">
+          Sim. O foco é unir resistência, leveza e acabamento elegante.
+        </p>
+
+      </details>
+
+      <details class="fade-in">
+
+        <summary>
+          Quais formas de pagamento são aceitas?
+        </summary>
+
+        <p class="mt-4 text-[var(--muted)] leading-relaxed">
+          Pix, cartão e dinheiro.
+        </p>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contato" class="py-28 bg-[#111] text-white">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center fade-in">
+
+      <span class="uppercase tracking-[0.4em] text-xs text-[var(--gold)] font-semibold">
+        Contato
+      </span>
+
+      <h2 class="text-5xl mt-5 font-semibold">
+        Bora agendar teu horário?
+      </h2>
+
+      <p class="mt-6 text-white/70 max-w-2xl mx-auto text-lg">
+        Chama no WhatsApp e agenda teu atendimento com a Camila.
+      </p>
+
+      <a
+        href="https://wa.me/5511986017431?text=Olá!%20Quero%20agendar."
+        target="_blank"
+        class="btn-primary mt-10"
+      >
+        💬 (11) 98601-7431
+      </a>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-20">
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 fade-in">
+
+        <div class="uppercase tracking-[0.25em] text-xs text-[var(--gold)]">
+          Endereço
+        </div>
+
+        <p class="mt-5 text-white/75 leading-relaxed">
+          R. Visc. de Inhaúma, 204 - Sala 3<br>
+          Oswaldo Cruz — São Caetano do Sul/SP
+        </p>
+
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 fade-in">
+
+        <div class="uppercase tracking-[0.25em] text-xs text-[var(--gold)]">
+          Horário
+        </div>
+
+        <p class="mt-5 text-white/75 leading-relaxed">
+          Segunda a sexta: 8h às 18h<br>
+          Sábado: 8h às 14h
+        </p>
+
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 fade-in">
+
+        <div class="uppercase tracking-[0.25em] text-xs text-[var(--gold)]">
+          Instagram
+        </div>
+
+        <p class="mt-5 text-white/75 leading-relaxed">
+          <a href="https://www.instagram.com/camila.gatashow" target="_blank" class="text-[var(--gold)] hover:opacity-80 transition">
+            @camila.gatashow
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="mt-14 rounded-[32px] overflow-hidden border border-white/10 fade-in">
+
+      <iframe
+        src="https://www.google.com/maps?q=Camila+GataShow+Nail+Designer+S%C3%A3o+Caetano&output=embed"
+        width="100%"
+        height="380"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="bg-[#0f0f0f] text-white py-16 overflow-hidden relative">
+
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+
+    <div class="text-[220px] leading-none font-black text-white whitespace-nowrap">
+      GATASHOW
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+    <div class="grid md:grid-cols-3 gap-12">
+
+      <div>
+
+        <div class="flex items-center gap-5">
+
+         <!-- Bloco Unificado: Logo + Texto -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      
+      <!-- Container do Ícone (Parte esquerda do logo) -->
+      <div class="flex-shrink-0">
+        <img 
+          src="image/logo.png" 
+          alt="Gatashow Icon" 
+          class="h-16 w-auto object-contain"
+          style="image-rendering: -webkit-optimize-contrast;"
+        >
+      </div>
+
+      <!-- Container do Texto (Parte direita do logo) -->
+      <div class="flex flex-col justify-center border-l border-[var(--gold)]/20 pl-3">
+        <div class="logo-font text-4xl lg:text-5xl leading-none text-[var(--gold)] font-semibold tracking-tight">
+          gatashow
+        </div>
+        <div class="uppercase tracking-[0.3em] text-[9px] text-[var(--color-text-muted)] mt-1 font-medium">
+          By Camila Santos
+        </div>
+      </div>
+
+    </a>
+
+        </div>
+
+        <p class="text-white/60 mt-6 leading-relaxed max-w-sm">
+          Naturalidade, resistência e atendimento acolhedor em cada detalhe.
+        </p>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-lg font-semibold mb-5">
+          Navegação
+        </h3>
+
+        <div class="flex flex-col gap-3 text-white/60">
+
+          <a href="#servicos" class="hover:text-[var(--gold)] transition">
+            Serviços
+          </a>
+
+          <a href="#sobre" class="hover:text-[var(--gold)] transition">
+            Sobre
+          </a>
+
+          <a href="#avaliacoes" class="hover:text-[var(--gold)] transition">
+            Avaliações
+          </a>
+
+          <a href="#contato" class="hover:text-[var(--gold)] transition">
+            Contato
+          </a>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-lg font-semibold mb-5">
+          Contato
+        </h3>
+
+        <div class="space-y-3 text-white/60">
+
+          <p>(11) 98601-7431</p>
+
+          <p>
+            São Caetano do Sul — SP
+          </p>
+
+          <p>
+            <a href="https://www.instagram.com/camila.gatashow" target="_blank" class="text-[var(--gold)] hover:opacity-80 transition">
+              @camila.gatashow
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 mt-14 pt-8 flex flex-col md:flex-row justify-between gap-4 text-sm text-white/40">
+
+      <p>
+        © <span id="year"></span> Camila GataShow — Todos os direitos reservados.
+      </p>
+
+      <p>
+        Site desenvolvido por
+        <a
+          href="https://eabc.com.br"
+          target="_blank"
+          class="text-[var(--gold)] hover:opacity-80 transition"
+        >
+          EABC Digital
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+  entries.forEach((entry)=>{
+
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible')
+    }
+
+  })
+
+},{threshold:.15})
+
+document.querySelectorAll('.fade-in').forEach((el)=>{
+  observer.observe(el)
+})
+
+document.getElementById('year').textContent = new Date().getFullYear()
+
+</script>
+
+</body>
+</html>

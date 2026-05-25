@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loucas por Unhas São Caetano</title>
+
+<style>
+:root {
+  --color-primary: #B5828C;
+  --color-primary-hover: #9E6B75;
+  --color-bg: #FAF7F2;
+  --color-bg-alt: #F2EBE4;
+  --color-text: #4A3F3F;
+  --color-text-muted: #7A6C6C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+header h1 {
+  color: var(--color-primary);
+  font-size: 18px;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+/* HERO */
+.hero {
+  padding: 120px 20px 70px;
+  text-align: center;
+  background: var(--color-bg-alt);
+}
+
+/* SECTIONS */
+section {
+  padding: 70px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* SOBRE */
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.sobre h2 {
+  margin-bottom: 15px;
+}
+
+.sobre p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.sobre img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* FAQ */
+.faq details {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* CONTATO */
+.contato {
+  text-align: center;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 20px;
+  padding: 60px 20px;
+}
+
+.contato a {
+  background: white;
+  color: var(--color-primary);
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-muted);
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .sobre {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Loucas por Unhas</h1>
+  <a class="btn" href="https://wa.me/5511994357559?text=Olá! Vim pelo site e quero agendar um horário.">WhatsApp</a>
+</header>
+
+<section class="hero">
+  <h2>Unhas impecáveis todos os dias</h2>
+  <p>Beleza, cuidado e autoestima em cada detalhe.</p>
+</section>
+
+<!-- SERVIÇOS -->
+<section>
+  <h2>Serviços</h2>
+  <p>💅 Alongamento de unhas</p>
+  <p>✨ Esmaltação em gel</p>
+  <p>🌸 Nail design personalizado</p>
+  <p>🧖 Spa das mãos</p>
+</section>
+
+<!-- SOBRE MELHORADO -->
+<section class="sobre">
+
+  <div>
+    <h2>Sobre nós</h2>
+
+    <p>
+      Somos especialistas em beleza das unhas, com foco em cuidado, técnica e acabamento impecável.
+    </p>
+
+    <p>
+      Cada atendimento é pensado para oferecer uma experiência acolhedora, onde você se sente confortável e confiante do início ao fim.
+    </p>
+
+    <p>
+      Trabalhamos com atenção aos detalhes, higiene rigorosa e técnicas modernas para garantir resultados duradouros e elegantes.
+    </p>
+
+    <p>
+      Mais do que fazer unhas, nosso objetivo é realçar sua autoestima e valorizar sua beleza natural.
+    </p>
+
+    <p>
+      Aqui, cada cliente é atendida com cuidado individual e dedicação em cada etapa do processo.
+    </p>
+  </div>
+
+  <img 
+    src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"
+    alt="Unhas decoradas elegantes"
+  />
+
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Perguntas frequentes</h2>
+
+  <details><summary>Precisa agendar horário?</summary><p>Sim, atendimento somente com horário marcado.</p></details>
+  <details><summary>Quanto tempo dura o alongamento?</summary><p>Depende do cuidado, em média algumas semanas.</p></details>
+  <details><summary>Quais formas de pagamento?</summary><p>Pix, dinheiro e cartão.</p></details>
+  <details><summary>Quanto custa?</summary><p>Varia conforme o serviço escolhido.</p></details>
+</section>
+
+<!-- CONTATO -->
+<section class="contato">
+  <h2>Vamos agendar seu horário?</h2>
+  <p>Fale agora pelo WhatsApp e garanta seu atendimento.</p>
+
+  <a href="https://wa.me/5511994357559?text=Olá! Quero agendar um horário.">Chamar no WhatsApp</a>
+
+  <p style="margin-top:20px;">
+    São Caetano do Sul - SP<br>
+    (11) 99435-7559
+  </p>
+</section>
+
+<footer>
+  Loucas por Unhas São Caetano © 2026
+</footer>
+
+</body>
+</html>

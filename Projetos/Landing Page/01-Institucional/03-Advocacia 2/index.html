@@ -1,0 +1,1702 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mendes &amp; Associados | Advocacia Criminal — Feira de Santana, BA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #c9a84c;
+      --gold-light:  #e8c96d;
+      --gold-dark:   #8a6820;
+      --gold-glow:   rgba(201,168,76,0.25);
+      --black:       #060606;
+      --dark:        #0d0d0d;
+      --dark-mid:    #111111;
+      --surface:     #181818;
+      --surface2:    #1f1f1f;
+      --text:        #f0ece4;
+      --text-muted:  #888880;
+      --transition:  0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── UTILITY ─────────────────────────────────── */
+    .gold      { color: var(--gold); }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section   { padding: 96px 0; }
+    .section-sm { padding: 64px 0; }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      border-radius: 2px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+
+    /* ── SCROLL REVEAL ───────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── DIVIDER ─────────────────────────────────── */
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 20px 0 32px;
+    }
+    .gold-line.center { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); width: 100px; }
+
+    /* ══════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(6,6,6,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transition: padding var(--transition), background var(--transition);
+    }
+    nav.scrolled { padding: 12px 0; }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-cta {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .nav-cta:hover { background: var(--gold-light); box-shadow: 0 0 20px var(--gold-glow); }
+
+    @media (min-width: 640px) { .nav-cta { display: flex; } }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, #1a1200 0%, var(--black) 70%);
+    }
+
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 140px 0 80px;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+    .hero-eyebrow-line {
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-eyebrow-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease 0.4s forwards;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease 0.6s forwards;
+    }
+    .hero-subtitle strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      box-shadow: 0 8px 50px rgba(201,168,76,0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 28px;
+      border-radius: 2px;
+      border: 1px solid var(--gold-dark);
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      color: var(--gold-light);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease 1s forwards;
+    }
+    .hero-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-badge::before { content: '◆'; font-size: 0.5rem; color: var(--gold); }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════════════
+       DOR (PAIN)
+    ══════════════════════════════════════════════ */
+    #dor {
+      background: linear-gradient(180deg, var(--dark-mid) 0%, var(--surface) 100%);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .dor-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .dor-grid { grid-template-columns: 1fr 1fr; } }
+
+    .dor-pains { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .dor-pains li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      padding: 14px 18px;
+      border-left: 2px solid var(--gold-dark);
+      background: rgba(201,168,76,0.04);
+      border-radius: 0 4px 4px 0;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .dor-pains li:hover { border-left-color: var(--gold); color: var(--text); }
+
+    .dor-statement {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .dor-sub {
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ══════════════════════════════════════════════
+       STATS BAR
+    ══════════════════════════════════════════════ */
+    #stats {
+      background: linear-gradient(135deg, #0d0900 0%, #0a0a0a 50%, #0d0900 100%);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 56px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .stat-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════════ */
+    #servicos {
+      background: linear-gradient(180deg, var(--black) 0%, var(--dark-mid) 100%);
+    }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 16px auto 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 560px)  { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px)  { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 4px;
+      padding: 36px 28px;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 50px rgba(201,168,76,0.18), 0 0 0 1px var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid var(--gold-dark);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════════
+       URGÊNCIA
+    ══════════════════════════════════════════════ */
+    #urgencia {
+      background: linear-gradient(135deg, #0a0700 0%, #0d0d0d 40%, #0a0700 100%);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+
+    .urgencia-inner { max-width: 720px; margin: 0 auto; }
+
+    .urgencia-time {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(201,168,76,0.4);
+      margin: 8px 0 4px;
+    }
+
+    .urgencia-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 40px; }
+
+    .urgencia-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .urgencia-feature {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 8px 18px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+
+    /* ══════════════════════════════════════════════
+       SOBRE / AUTORIDADE
+    ══════════════════════════════════════════════ */
+    #sobre {
+      background: var(--black);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .sobre-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
+
+    .sobre-visual {
+      position: relative;
+    }
+    .sobre-img-frame {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sobre-img-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+    }
+    .sobre-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: -18px;
+    }
+    .sobre-badge {
+      background: var(--surface);
+      border: 1px solid var(--gold-dark);
+      border-radius: 2px;
+      padding: 10px 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .sobre-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .sobre-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .sobre-highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .sobre-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .sobre-highlights li::before {
+      content: '◆';
+      font-size: 0.55rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════════════════
+       SIGILO
+    ══════════════════════════════════════════════ */
+    #sigilo {
+      background: linear-gradient(180deg, var(--dark-mid) 0%, var(--surface) 100%);
+      border-top: 1px solid rgba(201,168,76,0.08);
+      text-align: center;
+    }
+
+    .sigilo-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) { .sigilo-cards { grid-template-columns: repeat(3, 1fr); } }
+
+    .sigilo-card {
+      background: var(--surface2);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 4px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .sigilo-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.1);
+    }
+    .sigilo-icon { font-size: 2rem; margin-bottom: 16px; }
+    .sigilo-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sigilo-text { font-size: 0.83rem; color: var(--text-muted); }
+
+    /* ══════════════════════════════════════════════
+       PROVA SOCIAL / DEPOIMENTOS
+    ══════════════════════════════════════════════ */
+    #prova-social {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 16px;
+    }
+    @media (min-width: 768px) { .testimonials { grid-template-columns: repeat(3, 1fr); } }
+
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .testimonial:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-3px);
+    }
+
+    .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .testimonial-text::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold-dark); line-height: 0.5; float: left; margin-right: 6px; }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 16px;
+    }
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #000;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 600; font-size: 0.85rem; }
+    .author-detail { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ══════════════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════════════ */
+    #cta-final {
+      background: linear-gradient(135deg, #100b00 0%, #0a0a0a 50%, #100b00 100%);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+    .cta-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 48px; }
+    .cta-meta {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    #faq {
+      background: var(--dark-mid);
+      border-top: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .faq-list { display: flex; flex-direction: column; gap: 2px; max-width: 800px; margin: 0 auto; }
+
+    .faq-item {
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: rgba(201,168,76,0.3); }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: var(--surface);
+      user-select: none;
+      transition: background var(--transition);
+    }
+    .faq-q:hover { background: var(--surface2); }
+    .faq-q.open { color: var(--gold); }
+
+    .faq-arrow {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--gold-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--gold);
+      transition: transform var(--transition);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); border-color: var(--gold); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding var(--transition);
+      background: rgba(201,168,76,0.03);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-a-inner { padding: 0 24px; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-item.open .faq-a-inner { padding: 18px 24px 24px; }
+    .faq-a strong { color: var(--text); font-style: italic; }
+
+    /* ══════════════════════════════════════════════
+       CONTATO
+    ══════════════════════════════════════════════ */
+    #contato {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 768px) { .contato-grid { grid-template-columns: 1fr 1fr; } }
+
+    .contato-info { display: flex; flex-direction: column; gap: 28px; }
+
+    .contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contato-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid var(--gold-dark);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contato-detail-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .contato-detail-value { font-size: 0.9rem; color: var(--text-muted); }
+
+    .map-placeholder {
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .map-placeholder-icon { font-size: 2.5rem; opacity: 0.3; }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    footer {
+      background: #030303;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 40px 0 24px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; }
+    .footer-logo span { color: var(--gold); }
+    .footer-text { font-size: 0.75rem; color: var(--text-muted); max-width: 400px; }
+    .footer-oab { font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ══════════════════════════════════════════════
+       FLOATING WHATSAPP
+    ══════════════════════════════════════════════ */
+    #whatsapp-float {
+      position: fixed;
+      bottom: 32px;
+      right: 28px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.5);
+      animation: pulse-gold 2.5s ease-in-out infinite;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    #whatsapp-float:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 35px rgba(201,168,76,0.7);
+      animation-play-state: paused;
+    }
+    #whatsapp-float svg { width: 28px; height: 28px; fill: #000; }
+
+    .float-tooltip {
+      position: absolute;
+      right: 72px;
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--text);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    #whatsapp-float:hover .float-tooltip { opacity: 1; transform: translateX(0); }
+
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 4px 20px rgba(201,168,76,0.5), 0 0 0 0 rgba(201,168,76,0.4); }
+      50% { box-shadow: 0 4px 20px rgba(201,168,76,0.5), 0 0 0 14px rgba(201,168,76,0); }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE — ≤ 767px
+    ══════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      /* Base */
+      .container   { padding: 0 20px; }
+      .section     { padding: 60px 0; }
+      .section-sm  { padding: 48px 0; }
+
+      /* Hero */
+      .hero-content        { padding: 108px 0 52px; }
+      .hero-eyebrow        { margin-bottom: 18px; }
+      .hero-eyebrow-text   { font-size: 0.65rem; letter-spacing: 0.2em; }
+      .hero-title          { font-size: clamp(1.9rem, 8.5vw, 2.8rem); margin-bottom: 18px; line-height: 1.15; }
+      .hero-subtitle       { font-size: 0.93rem; margin-bottom: 28px; line-height: 1.65; }
+      .hero-actions        { flex-direction: column; align-items: stretch; gap: 12px; }
+      .btn-primary         { justify-content: center; width: 100%; padding: 16px 24px; font-size: 0.82rem; }
+      .btn-ghost           { justify-content: center; width: 100%; padding: 14px 24px; font-size: 0.78rem; }
+      .hero-badges         { margin-top: 32px; gap: 10px; }
+      .hero-badge          { font-size: 0.68rem; }
+
+      /* Section headers */
+      .section-header      { margin-bottom: 36px; }
+      .section-title       { font-size: clamp(1.55rem, 6.5vw, 2rem); }
+      .section-sub         { font-size: 0.88rem; }
+      .gold-line           { margin-bottom: 24px; }
+
+      /* Dor */
+      .dor-grid            { gap: 32px; }
+      .dor-pains li        { font-size: 0.93rem; padding: 11px 14px; gap: 10px; }
+      .dor-statement       { font-size: clamp(1.35rem, 6vw, 1.75rem); }
+      .dor-sub             { font-size: 0.88rem; }
+
+      /* Stats */
+      #stats               { padding: 44px 0; }
+      .stats-grid          { gap: 28px 16px; }
+      .stat-label          { font-size: 0.7rem; letter-spacing: 0.08em; }
+
+      /* Services */
+      .service-card        { padding: 24px 20px; }
+      .service-icon        { width: 46px; height: 46px; font-size: 1.25rem; margin-bottom: 16px; }
+      .service-name        { font-size: 1.05rem; }
+      .service-desc        { font-size: 0.84rem; }
+
+      /* Urgência */
+      .urgencia-inner      { padding: 0 4px; }
+      .urgencia-sub        { font-size: 0.88rem; margin-bottom: 28px; }
+      .urgencia-features   { gap: 8px; margin-bottom: 36px; }
+      .urgencia-feature    { font-size: 0.72rem; padding: 7px 13px; }
+      #urgencia .btn-primary { width: auto; min-width: 280px; }
+
+      /* Sobre */
+      .sobre-grid          { gap: 36px; }
+      .sobre-img-frame     { aspect-ratio: 3/4; max-width: 320px; margin: 0 auto; }
+      .sobre-img-frame img { object-position: center 15%; }
+      .sobre-badge-row     { margin-top: 12px; gap: 8px; justify-content: center; }
+      .sobre-badge         { font-size: 0.7rem; padding: 8px 12px; }
+      .sobre-title         { font-size: clamp(1.55rem, 6vw, 2rem); margin-bottom: 14px; text-align: center; }
+      .sobre-text          { font-size: 0.88rem; text-align: center; }
+      .sobre-highlights    { gap: 10px; margin-top: 20px; }
+      .sobre-highlights li { font-size: 0.85rem; }
+      #sobre .gold-line    { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); width: 80px; }
+      #sobre .tag          { display: block; text-align: center; }
+
+      /* Sigilo */
+      .sigilo-cards        { gap: 14px; }
+      .sigilo-card         { padding: 24px 20px; }
+      .sigilo-icon         { font-size: 1.75rem; margin-bottom: 12px; }
+      .sigilo-title        { font-size: 0.95rem; }
+      .sigilo-text         { font-size: 0.8rem; }
+
+      /* Depoimentos */
+      .testimonials        { gap: 14px; }
+      .testimonial         { padding: 22px 18px; gap: 14px; }
+      .testimonial-text    { font-size: 0.86rem; }
+
+      /* CTA Final */
+      .cta-title           { font-size: clamp(1.55rem, 6.5vw, 2rem); margin-bottom: 14px; }
+      .cta-sub             { font-size: 0.9rem; margin-bottom: 32px; }
+      #cta-final .btn-primary { width: auto; min-width: 260px; padding: 16px 28px !important; font-size: 0.82rem !important; }
+
+      /* FAQ */
+      .faq-q               { padding: 16px 16px; font-size: 0.87rem; gap: 12px; }
+      .faq-arrow           { width: 18px; height: 18px; font-size: 0.6rem; flex-shrink: 0; }
+      .faq-a               { font-size: 0.86rem; }
+      .faq-a-inner         { padding: 0 16px; }
+      .faq-item.open .faq-a-inner { padding: 14px 16px 20px; }
+
+      /* Contato */
+      .contato-grid        { gap: 32px; }
+      .contato-info        { gap: 20px; }
+      .contato-icon        { width: 40px; height: 40px; font-size: 1rem; }
+      .contato-detail-label { font-size: 0.65rem; }
+      .contato-detail-value { font-size: 0.85rem; }
+      .map-placeholder     { min-height: 200px; font-size: 0.78rem; }
+      #contato .btn-primary { width: 100%; justify-content: center; }
+
+      /* Float */
+      #whatsapp-float      { bottom: 20px; right: 16px; width: 54px; height: 54px; }
+      #whatsapp-float svg  { width: 24px; height: 24px; }
+      .float-tooltip       { display: none; }
+
+      /* Footer */
+      footer               { padding: 32px 0 20px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE PEQUENO — ≤ 390px
+    ══════════════════════════════════════════════ */
+    @media (max-width: 390px) {
+      .container           { padding: 0 16px; }
+      .section             { padding: 48px 0; }
+      .section-sm          { padding: 40px 0; }
+      .hero-content        { padding: 96px 0 44px; }
+      .hero-title          { font-size: 1.75rem; }
+      .urgencia-time       { font-size: clamp(2.6rem, 11vw, 3.4rem); }
+      .stat-number         { font-size: clamp(1.8rem, 8vw, 2.2rem); }
+      .tag                 { font-size: 0.62rem; letter-spacing: 0.15em; padding: 4px 10px; }
+      #urgencia .btn-primary,
+      #cta-final .btn-primary { min-width: unset !important; width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">MENDES<span>&</span>ASSOCIADOS</div>
+      <a href="#" onclick="return wa('Olá! Preciso falar com um advogado criminal com urgência. Estão no plantão agora?')" class="nav-cta" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Plantão 24h
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ────────────────────────────────────── -->
+  <section id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-text">Advocacia Criminal · Feira de Santana, BA</span>
+        </div>
+
+        <h1 class="hero-title">
+          Sua liberdade não pode esperar.<br />
+          <span class="gold">Nossa defesa começa agora.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Prisão em flagrante, investigação ou intimação policial exige ação imediata.
+          Cada minuto sem orientação jurídica pode comprometer sua defesa para sempre.
+          <strong>Chegamos onde você está — em menos de 1 hora.</strong>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#" onclick="return wa('Olá! Preciso de orientação jurídica urgente. Podem me atender agora?')" class="btn-primary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar com Advogado Agora
+          </a>
+          <a href="#servicos" class="btn-ghost">Ver Atuações →</a>
+        </div>
+
+        <div class="hero-badges">
+          <span class="hero-badge">Plantão 24h</span>
+          <span class="hero-badge">Sigilo absoluto</span>
+          <span class="hero-badge">Resposta em minutos</span>
+          <span class="hero-badge">Atuação no STJ e STF</span>
+          <span class="hero-badge">18 anos de experiência</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOR ─────────────────────────────────────── -->
+  <section id="dor" class="section">
+    <div class="container">
+      <div class="dor-grid">
+        <div class="reveal">
+          <span class="tag">Sabemos o que você sente</span>
+          <ul class="dor-pains">
+            <li>"Preciso de um advogado urgente."</li>
+            <li>"Meu familiar foi preso e não sei o que fazer."</li>
+            <li>"Tenho medo de perder minha liberdade."</li>
+            <li>"Nunca passei por isso antes."</li>
+            <li>"Preciso de alguém que chegue rápido na delegacia."</li>
+          </ul>
+        </div>
+        <div class="reveal" style="transition-delay:0.15s">
+          <h2 class="dor-statement">
+            Você não precisa<br />
+            enfrentar isso <span class="gold">sozinho.</span>
+          </h2>
+          <div class="gold-line"></div>
+          <p class="dor-sub">
+            Falar sem orientação jurídica pode destruir sua defesa antes mesmo de começar.
+            Por isso nossa atuação começa no momento em que você nos chama.
+          </p>
+          <a href="#" onclick="return wa('Olá! Estou passando por uma situação difícil e preciso de orientação jurídica. Podem me ajudar?')" class="btn-primary" style="margin-top:32px; font-size:0.8rem; padding:15px 28px;" target="_blank" rel="noopener">
+            Quero orientação agora →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ───────────────────────────────────── -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number"><span data-count="18">0</span> <small style="font-size:0.5em">anos</small></div>
+          <div class="stat-label">De atuação criminal</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.1s">
+          <div class="stat-number">+<span data-count="1200">0</span></div>
+          <div class="stat-label">Casos defendidos</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.2s">
+          <div class="stat-number">+<span data-count="380">0</span></div>
+          <div class="stat-label">Avaliações no Google</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.3s">
+          <div class="stat-number"><span data-count-decimal="4.9">0</span> <small style="font-size:0.55em">★</small></div>
+          <div class="stat-label">Estrelas Google</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVIÇOS ────────────────────────────────── -->
+  <section id="servicos" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Especialização exclusiva</span>
+        <h2 class="section-title">Defesa criminal estratégica.<br /><span class="gold">Do flagrante ao tribunal.</span></h2>
+        <p class="section-sub">18 anos defendendo liberdades na Bahia. Atuação exclusiva em Direito Penal — sem improviso, sem generalismo.</p>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="3" x2="12" y2="21"/>
+              <path d="M5 6l7-3 7 3"/>
+              <path d="M3 10l4 8H3zM17 10l4 8h-8z"/>
+            </svg>
+          </div>
+          <div class="service-name">Defesa Criminal 24h</div>
+          <p class="service-desc">Atendimento imediato em prisões em flagrante, audiências de custódia e intimações policiais. Chegamos à delegacia em menos de 1 hora.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="22" x2="21" y2="22"/>
+              <line x1="6" y1="18" x2="6" y2="11"/>
+              <line x1="10" y1="18" x2="10" y2="11"/>
+              <line x1="14" y1="18" x2="14" y2="11"/>
+              <line x1="18" y1="18" x2="18" y2="11"/>
+              <polygon points="12 2 20 7 4 7"/>
+            </svg>
+          </div>
+          <div class="service-name">Tribunal do Júri</div>
+          <p class="service-desc">Defesa especializada nos julgamentos mais complexos do direito penal. Estratégia, técnica e experiência no plenário do júri.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+            </svg>
+          </div>
+          <div class="service-name">Habeas Corpus</div>
+          <p class="service-desc">Ação urgente para cessar prisão ilegal ou ameaça ao direito de locomoção. Atuação imediata nos tribunais estaduais, STJ e STF.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5a2 2 0 0 1-2 2h-2"/>
+              <circle cx="7" cy="17" r="2"/>
+              <circle cx="17" cy="17" r="2"/>
+            </svg>
+          </div>
+          <div class="service-name">Crimes de Trânsito</div>
+          <p class="service-desc">Homicídio culposo, lesão corporal, embriaguez ao volante, fuga do local. Defesa técnica para preservar sua habilitação e liberdade.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.4s">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="service-name">Tráfico e Org. Criminosa</div>
+          <p class="service-desc">Defesa em casos de Lei de Drogas, associação e organização criminosa. Estratégia robusta frente a investigações policiais e ministeriais.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.5s">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <div class="service-name">Crimes Financeiros</div>
+          <p class="service-desc">Lavagem de dinheiro, estelionato, fraudes empresariais e crimes contra o sistema financeiro. Defesa empresarial criminal especializada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── URGÊNCIA ────────────────────────────────── -->
+  <section id="urgencia" class="section-sm">
+    <div class="container">
+      <div class="urgencia-inner reveal">
+        <span class="tag">Resposta imediata</span>
+        <div class="urgencia-time">em até 1h</div>
+        <p class="urgencia-sub">na delegacia — inclusive madrugadas, fins de semana e feriados</p>
+        <div class="urgencia-features">
+          <span class="urgencia-feature">Plantão 24h</span>
+          <span class="urgencia-feature">Toda a Bahia</span>
+          <span class="urgencia-feature">Sigilo absoluto</span>
+          <span class="urgencia-feature">Sem exceção</span>
+        </div>
+        <a href="#" onclick="return wa('Olá! Preciso de atendimento urgente. Podem enviar um advogado à delegacia agora?')" class="btn-primary" style="font-size:0.85rem;" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar com Advogado Agora
+        </a>
+        <p style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
+          Porque em situações criminais, <em>esperar pode custar sua liberdade.</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOBRE / AUTORIDADE ─────────────────────── -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="reveal">
+          <div class="sobre-img-frame">
+            <img src="img/adv.jpeg" alt="Dr. Rafael Mendes — Advogado Criminal" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;" />
+          </div>
+          <div class="sobre-badge-row" style="margin-top:16px;">
+            <div class="sobre-badge">STJ · STF</div>
+            <div class="sobre-badge">18 anos</div>
+            <div class="sobre-badge">Sede própria</div>
+          </div>
+        </div>
+
+        <div class="reveal" style="transition-delay:0.15s">
+          <span class="tag">Autoridade e experiência</span>
+          <h2 class="sobre-title">18 anos protegendo<br /><span class="gold">quem mais precisou.</span></h2>
+          <div class="gold-line"></div>
+          <p class="sobre-text">
+            Seu caso não é mais um processo numa pilha de papéis. Cada defesa é construída com estratégia, proximidade e técnica em todas as fases — da delegacia ao tribunal.
+          </p>
+          <p class="sobre-text">
+            "Quero alguém que realmente saiba atuar no criminal." É exatamente isso que fazemos há 18 anos.
+          </p>
+          <ul class="sobre-highlights">
+            <li>Atuação exclusiva em Direito Penal — sem generalismo</li>
+            <li>Recursos nos tribunais superiores: STJ e STF</li>
+            <li>Prédio próprio no Centro de Feira de Santana</li>
+            <li>Equipe especializada, disponível 24h por dia</li>
+            <li>Cobertura em Salvador, Alagoinhas, Sto. Antônio de Jesus e todo interior da Bahia</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SIGILO ──────────────────────────────────── -->
+  <section id="sigilo" class="section-sm">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Discrição total</span>
+        <h2 class="section-title">Seu segredo está <span class="gold">seguro conosco.</span></h2>
+        <div class="gold-line center"></div>
+      </div>
+      <div class="sigilo-cards">
+        <div class="sigilo-card reveal">
+          <div class="sigilo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <circle cx="12" cy="16" r="1" fill="var(--gold)"/>
+            </svg>
+          </div>
+          <div class="sigilo-title">Sigilo absoluto</div>
+          <p class="sigilo-text">Suas informações são protegidas com total discrição desde o primeiro contato — sem julgamentos, sem exposição.</p>
+        </div>
+        <div class="sigilo-card reveal" style="transition-delay:0.1s">
+          <div class="sigilo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="sigilo-title">Apoio imediato</div>
+          <p class="sigilo-text">Você não vai ficar sozinho. Nossa equipe te orienta sobre o que fazer — e principalmente o que evitar.</p>
+        </div>
+        <div class="sigilo-card reveal" style="transition-delay:0.2s">
+          <div class="sigilo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="sigilo-title">Acesso direto</div>
+          <p class="sigilo-text">Contato direto com a equipe jurídica, sem intermediários. Respostas em minutos, a qualquer hora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROVA SOCIAL ───────────────────────────── -->
+  <section id="prova-social" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Quem já precisou, confia</span>
+        <h2 class="section-title">O que nossos clientes <span class="gold">dizem sobre nós.</span></h2>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Quando mais precisei, o Dr. Rafael estava lá em menos de 1 hora. Salvou minha liberdade em um momento que eu não sabia o que fazer. Profissionalismo e humanidade que nunca vou esquecer.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M.S.</div>
+            <div>
+              <div class="author-name">M. Santos</div>
+              <div class="author-detail">Cliente — Feira de Santana</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal" style="transition-delay:0.1s">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Fui orientado antes mesmo de entrar na delegacia. A equipe explicou tudo com clareza e tranquilidade. Resultado: liberdade preservada. Não existe escritório mais preparado para o criminal na Bahia.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R.O.</div>
+            <div>
+              <div class="author-name">R. Oliveira</div>
+              <div class="author-detail">Cliente — Salvador</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal" style="transition-delay:0.2s">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Meu filho foi preso de madrugada. Em 45 minutos o advogado estava lá. A competência e a dedicação foram além do que eu esperava. Só tenho gratidão. Indicarei sempre.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A.L.</div>
+            <div>
+              <div class="author-name">A. Lima</div>
+              <div class="author-detail">Familiar de cliente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:56px;" class="reveal">
+        <div style="display:inline-flex; flex-direction:column; align-items:center; gap:8px;">
+          <div style="font-size:0.8rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">Google Reviews</div>
+          <div style="font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:var(--gold); line-height:1;">4.9 ★</div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">Baseado em +380 avaliações reais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ──────────────────────────────── -->
+  <section id="cta-final" class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:760px; margin:0 auto; text-align:center;">
+        <span class="tag">Não arrisque</span>
+        <h2 class="cta-title">
+          Quanto antes sua defesa começar,<br />
+          <span class="gold">maiores as chances de proteger sua liberdade.</span>
+        </h2>
+        <p class="cta-sub">Não espere. Nossa equipe está ativa agora.</p>
+        <a href="#" onclick="return wa('Olá! Quero iniciar minha defesa agora. Preciso falar com um advogado criminal.')" class="btn-primary" style="font-size:0.9rem; padding:20px 44px;" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar com Advogado Agora
+        </a>
+        <p class="cta-meta">Plantão ativo · Atendimento sigiloso · Resposta em minutos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────────── -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Dúvidas frequentes</span>
+        <h2 class="section-title">Perguntas <span class="gold">importantes.</span></h2>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q">
+            O atendimento realmente funciona 24h?
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Sim. Plantão ativo inclusive madrugadas, fins de semana e feriados. Sem exceção. Nossa equipe está disponível a qualquer hora para atender emergências criminais.
+          </div></div>
+        </div>
+        <div class="faq-item reveal" style="transition-delay:0.05s">
+          <div class="faq-q">
+            Vocês atendem apenas Feira de Santana?
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Não. Atuamos em Salvador, Santo Antônio de Jesus, Alagoinhas e todo interior da Bahia. Também realizamos atendimento remoto em todo o estado para orientação imediata.
+          </div></div>
+        </div>
+        <div class="faq-item reveal" style="transition-delay:0.1s">
+          <div class="faq-q">
+            Posso falar com o advogado antes de ir à delegacia?
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Sim — e é <strong>altamente recomendado</strong>. Nunca vá à delegacia desacompanhado. Nossa equipe te orienta imediatamente sobre como agir e o que não dizer. Essa orientação prévia pode ser decisiva para sua defesa.
+          </div></div>
+        </div>
+        <div class="faq-item reveal" style="transition-delay:0.15s">
+          <div class="faq-q">
+            Minhas informações ficam realmente em sigilo?
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Absoluto. O sigilo profissional do advogado é garantia constitucional e dever ético. Tudo o que você compartilhar conosco é protegido por lei. Pode falar com total liberdade e confiança.
+          </div></div>
+        </div>
+        <div class="faq-item reveal" style="transition-delay:0.2s">
+          <div class="faq-q">
+            Como funciona o plantão de flagrante?
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Você entra em contato pelo WhatsApp, nos informa a delegacia e a situação. Nossa equipe aciona o advogado de plantão imediatamente e ele chega ao local em até 1 hora para acompanhar a audiência de custódia e iniciar a defesa.
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTATO ─────────────────────────────────── -->
+  <section id="contato" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="tag">Fale conosco agora</span>
+        <h2 class="section-title">Nossa equipe está <span class="gold">pronta para você.</span></h2>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="contato-grid">
+        <div class="contato-info reveal">
+          <div class="contato-item">
+            <div class="contato-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contato-detail-label">WhatsApp Plantão 24h</div>
+              <div class="contato-detail-value" style="font-size:1.1rem; font-weight:600; color:var(--gold);">(75) 9 9999-0000</div>
+              <div class="contato-detail-value" style="margin-top:4px;">Resposta em minutos · Sigilo garantido</div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contato-detail-label">Sede própria</div>
+              <div class="contato-detail-value">Centro, Feira de Santana — BA</div>
+              <div class="contato-detail-value">Atendimento presencial com hora marcada</div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contato-detail-label">Horário de funcionamento</div>
+              <div class="contato-detail-value">Seg–Sex: 08h–19h (presencial)</div>
+              <div class="contato-detail-value">Plantão urgência: 24h todos os dias</div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contato-detail-label">Área de atuação</div>
+              <div class="contato-detail-value">Feira de Santana · Salvador · Alagoinhas</div>
+              <div class="contato-detail-value">Sto. Antônio de Jesus · Todo interior da Bahia</div>
+            </div>
+          </div>
+
+          <a href="#" onclick="return wa('Olá! Vim pelo site da Mendes & Associados e gostaria de conversar sobre o meu caso com um advogado.')" class="btn-primary" style="align-self:flex-start; font-size:0.82rem;" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Iniciar conversa no WhatsApp
+          </a>
+        </div>
+
+        <div class="reveal" style="transition-delay:0.15s">
+          <div style="
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(201,168,76,0.25);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.1);
+            line-height: 0;
+          ">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15595.277977740336!2d-38.97719118856789!3d-12.26049143950717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714378e3d8cf459%3A0x758af7400b767a44!2sCentro%2C%20Feira%20de%20Santana%20-%20BA%2C%2040301-110!5e0!3m2!1spt-BR!2sbr!4v1778199480065!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="380"
+              style="border:0; display:block; filter: grayscale(20%) contrast(1.05);"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização Mendes & Associados — Centro, Feira de Santana, BA"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">MENDES<span>&</span>ASSOCIADOS</div>
+          <div class="footer-oab" style="margin-top:6px;">OAB/BA · Advocacia Criminal</div>
+        </div>
+        <p class="footer-text">
+          Escritório especializado exclusivamente em Direito Penal. 18 anos defendendo liberdades na Bahia. Feira de Santana, Salvador e todo o interior.
+        </p>
+        <div class="footer-oab">
+          © 2025 Mendes &amp; Associados Advocacia Criminal<br />
+          Todos os direitos reservados
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── FLOATING WHATSAPP ───────────────────────── -->
+  <a id="whatsapp-float" href="#" onclick="return wa('Olá! Preciso de um advogado criminal com urgência. Podem me atender agora?')" title="WhatsApp Plantão 24h" target="_blank" rel="noopener">
+    <div class="float-tooltip">Plantão ativo agora</div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ══════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════ -->
+  <script>
+    /* ── WHATSAPP ──────────────────────────────── */
+    const WA_NUM = '5575999990000'; // substitua pelo número real
+    function wa(msg) {
+      window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(msg), '_blank');
+      return false;
+    }
+
+    /* ── PARTICLES ─────────────────────────────── */
+    (function () {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [], mouse = { x: -999, y: -999 };
+      const GOLD = [201, 168, 76];
+      const COUNT = window.innerWidth < 600 ? 55 : 110;
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      function Particle() {
+        this.reset();
+      }
+      Particle.prototype.reset = function () {
+        this.x  = Math.random() * W;
+        this.y  = Math.random() * H;
+        this.r  = Math.random() * 1.6 + 0.3;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.a  = Math.random() * 0.55 + 0.1;
+        this.da = (Math.random() - 0.5) * 0.003;
+      };
+      Particle.prototype.update = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.a += this.da;
+        if (this.a < 0.05 || this.a > 0.65) this.da *= -1;
+        if (this.x < 0) this.x = W;
+        if (this.x > W) this.x = 0;
+        if (this.y < 0) this.y = H;
+        if (this.y > H) this.y = 0;
+      };
+      Particle.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${this.a})`;
+        ctx.fill();
+      };
+
+      function init() {
+        particles = [];
+        for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+      }
+
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          if (dm < 140) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${0.15 * (1 - dm / 140)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${0.1 * (1 - d / 110)})`;
+              ctx.lineWidth = 0.4;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function frame() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        drawLines();
+        requestAnimationFrame(frame);
+      }
+
+      resize();
+      init();
+      frame();
+      window.addEventListener('resize', () => { resize(); init(); });
+
+      const hero = document.getElementById('hero');
+      hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      });
+      hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+    })();
+
+    /* ── PARALLAX ──────────────────────────────── */
+    const heroContent = document.querySelector('.hero-content');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroContent.style.transform = `translateY(${y * 0.28}px)`;
+    }, { passive: true });
+
+    /* ── NAV SCROLL ────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── SCROLL REVEAL ─────────────────────────── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── COUNTER ANIMATION ─────────────────────── */
+    function animateCount(el, target, decimal) {
+      const duration = 1800;
+      const start = performance.now();
+      const from = 0;
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = from + eased * (target - from);
+        el.textContent = decimal ? val.toFixed(1) : Math.floor(val).toLocaleString('pt-BR');
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = decimal ? target.toFixed(1) : target.toLocaleString('pt-BR');
+      }
+      requestAnimationFrame(step);
+    }
+
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-count]').forEach(el => {
+            animateCount(el, parseInt(el.dataset.count), false);
+          });
+          e.target.querySelectorAll('[data-count-decimal]').forEach(el => {
+            animateCount(el, parseFloat(el.dataset.countDecimal), true);
+          });
+          statsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('#stats').forEach(el => statsObs.observe(el));
+
+    /* ── FAQ ACCORDION ─────────────────────────── */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').classList.remove('open'); });
+        if (!isOpen) { item.classList.add('open'); q.classList.add('open'); }
+      });
+    });
+  </script>
+
+</body>
+</html>

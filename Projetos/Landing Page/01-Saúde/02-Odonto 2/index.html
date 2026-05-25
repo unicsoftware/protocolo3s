@@ -1,0 +1,827 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Carlos Mendes – Odontologia | Feira de Santana, BA</title>
+  <meta name="description" content="Clínica odontológica do Dr. Carlos Mendes no Centro de Feira de Santana, BA. Limpeza, clareamento, aparelho, implante e convênio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0D3B6E;
+      --blue-700: #1565C0;
+      --blue-500: #1E88E5;
+      --blue-300: #64B5F6;
+      --blue-100: #BBDEFB;
+      --blue-50:  #E3F2FD;
+      --white:    #FFFFFF;
+      --gray-50:  #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --green:    #25D366;
+      --gold:     #FFC107;
+      --font:     'Inter', sans-serif;
+      --radius:   12px;
+      --shadow:   0 4px 20px rgba(13,59,110,.12);
+      --shadow-lg:0 10px 40px rgba(13,59,110,.20);
+    }
+
+    html  { scroll-behavior: smooth; }
+    body  { font-family: var(--font); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+    img   { max-width: 100%; display: block; }
+    a     { text-decoration: none; color: inherit; }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      width: 100%; max-width: 1100px;
+      margin: 0 auto; padding: 0 20px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--blue-50); color: var(--blue-700);
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800; color: var(--blue-900);
+      text-align: center; margin-bottom: .5rem;
+    }
+
+    .section-sub {
+      font-size: .95rem; color: var(--gray-600);
+      text-align: center; margin-bottom: 2.5rem;
+    }
+
+    .section-head { text-align: center; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 14px 0;
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--blue-700); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem;
+    }
+
+    .logo-text { font-weight: 700; font-size: .95rem; color: var(--blue-900); line-height: 1.2; }
+    .logo-text span { display: block; font-size: .68rem; font-weight: 400; color: var(--gray-600); }
+
+    .nav-links { display: none; list-style: none; gap: 1.5rem; align-items: center; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--gray-600); transition: color .2s; }
+    .nav-links a:hover { color: var(--blue-700); }
+
+    .nav-cta {
+      display: none;
+      background: var(--green); color: #fff;
+      padding: 9px 18px; border-radius: 8px;
+      font-size: .875rem; font-weight: 700;
+      align-items: center; gap: 7px;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .88; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 55%, var(--blue-500) 100%);
+      display: flex; align-items: center;
+      padding-top: 70px;
+      position: relative; overflow: hidden;
+    }
+
+    #hero::before {
+      content: ''; position: absolute;
+      top: -120px; right: -120px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+    }
+
+    #hero::after {
+      content: ''; position: absolute;
+      bottom: -180px; left: -100px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero-wrap {
+      position: relative; z-index: 1;
+      padding: 60px 0;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.14); color: #fff;
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 999px; margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800; color: #fff; line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title em { font-style: normal; color: var(--blue-300); }
+
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,.8);
+      max-width: 520px; margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex; flex-direction: column;
+      gap: 12px; align-items: flex-start;
+    }
+
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: #fff;
+      font-size: 1rem; font-weight: 700;
+      padding: 16px 28px; border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(37,211,102,.45);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,.6); }
+    .btn-wa i { font-size: 1.25rem; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #fff;
+      font-size: .9rem; font-weight: 600;
+      padding: 14px 24px; border-radius: 12px;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: background .2s, border-color .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); }
+
+    .hero-stats {
+      display: flex; gap: 2rem;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.2);
+    }
+
+    .stat-number { font-size: 1.75rem; font-weight: 800; color: #fff; display: block; }
+    .stat-label  { font-size: .75rem; color: rgba(255,255,255,.7); }
+
+    .hero-img-col {
+      display: none; justify-content: center; align-items: center;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+
+    /* ===== SERVICES ===== */
+    #servicos { padding: 80px 0; background: var(--gray-50); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .srv-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-200);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .srv-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .srv-icon {
+      width: 56px; height: 56px;
+      background: var(--blue-50); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue-700); font-size: 1.4rem; margin-bottom: 1rem;
+    }
+
+    .srv-title { font-size: 1.05rem; font-weight: 700; color: var(--blue-900); margin-bottom: .5rem; }
+    .srv-desc  { font-size: .875rem; color: var(--gray-600); line-height: 1.7; }
+
+    .srv-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: .9rem;
+      color: var(--blue-700); font-size: .85rem; font-weight: 600;
+      transition: gap .2s;
+    }
+    .srv-link:hover { gap: 10px; }
+
+    /* ===== TESTIMONIALS ===== */
+    #depoimentos { padding: 80px 0; background: var(--white); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: var(--blue-50); border-radius: var(--radius);
+      padding: 28px 24px; border-left: 4px solid var(--blue-500);
+      position: relative;
+    }
+
+    .stars { display: flex; gap: 4px; margin-bottom: 1rem; }
+    .stars i { color: var(--gold); font-size: 1rem; }
+
+    .quote-icon {
+      position: absolute; top: 18px; right: 22px;
+      color: var(--blue-100); font-size: 3rem; line-height: 1;
+    }
+
+    .testi-text {
+      font-size: .925rem; color: var(--gray-600);
+      line-height: 1.75; font-style: italic; margin-bottom: 1.25rem;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blue-700); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    .author-name { font-weight: 700; font-size: .875rem; color: var(--blue-900); }
+    .author-loc  { font-size: .775rem; color: var(--gray-600); }
+
+    /* ===== ABOUT ===== */
+    #sobre { padding: 80px 0; background: var(--gray-50); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 40px; align-items: center;
+    }
+
+    .about-img-wrap {
+      display: flex; justify-content: center;
+      position: relative;
+    }
+
+    .about-photo {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+
+    .cro-badge {
+      position: absolute; bottom: 12px; right: 12px;
+      background: #fff; border-radius: 10px; padding: 10px 14px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 10px; z-index: 2;
+    }
+
+    .cro-badge-icon {
+      background: var(--blue-50); border-radius: 8px; padding: 7px;
+      color: var(--blue-700);
+    }
+
+    .cro-badge-name { font-size: .78rem; font-weight: 700; color: var(--blue-900); }
+    .cro-badge-sub  { font-size: .68rem; color: var(--gray-600); }
+
+    .about-content .section-tag { margin-bottom: 1rem; }
+
+    .about-title {
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 800; color: var(--blue-900); line-height: 1.3; margin-bottom: 1rem;
+    }
+
+    .about-text { font-size: .925rem; color: var(--gray-600); line-height: 1.8; margin-bottom: .75rem; }
+
+    .about-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 1.25rem; }
+    .about-feats li { display: flex; align-items: center; gap: 10px; font-size: .875rem; color: var(--gray-600); }
+    .about-feats li i { color: var(--blue-700); width: 18px; text-align: center; }
+
+    /* ===== CONTACT ===== */
+    #contato { padding: 80px 0; background: var(--white); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .map-box {
+      width: 100%; height: 280px;
+      background: linear-gradient(135deg, #dae4ef, #c5d5e6);
+      border-radius: var(--radius);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      color: var(--blue-700);
+      border: 1px solid var(--gray-200);
+    }
+
+    .map-box i { font-size: 2.5rem; opacity: .65; }
+    .map-box p { font-weight: 600; font-size: .9rem; }
+    .map-box small { opacity: .6; font-size: .8rem; }
+
+    .contact-side { display: flex; flex-direction: column; gap: 20px; }
+
+    .info-box {
+      background: var(--gray-50); border-radius: var(--radius);
+      padding: 20px; border: 1px solid var(--gray-200);
+    }
+
+    .info-box-title {
+      font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--blue-700);
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: .85rem;
+    }
+
+    .hours-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .hours-list li {
+      display: flex; justify-content: space-between;
+      font-size: .86rem; color: var(--gray-600);
+      padding: 7px 0; border-bottom: 1px solid var(--gray-200);
+    }
+    .hours-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .hours-list .day { font-weight: 500; color: var(--gray-800); }
+    .hours-list .closed { color: #ef4444; font-weight: 500; }
+
+    .addr-text { font-size: .9rem; color: var(--gray-600); line-height: 1.75; }
+
+    .btn-wa-full {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--green); color: #fff;
+      font-size: 1rem; font-weight: 700;
+      padding: 16px; border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(37,211,102,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-wa-full:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,.55); }
+    .btn-wa-full i { font-size: 1.25rem; }
+
+    /* ===== FLOAT BUTTON ===== */
+    .float-wa {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.65rem;
+      box-shadow: 0 6px 25px rgba(37,211,102,.55);
+      transition: transform .2s, box-shadow .2s;
+      animation: waPulse 2.5s infinite;
+    }
+    .float-wa:hover { transform: scale(1.1); box-shadow: 0 10px 35px rgba(37,211,102,.7); animation: none; }
+
+    @keyframes waPulse {
+      0%,100% { box-shadow: 0 6px 25px rgba(37,211,102,.55); }
+      50%      { box-shadow: 0 6px 40px rgba(37,211,102,.85), 0 0 0 10px rgba(37,211,102,.1); }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--blue-900); color: rgba(255,255,255,.65);
+      text-align: center; padding: 28px 20px; font-size: .85rem;
+    }
+    footer strong { color: #fff; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 540px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid    { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions  { flex-direction: row; }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links  { display: flex; }
+      .nav-cta    { display: flex; }
+      .hero-wrap  { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+      .hero-img-col { display: flex; }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(5, 1fr); }
+      .testi-grid    { grid-template-columns: repeat(3, 1fr); }
+      .about-grid    { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================
+     HEADER
+============================= -->
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div class="logo-text">
+          Dr. Carlos Mendes
+          <span>Clínica Odontológica</span>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <a href="https://wa.me/557599991234" class="nav-cta" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i>
+        Agendar Consulta
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============================
+     HERO
+============================= -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-wrap">
+
+      <!-- TEXT -->
+      <div>
+        <div class="hero-badge">
+          <i class="fa-solid fa-location-dot"></i>&nbsp; Centro · Feira de Santana, BA
+        </div>
+
+        <h1 class="hero-title">
+          O sorriso que você<br>
+          sempre <em>sonhou</em><br>
+          está mais perto.
+        </h1>
+
+        <p class="hero-sub">
+          Cuidamos da sua saúde bucal com tecnologia de ponta, carinho e atenção que você merece.
+          Atendemos convênios e pacientes particulares em Feira de Santana.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/557599991234" class="btn-wa" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+            Agendar pelo WhatsApp
+          </a>
+          <a href="#servicos" class="btn-outline">
+            Ver Serviços <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <span class="stat-number">+800</span>
+            <span class="stat-label">Pacientes atendidos</span>
+          </div>
+          <div>
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Anos de experiência</span>
+          </div>
+          <div>
+            <span class="stat-number">5★</span>
+            <span class="stat-label">Avaliação média</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOTO DO DENTISTA -->
+      <div class="hero-img-col">
+        <img src="img/carlos.jpeg" alt="Dr. Carlos Mendes – Odontologista" class="hero-photo">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================
+     SERVIÇOS
+============================= -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag"><i class="fa-solid fa-star"></i> Nossos Serviços</span>
+      <h2 class="section-title">Tudo para o seu sorriso</h2>
+      <p class="section-sub">Tratamentos modernos, cuidado humanizado e os melhores resultados para você.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="srv-card">
+        <div class="srv-icon"><i class="fa-solid fa-teeth-open"></i></div>
+        <h3 class="srv-title">Limpeza Dental</h3>
+        <p class="srv-desc">Remoção de tártaro e placa bacteriana com ultrassom. Mantenha sua saúde bucal em dia e previna doenças gengivais com sessões rápidas e sem dor.</p>
+        <a href="https://wa.me/557599991234" class="srv-link" target="_blank" rel="noopener">
+          Agendar <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3 class="srv-title">Clareamento</h3>
+        <p class="srv-desc">Dentes até 8 tons mais brancos com clareamento de consultório ou caseiro supervisionado. Resultado rápido, seguro e duradouro.</p>
+        <a href="https://wa.me/557599991234" class="srv-link" target="_blank" rel="noopener">
+          Agendar <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+        <h3 class="srv-title">Aparelho Ortodôntico</h3>
+        <p class="srv-desc">Aparelhos fixos, móveis e alinhadores transparentes para alinhar e corrigir a posição dos seus dentes com eficiência.</p>
+        <a href="https://wa.me/557599991234" class="srv-link" target="_blank" rel="noopener">
+          Agendar <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h3 class="srv-title">Implante Dentário</h3>
+        <p class="srv-desc">Substituição permanente de dentes perdidos com implantes de titânio de alta qualidade. Estética e funcionalidade completas e naturais.</p>
+        <a href="https://wa.me/557599991234" class="srv-link" target="_blank" rel="noopener">
+          Agendar <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-icon"><i class="fa-solid fa-shield-heart"></i></div>
+        <h3 class="srv-title">Convênio</h3>
+        <p class="srv-desc">Atendemos os principais convênios odontológicos da região. Consulte se o seu plano é aceito e agende sua consulta hoje mesmo.</p>
+        <a href="https://wa.me/557599991234" class="srv-link" target="_blank" rel="noopener">
+          Consultar planos <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================
+     DEPOIMENTOS
+============================= -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag"><i class="fa-solid fa-heart"></i> Depoimentos</span>
+      <h2 class="section-title">O que nossos pacientes dizem</h2>
+      <p class="section-sub">Satisfação que se traduz em sorrisos reais e indicações sinceras.</p>
+    </div>
+
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <i class="fa-solid fa-quote-right quote-icon"></i>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">
+          "Fiz o clareamento e o resultado superou todas as minhas expectativas! O Dr. Carlos é muito atencioso,
+          explica tudo com detalhes e deixa a gente bem à vontade. Indico de olhos fechados!"
+        </p>
+        <div class="testi-author">
+          <div class="avatar">A</div>
+          <div>
+            <div class="author-name">Ana Paula Souza</div>
+            <div class="author-loc">Feira de Santana, BA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <i class="fa-solid fa-quote-right quote-icon"></i>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">
+          "Coloquei dois implantes e fiquei impressionado com o profissionalismo da equipe. O pós-operatório foi
+          tranquilo e o resultado é idêntico aos dentes naturais. Melhor investimento que fiz!"
+        </p>
+        <div class="testi-author">
+          <div class="avatar">R</div>
+          <div>
+            <div class="author-name">Roberto Lima Neto</div>
+            <div class="author-loc">Feira de Santana, BA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <i class="fa-solid fa-quote-right quote-icon"></i>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">
+          "Tinha muito medo de dentista e o Dr. Carlos me passou uma segurança incrível. A limpeza foi rápida,
+          sem dor, e o ambiente da clínica é muito aconchegante. Já indiquei para toda a família!"
+        </p>
+        <div class="testi-author">
+          <div class="avatar">M</div>
+          <div>
+            <div class="author-name">Mariana Ferreira</div>
+            <div class="author-loc">Feira de Santana, BA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================
+     SOBRE
+============================= -->
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-img-wrap">
+        <img src="img/carlos.jpeg" alt="Dr. Carlos Mendes – Odontologista" class="about-photo">
+        <div class="cro-badge">
+          <div class="cro-badge-icon"><i class="fa-solid fa-trophy"></i></div>
+          <div>
+            <div class="cro-badge-name">CRO-BA 12345</div>
+            <div class="cro-badge-sub">Registro Ativo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-tag"><i class="fa-solid fa-tooth"></i> Sobre o Dentista</span>
+        <h2 class="about-title">Dr. Carlos Mendes, cuidando do seu sorriso há mais de 12 anos</h2>
+        <p class="about-text">
+          Formado pela Universidade Estadual de Feira de Santana (UEFS) em 2012, o Dr. Carlos Mendes construiu
+          sua carreira com base em ética, dedicação e atualização constante. Especialista em Implantodontia e
+          Ortodontia, é referência no Centro de Feira de Santana.
+        </p>
+        <p class="about-text">
+          Com uma clínica moderna e humanizada, Dr. Carlos e sua equipe tratam cada paciente de forma única,
+          priorizando o conforto, a transparência e os melhores resultados possíveis.
+        </p>
+
+        <ul class="about-feats">
+          <li><i class="fa-solid fa-circle-check"></i> Especialista em Implantodontia pela UNIP</li>
+          <li><i class="fa-solid fa-circle-check"></i> Ortodontia e Ortopedia Facial</li>
+          <li><i class="fa-solid fa-circle-check"></i> Membro da ABO-BA (Associação Brasileira de Odontologia)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Atualização contínua em congressos nacionais</li>
+          <li><i class="fa-solid fa-circle-check"></i> Atendimento humanizado para todas as idades</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================
+     CONTATO
+============================= -->
+<section id="contato">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag"><i class="fa-solid fa-location-dot"></i> Localização</span>
+      <h2 class="section-title">Como nos encontrar</h2>
+      <p class="section-sub">Estamos no coração do Centro de Feira de Santana, BA. Venha nos visitar!</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- MAPA GOOGLE MAPS -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.8842864243825!2d-38.97012572506187!3d-12.256109145833607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71437ecc7b4e27b%3A0xf329eeaf2dab143a!2sRua%20Conselheiro%20Franco%2C%20215%20-%20Centro%2C%20Feira%20de%20Santana%20-%20BA%2C%2044002-128!5e0!3m2!1spt-BR!2sbr!4v1778027876811!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <!-- INFO -->
+      <div class="contact-side">
+
+        <div class="info-box">
+          <div class="info-box-title">
+            <i class="fa-solid fa-clock"></i> Horário de Funcionamento
+          </div>
+          <ul class="hours-list">
+            <li><span class="day">Segunda-feira</span> <span>08h – 18h</span></li>
+            <li><span class="day">Terça-feira</span>   <span>08h – 18h</span></li>
+            <li><span class="day">Quarta-feira</span>  <span>08h – 18h</span></li>
+            <li><span class="day">Quinta-feira</span>  <span>08h – 18h</span></li>
+            <li><span class="day">Sexta-feira</span>   <span>08h – 17h</span></li>
+            <li><span class="day">Sábado</span>        <span>08h – 12h</span></li>
+            <li><span class="day">Domingo</span>       <span class="closed">Fechado</span></li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-title">
+            <i class="fa-solid fa-location-dot"></i> Endereço
+          </div>
+          <p class="addr-text">
+            Rua Conselheiro Franco, 215, Sala 302<br>
+            Centro – Feira de Santana, BA<br>
+            CEP: 44001-000<br><br>
+            <strong style="color:var(--gray-800);">Telefone:</strong> (75) 9 9999-1234
+          </p>
+        </div>
+
+        <a href="https://wa.me/557599991234" class="btn-wa-full" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>
+          Agendar Consulta pelo WhatsApp
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================
+     FOOTER
+============================= -->
+<footer>
+  <p>
+    &copy; 2025 <strong>Dr. Carlos Mendes – Clínica Odontológica</strong>
+  </p>
+  <p style="margin-top:6px;font-size:.78rem;">
+    Rua Conselheiro Franco, 215 · Centro · Feira de Santana, BA &nbsp;|&nbsp; CRO-BA 12345
+  </p>
+</footer>
+
+
+<!-- ============================
+     BOTÃO FLUTUANTE WHATSAPP
+============================= -->
+<a href="https://wa.me/557599991234" class="float-wa" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+
+<script>
+  /* Active nav highlight on scroll */
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.nav-links a');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => {
+          l.style.color = l.getAttribute('href') === '#' + e.target.id
+            ? 'var(--blue-700)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => io.observe(s));
+
+  /* Smooth scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>

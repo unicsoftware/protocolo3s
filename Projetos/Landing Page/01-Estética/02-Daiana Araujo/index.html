@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Daiana Araujo | Essência das Unhas Pro | Santo André/SP</title>
+
+    <meta name="description"
+        content="Aprenda alongamento realista, esmaltação premium e técnicas modernas de nail designer com Daiana Araújo." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff2d7a;
+            --secondary: #7b2fff;
+            --accent: #d7ff3f;
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --card: #fff6fa;
+            --gradient: linear-gradient(135deg, #ff2d7a 0%, #7b2fff 100%);
+            --shadow: 0 20px 50px rgba(255, 45, 122, .15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+            line-height: .95;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 36px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            transition: .3s ease;
+            box-shadow: 0 10px 30px rgba(255, 45, 122, .25);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, .75);
+            border-bottom: 1px solid rgba(0, 0, 0, .05);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 120px;
+            background:
+                radial-gradient(circle at top left, rgba(255, 45, 122, .20), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(123, 47, 255, .18), transparent 30%),
+                #fff;
+        }
+
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: var(--gradient);
+            filter: blur(120px);
+            opacity: .18;
+            top: -180px;
+            right: -180px;
+            animation: blobMove 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes blobMove {
+            from {
+                transform: translateY(0px) translateX(0px);
+            }
+
+            to {
+                transform: translateY(60px) translateX(-40px);
+            }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: rgba(255, 45, 122, .08);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 9vw, 7rem);
+            margin: 28px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 620px;
+            color: var(--muted);
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card img {
+            height: 620px;
+        }
+
+        .floating-badge {
+            position: absolute;
+            left: 24px;
+            bottom: 24px;
+            background: white;
+            border-radius: 22px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .floating-badge strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .title {
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            max-width: 680px;
+            color: var(--muted);
+            margin-bottom: 50px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .card {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            transition: .3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 30px;
+        }
+
+        .timeline-number {
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial {
+            background: var(--card);
+            padding: 28px;
+            border-radius: 28px;
+        }
+
+        .google-review-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .google-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .stars {
+            color: #ffb400;
+            margin-bottom: 14px;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 32px;
+        }
+
+        .location-info {
+            display: grid;
+            gap: 24px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .map-box {
+            min-height: 520px;
+            overflow: hidden;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-box {
+            background: var(--gradient);
+            color: white;
+            border-radius: 40px;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 24px;
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(0, 0, 0, .08);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .whatsapp-card {
+            overflow: hidden;
+        }
+
+        .whatsapp-description {
+            color: var(--muted);
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .whatsapp-location-btn {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            padding: 18px 20px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(135deg,
+                    #1f8f4e 0%,
+                    #176f3d 100%);
+
+            color: #ffffff;
+
+            font-weight: 700;
+
+            transition: .28s ease;
+
+            box-shadow:
+                0 14px 28px rgba(31, 143, 78, .18);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .whatsapp-location-btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 18px 34px rgba(31, 143, 78, .24);
+        }
+
+        .whatsapp-location-btn:focus {
+            outline: 4px solid rgba(31, 143, 78, .22);
+            outline-offset: 4px;
+        }
+
+        .whatsapp-icon {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 18px;
+
+            background: rgba(255, 255, 255, .14);
+
+            border: 1px solid rgba(255, 255, 255, .18);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+        .whatsapp-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .whatsapp-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .whatsapp-content strong {
+            display: block;
+            font-size: 1.08rem;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .whatsapp-content small {
+            margin-top: 4px;
+            color: rgba(255, 255, 255, .96);
+            font-size: .95rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .whatsapp {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+
+            width: 74px;
+            height: 74px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg,
+                    #1f8f4e 0%,
+                    #176f3d 100%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 18px 40px rgba(31, 143, 78, .28);
+
+            z-index: 999;
+
+            transition: .3s ease;
+        }
+
+        .whatsapp:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .whatsapp svg {
+            width: 34px;
+            height: 34px;
+            fill: white;
+        }
+
+        @media(max-width:980px) {
+
+            .hero-grid,
+            .cards,
+            .testimonial-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card img {
+                height: 500px;
+            }
+
+            .cta-box {
+                padding: 50px 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container navbar">
+
+            <div class="logo">
+                Essência Nails Academy
+            </div>
+
+            <nav class="nav-links">
+                <a href="#curso">Curso</a>
+                <a href="#modulos">Módulos</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#localizacao">Localização</a>
+            </nav>
+
+            <a href="https://wa.me/5511949043116?text=Oi! Quero saber mais sobre o curso." class="btn">
+                Quero entrar
+            </a>
+
+        </div>
+    </header>
+
+    <section class="hero">
+
+        <div class="blob"></div>
+
+        <div class="container hero-grid">
+
+            <div>
+
+                <div class="tag">
+                    💅 Curso profissional de nail designer
+                </div>
+
+                <h1>
+                    Transforma unhas em <span>renda</span>.
+                </h1>
+
+                <p>
+                    Aprende alongamento realista, esmaltação premium e técnicas modernas mesmo começando do zero.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="https://wa.me/5511949043116?text=Quero garantir minha vaga!" class="btn">
+                        Garante a vaga
+                    </a>
+
+                    <a href="#modulos" class="btn btn-outline">
+                        Ver módulos
+                    </a>
+
+                </div>
+
+            </div>
+            <!-- ========================= 
+ IMAGENS EXEMPLO 
+========================= 
+
+
+https://images.unsplash.com/photo-1610992231351-3030e8e10d3b?q=80&w=1200&auto=format&fit=crop
+
+
+https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop
+
+ ALONGAMENTO
+https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop
+
+ MULHER NO STUDIO 
+https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop
+
+ MESA DE NAIL DESIGN 
+https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200&auto=format&fit=crop
+
+ ESMALTAÇÃO 
+https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1200&auto=format&fit=crop
+ -->
+
+            <div class="hero-card">
+
+                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1200&auto=format&fit=crop"
+                    alt="Curso de unhas">
+
+                <div class="floating-badge">
+                    <strong>+500</strong>
+                    alunas impactadas
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="curso">
+
+        <div class="container">
+
+            <h2 class="title">
+                Aprende o método que faz cliente voltar.
+            </h2>
+
+            <p class="subtitle">
+                Técnicas modernas, acabamento premium e atendimento que fideliza.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Alongamento realista</h3>
+                    <p>Estrutura natural, acabamento fino e durabilidade profissional.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Instagram que vende</h3>
+                    <p>Aprende posicionamento visual e fotos que atraem clientes.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Atendimento premium</h3>
+                    <p>Como criar experiência memorável e fidelizar clientes.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="modulos" style="background:#fff6fa;">
+
+        <div class="container">
+
+            <h2 class="title">
+                O que você vai aprender 💅
+            </h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div>
+                        <h3>Preparação perfeita</h3>
+                        <p>Higienização, preparação e estrutura correta.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div>
+                        <h3>Alongamento realista</h3>
+                        <p>Curvatura, acabamento e estrutura sofisticada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div>
+                        <h3>Esmaltação premium</h3>
+                        <p>Técnicas modernas e brilho intenso.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="depoimentos">
+
+        <div class="container">
+
+            <h2 class="title">
+                Quem faz, <span style="color:var(--primary)">indica.</span>
+            </h2>
+
+            <p class="subtitle">
+                Mais de 160 avaliações 5 estrelas no Google ✨
+            </p>
+
+            <div class="testimonial-grid">
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Cibele Cardoso</strong>
+                            <small>4 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Profissional comprometida e talentosa.”</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Gabriela Afonso</strong>
+                            <small>3 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Fiz esmaltação em gel e amei o resultado.”</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Lilian Soares</strong>
+                            <small>4 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Super atenciosa. Nota 1000!”</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Camila Maia</strong>
+                            <small>4 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Organizada e super simpática.”</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Biiaa Mel</strong>
+                            <small>2 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Maravilhosa! Faz uma unha impecável ❤️”</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="google-review-top">
+                        <div>
+                            <strong>Magda Martins</strong>
+                            <small>3 reviews</small>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            class="google-icon">
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>“Profissional maravilhosa! Unhas impecáveis 💅”</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="localizacao">
+
+        <div class="container">
+
+            <h2 class="title">
+                Vem viver essa experiência ✨
+            </h2>
+
+            <p class="subtitle">
+                Studio Essência das Unhas Pro — Daiana Araújo
+            </p>
+
+            <div class="location-grid">
+
+                <div class="location-info">
+
+                    <div class="info-card">
+                        <h3>📍 Endereço</h3>
+                        <p>
+                            Estr. do Pedroso, 1555<br>
+                            Jardim Santo André — Santo André/SP
+                        </p>
+                    </div>
+                    <div class="info-card whatsapp-card">
+
+                        <h3> WhatsApp</h3>
+
+                        <p class="whatsapp-description">
+                            Atendimento rápido direto no WhatsApp.
+                            Tire dúvidas e reserve sua vaga com facilidade.
+                        </p>
+
+                        <a href="https://wa.me/5511949043116?text=Oi!%20Quero%20saber%20mais%20sobre%20o%20curso."
+                            target="_blank" class="whatsapp-location-btn" aria-label="Abrir conversa no WhatsApp">
+
+                            <div class="whatsapp-icon">
+
+                                <svg viewBox="0 0 32 32" aria-hidden="true">
+                                    <path
+                                        d="M19.11 17.21c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 1-.98 2.45.02 1.45 1.03 2.84 1.18 3.03.15.19 2.02 3.08 4.89 4.31.68.29 1.21.46 1.63.59.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM16.02 3C8.84 3 3 8.82 3 16c0 2.54.74 5.01 2.13 7.12L3.74 29l6.07-1.36A12.94 12.94 0 0 0 16.02 29C23.2 29 29 23.18 29 16S23.2 3 16.02 3z" />
+                                </svg>
+
+                            </div>
+
+                            <div class="whatsapp-content">
+                                <strong>(11) 94904-3116</strong>
+                                <small>Responderemos rapidinho ✨</small>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="map-box">
+
+                    <iframe
+                        src="https://www.google.com/maps?q=Estr.%20do%20Pedroso,%201555%20-%20Jardim%20Santo%20Andr%C3%A9,%20Santo%20Andr%C3%A9%20-%20SP&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>
+                    Tua próxima cliente começa aqui.
+                </h2>
+
+                <p>
+                    Vagas limitadas para acompanhamento individual.
+                </p>
+
+                <a href="https://wa.me/5511949043116?text=Quero garantir minha vaga!" class="btn"
+                    style="background:white;color:#111;">
+                    Quero garantir minha vaga
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="container footer-grid">
+
+            <div>
+                <strong>Essência Nails Academy</strong><br>
+                Curso profissional de unhas em Santo André.
+            </div>
+
+            <div>
+                Desenvolvido por
+                <a href="https://eabc.com.br" target="_blank" style="color:var(--primary);font-weight:700;">
+                    EABC Digital
+                </a>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/5511949043116" target="_blank" aria-label="Abrir WhatsApp">
+
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path
+                d="M19.11 17.21c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 1-.98 2.45.02 1.45 1.03 2.84 1.18 3.03.15.19 2.02 3.08 4.89 4.31.68.29 1.21.46 1.63.59.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM16.02 3C8.84 3 3 8.82 3 16c0 2.54.74 5.01 2.13 7.12L3.74 29l6.07-1.36A12.94 12.94 0 0 0 16.02 29C23.2 29 29 23.18 29 16S23.2 3 16.02 3z" />
+        </svg>
+
+    </a>
+
+</body>
+
+</html>

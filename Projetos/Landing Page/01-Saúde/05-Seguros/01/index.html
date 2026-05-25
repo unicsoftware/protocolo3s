@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Prime Seguros • Proteção Patrimonial e Consultoria em Seguros</title>
+
+<meta name="description" content="A Prime Seguros oferece soluções completas em seguros patrimoniais, automóvel, vida, saúde e empresarial com atendimento especializado e personalizado em Bertioga/SP."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --color-primary:#0F1B2D;
+  --color-primary-hover:#16263D;
+
+  --color-bg:#FAF8F3;
+  --color-bg-alt:#F1ECE3;
+
+  --color-text:#1A1A1A;
+  --color-text-muted:#5C6470;
+
+  --color-accent:#C9A961;
+  --color-border:#D7D0C5;
+
+  --container:1140px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--color-bg);
+  color:var(--color-text);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:92%;
+  max-width:var(--container);
+  margin:auto;
+}
+
+section{
+  padding:140px 0;
+}
+
+.section-dark{
+  background:var(--color-primary);
+  color:var(--color-bg);
+}
+
+.divider{
+  width:120px;
+  height:1px;
+  background:var(--color-accent);
+  margin:32px auto;
+  position:relative;
+}
+
+.divider::after{
+  content:"";
+  width:8px;
+  height:8px;
+  background:var(--color-accent);
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:100;
+  background:rgba(250,248,243,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(15,27,45,.08);
+}
+
+.nav{
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo img{
+  height:58px;
+}
+
+.menu{
+  display:flex;
+  gap:42px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:var(--color-primary);
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  position:relative;
+}
+
+.menu a::after{
+  content:"";
+  width:0%;
+  height:1px;
+  background:var(--color-accent);
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  transition:.4s;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:
+  linear-gradient(rgba(15,27,45,.65),rgba(15,27,45,.72)),
+  url('https://www.primeseguro.com.br/uploads/1/2/5/7/125724894/background-images/1869154340.jpg');
+  background-size:cover;
+  background-position:center;
+  text-align:center;
+  color:var(--color-bg);
+}
+
+.hero-content{
+  max-width:900px;
+  margin:auto;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:76px;
+  line-height:1.15;
+  font-weight:500;
+  margin-bottom:32px;
+}
+
+.hero p{
+  font-size:20px;
+  max-width:720px;
+  margin:auto;
+  opacity:.92;
+}
+
+.hero-buttons{
+  margin-top:48px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px 38px;
+  text-decoration:none;
+  border-radius:4px;
+  transition:.35s;
+  font-weight:500;
+  letter-spacing:.02em;
+}
+
+.btn-primary{
+  background:var(--color-accent);
+  color:var(--color-primary);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.3);
+  color:var(--color-bg);
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.section-title h2{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  line-height:1.2;
+  font-weight:500;
+}
+
+.section-title p{
+  max-width:720px;
+  margin:24px auto 0;
+  color:var(--color-text-muted);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.card{
+  background:var(--color-bg);
+  border:1px solid var(--color-border);
+  padding:42px;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card h3{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  margin-bottom:18px;
+  font-weight:500;
+}
+
+.card p{
+  color:var(--color-text-muted);
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.about-image img{
+  filter:saturate(.8);
+}
+
+.about-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  margin-bottom:24px;
+  font-weight:500;
+}
+
+.about-content p{
+  margin-bottom:24px;
+  color:var(--color-text-muted);
+}
+
+.stats{
+  display:flex;
+  gap:48px;
+  margin-top:42px;
+  flex-wrap:wrap;
+}
+
+.stat h3{
+  font-size:42px;
+  font-family:'Playfair Display',serif;
+  color:var(--color-accent);
+  font-weight:500;
+}
+
+.stat span{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+}
+
+.testimonial{
+  border:1px solid rgba(255,255,255,.1);
+  padding:42px;
+}
+
+.testimonial p{
+  opacity:.9;
+}
+
+.testimonial h4{
+  margin-top:28px;
+  font-weight:500;
+}
+
+.contact{
+  text-align:center;
+}
+
+.contact h2{
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  margin-bottom:24px;
+  font-weight:500;
+}
+
+.contact p{
+  max-width:700px;
+  margin:auto;
+  color:var(--color-text-muted);
+}
+
+.contact-actions{
+  margin-top:48px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+footer{
+  background:var(--color-primary);
+  color:rgba(255,255,255,.8);
+  padding:48px 0;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer a{
+  color:var(--color-accent);
+  text-decoration:none;
+}
+
+.whatsapp-float{
+  position:fixed;
+  right:28px;
+  bottom:28px;
+  width:68px;
+  height:68px;
+  background:#1f6b43;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  z-index:999;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.whatsapp-float svg{
+  width:32px;
+  fill:#fff;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+  font-size:48px;
+}
+
+.about-grid{
+  grid-template-columns:1fr;
+}
+
+.menu{
+  display:none;
+}
+
+section{
+  padding:90px 0;
+}
+
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"InsuranceAgency",
+ "name":"Prime Seguros",
+ "url":"https://www.primeseguro.com.br",
+ "telephone":"+55-13-3317-5492",
+ "address":{
+   "@type":"PostalAddress",
+   "addressLocality":"Bertioga",
+   "addressRegion":"SP",
+   "postalCode":"11250-000",
+   "addressCountry":"BR"
+ },
+ "sameAs":[
+   "https://www.instagram.com/",
+   "https://www.facebook.com/"
+ ]
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="#" class="logo">
+      <img src="https://www.primeseguro.com.br/uploads/1/2/5/7/125724894/published/logo-prime-seguros.png" alt="Prime Seguros">
+    </a>
+
+    <nav class="menu">
+      <a href="#sobre">Institucional</a>
+      <a href="#seguros">Seguros</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="container hero-content">
+
+    <h1>
+      Proteção patrimonial conduzida com precisão e confiança.
+    </h1>
+
+    <p>
+      Soluções completas em seguros pessoais, empresariais e patrimoniais,
+      com atendimento consultivo, relacionamento próximo e atuação especializada.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a class="btn btn-primary"
+      href="https://wa.me/5513997416505?text=Boa%20tarde,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20uma%20cotação.">
+      Solicitar Cotação
+      </a>
+
+      <a class="btn btn-secondary" href="#sobre">
+      Conheça a Prime
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="sobre">
+
+  <div class="container about-grid">
+
+    <div class="about-image">
+      <img src="https://www.primeseguro.com.br/uploads/1/2/5/7/125724894/editor/img-20200903-wa0026_orig.jpg" alt="">
+    </div>
+
+    <div class="about-content">
+
+      <h2>
+        Tradição, proximidade e atendimento especializado.
+      </h2>
+
+      <p>
+        Localizada em Bertioga/SP, a Prime Seguros atua com soluções completas
+        para proteção patrimonial, pessoal e empresarial, oferecendo atendimento
+        consultivo e relacionamento próximo em cada etapa do processo.
+      </p>
+
+      <p>
+        Trabalhamos com algumas das principais seguradoras do Brasil,
+        garantindo soluções personalizadas, segurança contratual
+        e acompanhamento especializado.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <h3>+10</h3>
+          <span>Anos de mercado</span>
+        </div>
+
+        <div class="stat">
+          <h3>24h</h3>
+          <span>Atendimento especializado</span>
+        </div>
+
+        <div class="stat">
+          <h3>100%</h3>
+          <span>Consultoria personalizada</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="seguros" class="section-dark">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Soluções em seguros para cada necessidade.
+      </h2>
+
+      <div class="divider"></div>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Seguro Auto</h3>
+        <p>
+          Coberturas completas para proteção veicular,
+          assistência 24 horas e responsabilidade civil.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Seguro Residencial</h3>
+        <p>
+          Proteção patrimonial para imóveis residenciais,
+          veraneio e apartamentos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Seguro Empresarial</h3>
+        <p>
+          Soluções corporativas para empresas,
+          escritórios e estabelecimentos comerciais.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Seguro de Vida</h3>
+        <p>
+          Proteção financeira familiar com coberturas
+          adaptadas às necessidades do segurado.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Seguro Condomínio</h3>
+        <p>
+          Coberturas obrigatórias e adicionais
+          para gestão patrimonial condominial.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Seguro Saúde</h3>
+        <p>
+          Planos e soluções em saúde empresarial
+          e individual com atendimento especializado.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="depoimentos">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Relações construídas sobre confiança.
+      </h2>
+
+      <div class="divider"></div>
+
+    </div>
+
+    <div class="testimonials">
+
+      <div class="testimonial">
+        <p>
+          “Atendimento extremamente atencioso e profissional.
+          Todo o processo ocorreu com clareza e agilidade.”
+        </p>
+
+        <h4>
+          Cliente Prime Seguros
+        </h4>
+      </div>
+
+      <div class="testimonial">
+        <p>
+          “A consultoria transmitiu segurança desde o primeiro contato,
+          principalmente no suporte durante o sinistro.”
+        </p>
+
+        <h4>
+          Cliente Empresarial
+        </h4>
+      </div>
+
+      <div class="testimonial">
+        <p>
+          “Excelente atendimento consultivo e soluções adequadas
+          para nossa necessidade patrimonial.”
+        </p>
+
+        <h4>
+          Cliente Patrimonial
+        </h4>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contato" class="section-dark">
+
+  <div class="container contact">
+
+    <h2>
+      Solicite um atendimento personalizado.
+    </h2>
+
+    <div class="divider"></div>
+
+    <p>
+      Nossa equipe está preparada para apresentar soluções adequadas
+      ao seu perfil, patrimônio e necessidades de proteção.
+    </p>
+
+    <div class="contact-actions">
+
+      <a class="btn btn-primary"
+      href="https://wa.me/5513997416505?text=Boa%20tarde,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20uma%20cotação.">
+      Entrar em contato
+      </a>
+
+      <a class="btn btn-secondary"
+      href="tel:+551333175492">
+      (13) 3317-5492
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      Prime Seguros • Bertioga/SP
+    </p>
+
+    <br>
+
+    <p>
+      Site desenvolvido por
+      <a href="https://eabc.com.br" target="_blank">
+        EABC Digital
+      </a>
+    </p>
+
+  </div>
+
+</footer>
+
+<a class="whatsapp-float"
+href="https://wa.me/5513997416505?text=Boa%20tarde,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20uma%20cotação."
+target="_blank">
+
+<svg viewBox="0 0 32 32">
+<path d="M19.11 17.2c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.12-.41-2.13-1.3-.79-.7-1.32-1.56-1.47-1.83-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.44-.82-1.98-.22-.52-.44-.45-.6-.46h-.51c-.18 0-.47.07-.71.34-.24.27-.93.91-.93 2.22 0 1.31.96 2.58 1.09 2.76.13.18 1.89 2.88 4.57 4.04.64.27 1.14.43 1.53.55.64.2 1.22.17 1.68.1.51-.08 1.58-.64 1.8-1.26.22-.62.22-1.15.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+</svg>
+
+</a>
+
+</body>
+</html>

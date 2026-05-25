@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Juliana Volpi | Nail Designer</title>
+
+<style>
+:root{
+  --bg:#0b0a0b;
+  --card:#171316;
+  --text:#f6f1ef;
+  --muted:#b9aca6;
+  --accent:#cdb29a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Inter, sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 8vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(10,8,9,0.6);
+  backdrop-filter: blur(14px);
+  z-index:10;
+}
+
+header h1{
+  font-size:14px;
+  letter-spacing:3px;
+}
+
+nav a{
+  color:var(--muted);
+  margin-left:18px;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:0 8vw;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.55) contrast(1.1);
+  transform:scale(1.1);
+  animation:zoom 20s ease-in-out infinite alternate;
+}
+
+/* 🔥 CORREÇÃO CRÍTICA */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  max-width:700px;
+  z-index:2;
+}
+
+.hero h2{
+  font-size:72px;
+  line-height:1;
+}
+
+.hero p{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* 🔥 BOTÃO CORRIGIDO */
+.btn{
+  margin-top:30px;
+  padding:14px 26px;
+  background:var(--accent);
+  border:none;
+  color:#1a1412;
+  font-weight:600;
+  border-radius:6px;
+  cursor:pointer;
+  display:inline-block;
+  text-decoration:none;
+  position:relative;
+  z-index:5;
+}
+
+/* SEÇÕES */
+section{
+  padding:130px 8vw;
+}
+
+h3.title{
+  font-size:42px;
+  margin-bottom:50px;
+}
+
+/* ABOUT */
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:start;
+}
+
+.about img{
+  width:100%;
+  border-radius:18px;
+}
+
+.about p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:18px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* BANNER */
+.banner{
+  height:60vh;
+  background:url('https://images.pexels.com/photos/3997389/pexels-photo-3997389.jpeg') center/cover fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+}
+
+.banner h2{
+  position:relative;
+  font-size:48px;
+  text-align:center;
+  max-width:900px;
+}
+
+/* REVIEWS */
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.review{
+  background:rgba(255,255,255,0.04);
+  padding:20px;
+  border-radius:14px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* MAP */
+iframe{
+  width:100%;
+  height:320px;
+  border-radius:16px;
+  border:none;
+}
+
+/* FOOTER */
+footer{
+  padding:50px;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid #2a1f1f;
+}
+
+@keyframes zoom{
+  from{transform:scale(1.1);}
+  to{transform:scale(1.18);}
+}
+
+@media(max-width:768px){
+  .hero h2{font-size:44px;}
+  .about{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>JULIANA VOLPI</h1>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#reviews">Avaliações</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.pexels.com/photos/3997389/pexels-photo-3997389.jpeg"/>
+
+  <div class="hero-content">
+    <h2>Unhas com estética de luxo</h2>
+    <p>Precisão, elegância e experiência premium em cada detalhe.</p>
+
+    <!-- 🔥 BOTÃO FUNCIONAL -->
+    <a href="https://wa.me/5511992547764" target="_blank" class="btn">
+      Agendar atendimento
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre">
+  <h3 class="title">Sobre o Estúdio</h3>
+
+  <div class="about">
+    <img src="https://images.pexels.com/photos/3997379/pexels-photo-3997379.jpeg"/>
+
+    <div>
+      <p>
+        O estúdio Juliana Volpi Nail Designer é especializado em nail design de alta performance estética,
+        com foco em alongamentos em gel, esmaltação perfeita e nail art sofisticada.
+      </p>
+
+      <br>
+
+      <p>
+        Cada atendimento é realizado com técnica avançada, produtos profissionais e rigor absoluto em higiene,
+        garantindo resultados duradouros e visual impecável.
+      </p>
+
+      <br>
+
+      <p>
+        A experiência foi pensada para ser calma, elegante e personalizada, valorizando cada detalhe do cuidado com as unhas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <h3 class="title">Serviços</h3>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3997385/pexels-photo-3997385.jpeg"/>
+      <div class="card-content">
+        Alongamento em gel com estrutura leve, resistente e acabamento natural sofisticado.
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3997375/pexels-photo-3997375.jpeg"/>
+      <div class="card-content">
+        Nail art personalizada com design exclusivo e estética refinada.
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3997376/pexels-photo-3997376.jpeg"/>
+      <div class="card-content">
+        Esmaltação profissional com brilho intenso e durabilidade prolongada.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="banner">
+  <h2>Detalhes que transformam estética em identidade</h2>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <h3 class="title">Avaliações</h3>
+
+  <div class="reviews">
+    <div class="review">Excelente atendimento e muito profissionalismo. Resultado impecável.</div>
+    <div class="review">Ambiente limpo, organizado e trabalho extremamente cuidadoso.</div>
+    <div class="review">Experiência perfeita do início ao fim. Recomendo muito.</div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section>
+  <h3 class="title">Localização</h3>
+
+  <iframe
+    src="https://www.google.com/maps?q=Av.%20Itamarati%202325%20Santo%20Andr%C3%A9&output=embed">
+  </iframe>
+</section>
+
+<footer>
+  Juliana Volpi Nail Designer • Estética premium.
+</footer>
+
+</body>
+</html>

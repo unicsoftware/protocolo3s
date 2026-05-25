@@ -1,0 +1,1599 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX · Personal Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0a0b;
+      --bg2:       #111013;
+      --bg3:       #18151a;
+      --bg4:       #211d24;
+      --border:    rgba(255,255,255,0.07);
+      --red:       #e53935;
+      --red-glow:  rgba(229,57,53,0.5);
+      --red-mid:   rgba(229,57,53,0.3);
+      --red-dim:   rgba(229,57,53,0.1);
+      --text:      #f0ecee;
+      --text2:     #9a8f95;
+      --text3:     #564f56;
+      --r:         10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ───── UTILITIES ─────────────────────────── */
+    .tag {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .68rem; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: .9rem;
+    }
+    .tag::before {
+      content: ''; display: block; width: 1.8rem; height: 2px;
+      background: var(--red); border-radius: 2px; flex-shrink: 0;
+    }
+
+    h2.disp {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: .94; letter-spacing: .01em;
+    }
+    p.lead {
+      font-size: .92rem; color: var(--text2); line-height: 1.8; max-width: 420px;
+    }
+
+    /* ───── BUTTONS ───────────────────────────── */
+    .btn-red {
+      position: relative; display: inline-flex; align-items: center; gap: .55rem;
+      background: var(--red); color: #fff;
+      padding: .85rem 2.1rem; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s ease;
+      animation: btnPulse 2.8s ease-in-out infinite;
+    }
+    .btn-red:hover { transform: translateY(-3px); }
+    .btn-red::after {
+      content: ''; position: absolute; inset: -5px; border-radius: 10px;
+      border: 2px solid var(--red);
+      animation: ringPulse 2.8s ease-out infinite;
+    }
+    @keyframes btnPulse {
+      0%,100% { box-shadow: 0 0 18px var(--red-mid), 0 4px 20px rgba(229,57,53,.22); }
+      50%      { box-shadow: 0 0 48px var(--red-glow), 0 4px 48px rgba(229,57,53,.45); }
+    }
+    @keyframes ringPulse {
+      0%   { opacity: .65; transform: scale(1); }
+      100% { opacity: 0;   transform: scale(1.4); }
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: var(--text);
+      padding: .85rem 2rem; border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none;
+      transition: border-color .25s, background .25s;
+    }
+    .btn-ghost:hover { border-color: var(--text2); background: rgba(255,255,255,.04); }
+
+    /* ───── NAV ───────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3.5rem;
+      background: rgba(12,10,11,.75);
+      backdrop-filter: blur(28px) saturate(1.4);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, padding .3s;
+    }
+    #nav.stuck { border-color: var(--border); padding: .85rem 3.5rem; }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.85rem; letter-spacing: .06em;
+    }
+    .logo em { font-style: normal; color: var(--red); }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none;
+      font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ───── HERO ──────────────────────────────── */
+    #hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1920&q=85') center 18% / cover no-repeat;
+      filter: brightness(.22) saturate(.6);
+      transform: scale(1.08);
+      will-change: transform;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 90% at 80% 50%, rgba(229,57,53,.16) 0%, transparent 68%),
+        linear-gradient(to right, rgba(12,10,11,1) 38%, rgba(12,10,11,.25) 100%),
+        linear-gradient(to top,   rgba(12,10,11,.85) 0%, transparent 30%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 0 3.5rem; max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: .8rem; margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp .6s ease-out .4s forwards;
+    }
+    .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      animation: dotBlink 2s ease-in-out infinite;
+    }
+    @keyframes dotBlink { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+    .hero-eyebrow span {
+      font-size: .68rem; font-weight: 700; letter-spacing: .24em;
+      text-transform: uppercase; color: var(--red);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5.5rem, 14vw, 12rem);
+      line-height: .86; margin-bottom: 1.6rem;
+    }
+    .hero-title .ln { display: block; overflow: hidden; }
+    .hero-title .ln em {
+      display: block; font-style: normal;
+      transform: translateY(108%);
+      animation: wordUp .9s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .hero-title .ln:nth-child(1) em { animation-delay: .55s; }
+    .hero-title .ln:nth-child(2) em { animation-delay: .72s; color: var(--red); }
+    .hero-title .ln:nth-child(3) em { animation-delay: .88s; }
+    @keyframes wordUp { to { transform: translateY(0); } }
+
+    .hero-sub {
+      font-size: .98rem; color: var(--text2); line-height: 1.8; max-width: 440px;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp .8s ease-out 1.1s forwards;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; align-items: center;
+      opacity: 0; animation: fadeUp .8s ease-out 1.3s forwards;
+    }
+
+    /* hero floating pills */
+    .hero-pills {
+      position: absolute; right: 3.5rem; bottom: 4rem; z-index: 2;
+      display: flex; gap: .85rem;
+      opacity: 0; animation: fadeIn 1s ease-out 1.9s forwards;
+    }
+    .pill {
+      background: rgba(18,15,19,.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: .9rem 1.2rem; text-align: center;
+    }
+    .pill .pv {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem; line-height: 1; color: var(--text);
+    }
+    .pill .pv b { color: var(--red); }
+    .pill .pl { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text3); margin-top: .2rem; }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      opacity: 0; animation: fadeIn 1s ease-out 2.1s forwards;
+    }
+    .scroll-indicator p { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--text3); }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      animation: linePulse 1.8s ease-in-out infinite;
+    }
+    @keyframes linePulse { 0%,100% { opacity: .4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
+
+    /* ───── MARQUEE ───────────────────────────── */
+    .marquee-strip {
+      overflow: hidden; padding: .85rem 0;
+      background: var(--red);
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .marquee-track {
+      display: flex; gap: 2.5rem; width: max-content;
+      animation: scroll 24s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: .22em; color: #fff; white-space: nowrap;
+    }
+    .marquee-track .sep { opacity: .45; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ───── STATS ─────────────────────────────── */
+    #stats {
+      padding: 6rem 3.5rem; background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-head {
+      text-align: center; margin-bottom: 3.5rem;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s, transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .stats-head.vis { opacity: 1; transform: none; }
+
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .stat-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 2rem 1.5rem; text-align: center; position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .6s, transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .stat-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--red); transform: scaleX(0); transform-origin: left;
+      transition: transform 1.2s cubic-bezier(.16,1,.3,1);
+    }
+    .stat-card.vis { opacity: 1; transform: none; }
+    .stat-card.vis::after { transform: scaleX(1); }
+    .stat-card:nth-child(2) { transition-delay: .08s; }
+    .stat-card:nth-child(3) { transition-delay: .16s; }
+    .stat-card:nth-child(4) { transition-delay: .24s; }
+
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; line-height: 1; color: var(--red);
+    }
+    .stat-lbl { margin-top: .5rem; font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text2); }
+
+    /* ───── SERVICES ──────────────────────────── */
+    #services {
+      padding: 8rem 3.5rem; max-width: 1300px; margin: 0 auto;
+    }
+    .svc-header {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;
+    }
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem;
+    }
+    .svc-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; position: relative; cursor: pointer;
+      opacity: 0; transform: translateY(36px);
+      transition: opacity .6s, transform .6s cubic-bezier(.16,1,.3,1), border-color .3s;
+    }
+    .svc-card.vis { opacity: 1; transform: none; }
+    .svc-card:hover { border-color: rgba(229,57,53,.5); }
+    .svc-card:nth-child(2) { transition-delay: .1s; }
+    .svc-card:nth-child(3) { transition-delay: .2s; }
+
+    .svc-img {
+      width: 100%; height: 230px; object-fit: cover; display: block;
+      filter: brightness(.72) saturate(.65);
+      transition: transform .55s ease, filter .55s ease;
+    }
+    .svc-card:hover .svc-img { transform: scale(1.06); filter: brightness(.45) saturate(.4); }
+
+    .svc-num {
+      position: absolute; top: 1rem; left: 1rem;
+      font-family: 'Bebas Neue', sans-serif; font-size: .88rem; letter-spacing: .2em;
+      color: var(--red); background: rgba(12,10,11,.85);
+      backdrop-filter: blur(8px); padding: .3rem .7rem; border-radius: 4px;
+    }
+    .svc-body { padding: 1.5rem; }
+    .svc-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.65rem; margin-bottom: .5rem; }
+    .svc-desc { font-size: .8rem; color: var(--text2); line-height: 1.75; }
+
+    /* ───── ABOUT ─────────────────────────────── */
+    #about {
+      padding: 8rem 3.5rem 10rem;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      opacity: 0; transform: translateX(-36px);
+      transition: all .9s cubic-bezier(.16,1,.3,1);
+    }
+    .about-visual.vis { opacity: 1; transform: none; }
+
+    .about-frame {
+      border-radius: var(--r); overflow: hidden; height: 560px; position: relative;
+    }
+    .about-frame img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      filter: brightness(.78);
+    }
+    .about-frame::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(to top, rgba(12,10,11,.92) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(229,57,53,.12) 0%, transparent 55%);
+    }
+    .available-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 1;
+      display: flex; align-items: center; gap: .75rem;
+      background: rgba(18,15,19,.8); backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 8px; padding: .85rem 1.15rem;
+    }
+    .green-dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf50; animation: dotBlink 2.5s ease-in-out infinite; }
+    .ab-text strong { display: block; font-size: .78rem; font-weight: 700; }
+    .ab-text span { font-size: .62rem; color: var(--text2); }
+
+    .exp-badge {
+      position: absolute; bottom: -2rem; right: -2rem;
+      background: var(--red); padding: 1.4rem 1.6rem; border-radius: 10px;
+      text-align: center; box-shadow: 0 8px 40px rgba(229,57,53,.4);
+    }
+    .exp-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; line-height: 1; color: #fff; }
+    .exp-badge .sm { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.8); margin-top: .2rem; }
+
+    .about-text {
+      opacity: 0; transform: translateX(36px);
+      transition: all .9s cubic-bezier(.16,1,.3,1) .15s;
+    }
+    .about-text.vis { opacity: 1; transform: none; }
+
+    .feat-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.2rem; }
+    .feat {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.1rem; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg3); transition: border-color .3s;
+    }
+    .feat:hover { border-color: rgba(229,57,53,.35); }
+    .feat-ico {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--red-dim); border: 1px solid rgba(229,57,53,.22); border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .feat-ico svg { width: 15px; height: 15px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-title { font-size: .86rem; font-weight: 700; margin-bottom: .22rem; }
+    .feat-desc { font-size: .76rem; color: var(--text2); line-height: 1.65; }
+
+    /* ───── RESULTS ───────────────────────────── */
+    #results { padding: 8rem 3.5rem; max-width: 1300px; margin: 0 auto; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+
+    .rings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .ring-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.5rem; text-align: center;
+      opacity: 0; transform: scale(.9);
+      transition: opacity .6s, transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .ring-card.vis { opacity: 1; transform: none; }
+    .ring-card:nth-child(2) { transition-delay: .08s; }
+    .ring-card:nth-child(3) { transition-delay: .16s; }
+    .ring-card:nth-child(4) { transition-delay: .24s; }
+
+    .ring-wrap { position: relative; width: 88px; height: 88px; margin: 0 auto .9rem; }
+    .ring-wrap svg { width: 88px; height: 88px; transform: rotate(-90deg); }
+    .ring-bg { fill: none; stroke: var(--bg4); stroke-width: 7; }
+    .ring-fg {
+      fill: none; stroke: var(--red); stroke-width: 7; stroke-linecap: round;
+      stroke-dasharray: 201; stroke-dashoffset: 201;
+      transition: stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1);
+    }
+    .ring-num {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+    }
+    .ring-lbl { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text2); }
+
+    /* chart card */
+    .chart-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.75rem;
+      opacity: 0; transform: translateX(32px);
+      transition: all .9s cubic-bezier(.16,1,.3,1) .1s;
+    }
+    .chart-card.vis { opacity: 1; transform: none; }
+
+    .chart-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+    .chart-hd h4 { font-size: .88rem; font-weight: 700; }
+    .chart-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: rgba(76,175,80,.1); border: 1px solid rgba(76,175,80,.22);
+      padding: .28rem .65rem; border-radius: 20px;
+      font-size: .66rem; font-weight: 700; color: #4caf50; letter-spacing: .05em;
+    }
+
+    .chart-svg { width: 100%; overflow: visible; }
+    .c-path {
+      fill: none; stroke: var(--red); stroke-width: 2.4;
+      pathLength: 1000; stroke-dasharray: 1000; stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2.2s cubic-bezier(.16,1,.3,1);
+    }
+    .c-area {
+      fill: url(#areaGrad); opacity: 0;
+      transition: opacity .6s ease 2s;
+    }
+    .chart-card.vis .c-path { stroke-dashoffset: 0; }
+    .chart-card.vis .c-area { opacity: 1; }
+    .chart-card.vis .c-dot { opacity: 1; transition: opacity .3s; }
+
+    .c-dot { fill: var(--red); opacity: 0; }
+
+    .chart-labels {
+      display: flex; justify-content: space-between; margin-top: .6rem;
+      font-size: .62rem; color: var(--text3); letter-spacing: .06em;
+    }
+
+    .prog-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.5rem; }
+    .prog-row { }
+    .prog-hd { display: flex; justify-content: space-between; margin-bottom: .45rem; }
+    .prog-name { font-size: .8rem; font-weight: 600; }
+    .prog-val { font-size: .8rem; font-weight: 700; color: var(--red); }
+    .prog-track { height: 4px; background: var(--bg4); border-radius: 2px; overflow: hidden; }
+    .prog-fill { height: 100%; background: var(--red); border-radius: 2px; width: 0; transition: width 1.6s cubic-bezier(.16,1,.3,1); }
+
+    /* ───── TESTIMONIALS ──────────────────────── */
+    #testimonials {
+      padding: 8rem 3.5rem;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .testi-inner { max-width: 1200px; margin: 0 auto; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 3rem; }
+    .testi-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.75rem;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s, transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .testi-card.vis { opacity: 1; transform: none; }
+    .testi-card:nth-child(2) { transition-delay: .1s; }
+    .testi-card:nth-child(3) { transition-delay: .2s; }
+
+    .stars { display: flex; gap: .2rem; margin-bottom: .9rem; }
+    .stars span { color: var(--red); font-size: .82rem; }
+    .testi-txt { font-size: .83rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.25rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: .75rem; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+    .testi-name { font-size: .82rem; font-weight: 700; }
+    .testi-meta { font-size: .68rem; color: var(--text3); margin-top: .15rem; }
+
+    /* ───── CTA ───────────────────────────────── */
+    #cta {
+      padding: 11rem 3.5rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920&q=80') center/cover no-repeat;
+      filter: brightness(.1) saturate(.4);
+    }
+    .cta-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(229,57,53,.13) 0%, transparent 70%);
+    }
+    .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-content h2 { font-size: clamp(4rem, 10vw, 8.5rem); margin-bottom: 1.5rem; }
+    .cta-content p { font-size: 1rem; color: var(--text2); line-height: 1.75; margin-bottom: 3rem; }
+    .cta-content h2,
+    .cta-content p,
+    .cta-content .btn-red {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s, transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .cta-content.vis h2 { opacity: 1; transform: none; }
+    .cta-content.vis p { opacity: 1; transform: none; transition-delay: .1s; }
+    .cta-content.vis .btn-red { opacity: 1; transform: none; transition-delay: .2s; }
+
+    /* ───── FOOTER ────────────────────────────── */
+    footer {
+      padding: 2rem 3.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .foot-links { display: flex; gap: 2rem; }
+    .foot-links a { color: var(--text2); text-decoration: none; font-size: .72rem; letter-spacing: .08em; transition: color .2s; }
+    .foot-links a:hover { color: var(--text); }
+    footer p { font-size: .7rem; color: var(--text3); }
+
+    /* ───── KEYFRAMES ─────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ───── BOOKING WIZARD ───────────────────── */
+    #booking {
+      padding: 8rem 3.5rem;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .booking-inner { max-width: 1200px; margin: 0 auto; }
+    .booking-intro-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: end; margin-bottom: 3rem;
+    }
+    .booking-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem); line-height: .94;
+    }
+    .booking-title em { font-style: italic; color: var(--red); }
+
+    .wizard-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden;
+    }
+    .wizard-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.75rem; border-bottom: 1px solid var(--border);
+      background: var(--bg4);
+    }
+    .wh-label { font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text3); }
+    .wp-dots { display: flex; gap: .45rem; align-items: center; }
+    .wp-dot {
+      height: 3px; border-radius: 2px; background: var(--border);
+      transition: all .4s ease; width: 14px;
+    }
+    .wp-dot.active { width: 28px; background: var(--red); }
+    .wp-dot.done  { width: 14px; background: var(--red); opacity: .55; }
+    .wh-count { font-size: .68rem; font-weight: 700; letter-spacing: .1em; color: var(--text3); }
+
+    .wizard-body { padding: 2.25rem 2rem 1.75rem; min-height: 320px; }
+
+    .w-step { display: none; }
+    .w-step.active {
+      display: block;
+      animation: stepSlide .38s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes stepSlide {
+      from { opacity: 0; transform: translateX(28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .step-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: .18em; color: var(--red);
+      font-family: 'Courier New', monospace; margin-bottom: .8rem;
+    }
+    .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.1rem; margin-bottom: .5rem; }
+    .step-desc { font-size: .82rem; color: var(--text2); line-height: 1.72; margin-bottom: 1.5rem; }
+
+    .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .opt-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
+    .opt-card {
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.2rem;
+      cursor: pointer; transition: border-color .2s, background .2s;
+      background: var(--bg2);
+    }
+    .opt-card:hover { border-color: rgba(229,57,53,.4); }
+    .opt-card.sel { border-color: var(--red); background: var(--red-dim); }
+    .opt-card-check {
+      width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--border);
+      margin-bottom: .65rem; display: flex; align-items: center; justify-content: center;
+      transition: all .2s; background: transparent;
+    }
+    .opt-card.sel .opt-card-check { background: var(--red); border-color: var(--red); }
+    .opt-card.sel .opt-card-check::after {
+      content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: #fff;
+    }
+    .opt-card-title { font-size: .88rem; font-weight: 700; margin-bottom: .22rem; }
+    .opt-card-desc  { font-size: .72rem; color: var(--text2); line-height: 1.5; }
+
+    .day-row { display: flex; gap: .5rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .day-btn {
+      display: flex; flex-direction: column; align-items: center; gap: .15rem;
+      padding: .6rem .85rem; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg2); cursor: pointer; min-width: 58px;
+      transition: all .2s; color: var(--text2); font-family: 'Inter', sans-serif;
+    }
+    .day-btn:hover, .day-btn.active { border-color: var(--red); background: var(--red-dim); color: var(--red); }
+    .day-btn-name { font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .day-btn-num  { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; line-height: 1; }
+
+    .time-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; }
+    .time-slot {
+      padding: .6rem; text-align: center; border: 1px solid var(--border); border-radius: 6px;
+      cursor: pointer; font-size: .78rem; font-weight: 600; background: var(--bg2);
+      transition: all .2s; color: var(--text);
+    }
+    .time-slot:hover  { border-color: rgba(229,57,53,.4); }
+    .time-slot.sel    { border-color: var(--red); background: var(--red-dim); color: var(--red); }
+    .time-slot.taken  { opacity: .28; cursor: not-allowed; text-decoration: line-through; color: var(--text3); }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field { display: flex; flex-direction: column; gap: .45rem; margin-bottom: .9rem; }
+    .field label { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text2); }
+    .field input, .field select {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 6px;
+      padding: .75rem 1rem; color: var(--text); font-family: 'Inter', sans-serif;
+      font-size: .88rem; outline: none; transition: border-color .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field input:focus, .field select:focus { border-color: var(--red); }
+    .field input::placeholder { color: var(--text3); }
+
+    .wizard-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2rem; border-top: 1px solid var(--border);
+    }
+    .btn-back {
+      background: none; border: none; cursor: pointer;
+      font-size: .76rem; font-weight: 600; color: var(--text2);
+      letter-spacing: .1em; font-family: 'Inter', sans-serif;
+      transition: color .2s; text-transform: uppercase;
+    }
+    .btn-back:hover { color: var(--text); }
+    .btn-back:disabled { opacity: .3; cursor: default; pointer-events: none; }
+
+    /* success */
+    .wizard-success {
+      display: none; padding: 3.5rem 2rem; text-align: center;
+    }
+    .wizard-success.show { display: block; animation: stepSlide .4s cubic-bezier(.16,1,.3,1) both; }
+    .success-ring {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 2px solid var(--red); background: var(--red-dim);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-ring svg { width: 28px; height: 28px; stroke: var(--red); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .success-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; margin-bottom: .75rem; }
+    .success-desc  { font-size: .88rem; color: var(--text2); line-height: 1.75; max-width: 380px; margin: 0 auto; }
+
+    /* ───── FAQ ───────────────────────────────── */
+    #faq { padding: 8rem 3.5rem; max-width: 1200px; margin: 0 auto; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; }
+    .faq-sticky { position: sticky; top: 8rem; }
+    .faq-list { margin-top: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; padding: 1.3rem 0; background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 600;
+      color: var(--text); text-align: left; transition: color .2s;
+    }
+    .faq-q:hover { color: var(--red); }
+    .faq-icon {
+      width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%;
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 300; color: var(--text2); line-height: 1;
+      transition: all .3s; background: transparent;
+    }
+    .faq-item.open .faq-q { color: var(--red); }
+    .faq-item.open .faq-icon {
+      background: var(--red); border-color: var(--red); color: #fff;
+      transform: rotate(45deg);
+    }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .42s cubic-bezier(.16,1,.3,1); }
+    .faq-body p { font-size: .83rem; color: var(--text2); line-height: 1.8; padding-bottom: 1.3rem; }
+
+    /* ───── TWEAKS PANEL HOST ─────────────────── */
+    #tweaks-root { position: fixed; z-index: 10000; bottom: 1.5rem; right: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="logo">APEX<em>.</em></div>
+  <ul class="nav-links">
+    <li><a href="#services">Serviços</a></li>
+    <li><a href="#about">Método</a></li>
+    <li><a href="#results">Resultados</a></li>
+    <li><a href="#testimonials">Depoimentos</a></li>
+    <li><a href="#booking">Agendar</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#cta" class="btn-red">Começar Agora →</a>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-veil"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="pulse-dot"></div>
+      <span>Personal Trainer Certificado · São Paulo</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="ln"><em>SUPERE</em></span>
+      <span class="ln"><em>SEUS</em></span>
+      <span class="ln"><em>LIMITES</em></span>
+    </h1>
+
+    <p class="hero-sub">Treinamento personalizado de alto desempenho para quem está comprometido com resultados reais. Método científico. Acompanhamento total.</p>
+
+    <div class="hero-cta">
+      <a href="#cta" class="btn-red">Avaliação Gratuita →</a>
+      <a href="#about" class="btn-ghost">Conheça o Método</a>
+    </div>
+  </div>
+
+  <div class="hero-pills">
+    <div class="pill">
+      <div class="pv"><span class="counter" data-target="850">0</span><b>+</b></div>
+      <div class="pl">Alunos</div>
+    </div>
+    <div class="pill">
+      <div class="pv"><span class="counter" data-target="12">0</span><b>a</b></div>
+      <div class="pl">Experiência</div>
+    </div>
+    <div class="pill">
+      <div class="pv"><span class="counter" data-target="97">0</span><b>%</b></div>
+      <div class="pl">Satisfação</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <p>Role</p>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ════════════════════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>TRANSFORMAÇÃO</span><span class="sep">·</span>
+    <span>HIPERTROFIA</span><span class="sep">·</span>
+    <span>EMAGRECIMENTO</span><span class="sep">·</span>
+    <span>RESISTÊNCIA</span><span class="sep">·</span>
+    <span>PERFORMANCE</span><span class="sep">·</span>
+    <span>RESULTADOS REAIS</span><span class="sep">·</span>
+    <span>TRANSFORMAÇÃO</span><span class="sep">·</span>
+    <span>HIPERTROFIA</span><span class="sep">·</span>
+    <span>EMAGRECIMENTO</span><span class="sep">·</span>
+    <span>RESISTÊNCIA</span><span class="sep">·</span>
+    <span>PERFORMANCE</span><span class="sep">·</span>
+    <span>RESULTADOS REAIS</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- ══ STATS ══════════════════════════════════════════════════ -->
+<section id="stats">
+  <div class="stats-head" id="statsHead">
+    <div class="tag" style="justify-content:center;">Números que provam</div>
+    <h2 class="disp">NOSSA HISTÓRIA<br>EM DADOS</h2>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val"><span class="counter" data-target="850">0</span>+</div>
+      <div class="stat-lbl">Alunos Transformados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val"><span class="counter" data-target="12">0</span> Anos</div>
+      <div class="stat-lbl">de Experiência</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val"><span class="counter" data-target="97">0</span>%</div>
+      <div class="stat-lbl">Taxa de Satisfação</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val"><span class="counter" data-target="15">0</span>k+</div>
+      <div class="stat-lbl">Treinos Realizados</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ═══════════════════════════════════════════════ -->
+<section id="services">
+  <div class="svc-header">
+    <div>
+      <div class="tag">Programas</div>
+      <h2 class="disp">O QUE OFEREÇO</h2>
+    </div>
+    <p class="lead" style="max-width:300px; text-align:right;">Cada programa desenhado individualmente para maximizar seus resultados.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Musculação">
+      <span class="svc-num">01</span>
+      <div class="svc-body">
+        <div class="svc-name">Musculação &amp; Hipertrofia</div>
+        <p class="svc-desc">Periodização científica com foco em ganho de massa muscular e força. Avaliação completa e ajuste contínuo a cada ciclo.</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="Emagrecimento">
+      <span class="svc-num">02</span>
+      <div class="svc-body">
+        <div class="svc-name">Emagrecimento Acelerado</div>
+        <p class="svc-desc">Protocolos de alta intensidade + orientação nutricional para resultados rápidos e duradouros sem perda de músculo.</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&q=80" alt="Funcional">
+      <span class="svc-num">03</span>
+      <div class="svc-body">
+        <div class="svc-name">Treinamento Funcional</div>
+        <p class="svc-desc">Mobilidade, equilíbrio e desempenho atlético com exercícios de alta eficiência adaptados ao seu estilo de vida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual" id="aboutVisual">
+      <div class="about-frame">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Personal Trainer">
+        <div class="available-badge">
+          <div class="green-dot"></div>
+          <div class="ab-text">
+            <strong>Disponível para novos alunos</strong>
+            <span>Vagas limitadas · São Paulo</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-badge">
+        <div class="big">12+</div>
+        <div class="sm">Anos de<br>Expertise</div>
+      </div>
+    </div>
+
+    <div class="about-text" id="aboutText">
+      <div class="tag">Sobre o Método</div>
+      <h2 class="disp">CIÊNCIA<br>APLICADA<br>AO CORPO</h2>
+      <p class="lead" style="margin-top:.9rem;">Desenvolvido ao longo de 12 anos trabalhando com atletas e pessoas comuns. Sem fórmulas mágicas — periodização real, progressão de cargas e acompanhamento constante.</p>
+      <div class="feat-list">
+        <div class="feat">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="feat-title">Avaliação Individualizada</div>
+            <p class="feat-desc">Análise completa do seu biótipo, histórico e metas antes do primeiro treino.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <div>
+            <div class="feat-title">Metas Mensuráveis</div>
+            <p class="feat-desc">Marcos claros e acompanhamento semanal da sua evolução em dados reais.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-ico">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <div class="feat-title">Baseado em Evidências</div>
+            <p class="feat-desc">Protocolos alinhados com as pesquisas mais recentes em fisiologia do exercício.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTS ════════════════════════════════════════════════ -->
+<section id="results">
+  <div style="max-width:540px; margin-bottom:3.5rem;">
+    <div class="tag">Evolução Comprovada</div>
+    <h2 class="disp">RESULTADOS<br>EM 90 DIAS</h2>
+    <p class="lead" style="margin-top:.75rem;">Dados coletados de 500+ alunos no primeiro ciclo de 12 semanas de treinamento.</p>
+  </div>
+
+  <div class="results-grid">
+    <!-- Ring charts -->
+    <div>
+      <div class="rings-grid" id="ringsGrid">
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 88 88">
+              <circle class="ring-bg" cx="44" cy="44" r="32"/>
+              <circle class="ring-fg" cx="44" cy="44" r="32" data-pct="94"/>
+            </svg>
+            <div class="ring-num">94%</div>
+          </div>
+          <div class="ring-lbl">Força Muscular</div>
+        </div>
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 88 88">
+              <circle class="ring-bg" cx="44" cy="44" r="32"/>
+              <circle class="ring-fg" cx="44" cy="44" r="32" data-pct="88"/>
+            </svg>
+            <div class="ring-num">88%</div>
+          </div>
+          <div class="ring-lbl">Redução de Gordura</div>
+        </div>
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 88 88">
+              <circle class="ring-bg" cx="44" cy="44" r="32"/>
+              <circle class="ring-fg" cx="44" cy="44" r="32" data-pct="91"/>
+            </svg>
+            <div class="ring-num">91%</div>
+          </div>
+          <div class="ring-lbl">Condicionamento</div>
+        </div>
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 88 88">
+              <circle class="ring-bg" cx="44" cy="44" r="32"/>
+              <circle class="ring-fg" cx="44" cy="44" r="32" data-pct="97"/>
+            </svg>
+            <div class="ring-num">97%</div>
+          </div>
+          <div class="ring-lbl">Satisfação Geral</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated chart -->
+    <div class="chart-card" id="chartCard">
+      <div class="chart-hd">
+        <h4>Evolução de Desempenho</h4>
+        <div class="chart-badge">↑ +43% média</div>
+      </div>
+
+      <svg class="chart-svg" height="160" viewBox="0 0 400 160" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e53935" stop-opacity=".28"/>
+            <stop offset="100%" stop-color="#e53935" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- grid lines -->
+        <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <line x1="0" y1="120" x2="400" y2="120" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <!-- area -->
+        <path class="c-area" d="M0,148 C40,145 80,138 120,122 C160,106 200,95 240,74 C280,53 320,32 360,18 L400,10 L400,160 L0,160 Z"/>
+        <!-- line -->
+        <path class="c-path" pathLength="1000" d="M0,148 C40,145 80,138 120,122 C160,106 200,95 240,74 C280,53 320,32 360,18 L400,10"/>
+        <!-- dots -->
+        <circle class="c-dot" cx="0"   cy="148" r="4"/>
+        <circle class="c-dot" cx="120" cy="122" r="4" style="transition-delay:.5s"/>
+        <circle class="c-dot" cx="240" cy="74"  r="4" style="transition-delay:1s"/>
+        <circle class="c-dot" cx="400" cy="10"  r="5" style="transition-delay:1.5s"/>
+      </svg>
+      <div class="chart-labels">
+        <span>Semana 1</span><span>Semana 4</span><span>Semana 8</span><span>Semana 12</span>
+      </div>
+
+      <div class="prog-list" id="progList">
+        <div class="prog-row">
+          <div class="prog-hd"><span class="prog-name">Carga total levantada</span><span class="prog-val">+67%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-w="67"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-hd"><span class="prog-name">Repetições máximas</span><span class="prog-val">+54%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-w="54"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-hd"><span class="prog-name">VO2 Máx</span><span class="prog-val">+38%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-w="38"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ═══════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="testi-inner">
+    <div class="tag">Depoimentos</div>
+    <h2 class="disp">QUEM JÁ<br>TRANSFORMOU</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-txt">"Perdi 18kg em 4 meses com acompanhamento total. O método é sério, os resultados são reais. Mudou completamente minha relação com a saúde."</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Ana Paula">
+          <div>
+            <div class="testi-name">Ana Paula M.</div>
+            <div class="testi-meta">−18kg · 4 meses</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-txt">"2 anos em academia sem resultado. Em 3 meses com o Método APEX ganhei mais músculo do que em todo esse tempo. Impressionante."</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Rafael S.">
+          <div>
+            <div class="testi-name">Rafael S.</div>
+            <div class="testi-meta">+12kg massa magra · 3 meses</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-txt">"Como atleta de Crossfit precisava de periodização de verdade. Melhorei meu desempenho em 40% em 6 meses. Recomendo sem hesitar."</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Carla T.">
+          <div>
+            <div class="testi-name">Carla T.</div>
+            <div class="testi-meta">Atleta Crossfit · +40% performance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKING WIZARD ══════════════════════════════════════════ -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-intro-row">
+      <div>
+        <div class="tag">Pronto para começar?</div>
+        <h2 class="booking-title">Agende sua<br>avaliação e<br><em>transforme</em><br>seu corpo</h2>
+      </div>
+      <div>
+        <p class="lead" style="margin-bottom:1.5rem;">Atendimento com horário marcado, espaço exclusivo e acompanhamento total. Preencha o formulário e entraremos em contato para confirmar.</p>
+        <p style="font-size:.75rem; color:var(--text3); letter-spacing:.08em;">Resposta em até 2 horas · Sem compromisso</p>
+      </div>
+    </div>
+
+    <!-- Wizard card -->
+    <div class="wizard-card">
+      <!-- Header -->
+      <div class="wizard-header">
+        <span class="wh-label">Agendar Avaliação</span>
+        <div class="wp-dots">
+          <div class="wp-dot active"></div>
+          <div class="wp-dot"></div>
+          <div class="wp-dot"></div>
+          <div class="wp-dot"></div>
+          <div class="wp-dot"></div>
+        </div>
+        <span class="wh-count" id="wizCounter">01/05</span>
+      </div>
+
+      <!-- Steps body -->
+      <div class="wizard-body" id="wizBody">
+
+        <!-- Step 1: Objetivo -->
+        <div class="w-step active" id="ws1">
+          <div class="step-label">01 → Escolha seu objetivo</div>
+          <h3 class="step-title">O que você quer alcançar?</h3>
+          <p class="step-desc">Selecione o objetivo principal do seu treinamento.</p>
+          <div class="opt-grid">
+            <div class="opt-card" onclick="selectOpt(this,'obj')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Hipertrofia</div>
+              <div class="opt-card-desc">Ganho de massa muscular e definição</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'obj')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Emagrecimento</div>
+              <div class="opt-card-desc">Redução de gordura com saúde</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'obj')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Performance</div>
+              <div class="opt-card-desc">Evolução atlética e força máxima</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'obj')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Condicionamento</div>
+              <div class="opt-card-desc">Saúde, resistência e qualidade de vida</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Nível -->
+        <div class="w-step" id="ws2">
+          <div class="step-label">02 → Seu nível atual</div>
+          <h3 class="step-title">Qual sua experiência?</h3>
+          <p class="step-desc">Isso nos ajuda a calibrar a intensidade do seu programa.</p>
+          <div class="opt-grid cols3">
+            <div class="opt-card" onclick="selectOpt(this,'lvl')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Iniciante</div>
+              <div class="opt-card-desc">Menos de 1 ano de treino ou sem experiência</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'lvl')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Intermediário</div>
+              <div class="opt-card-desc">1 a 4 anos com treino regular</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'lvl')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Avançado</div>
+              <div class="opt-card-desc">Mais de 4 anos, metas específicas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Modalidade -->
+        <div class="w-step" id="ws3">
+          <div class="step-label">03 → Modalidade</div>
+          <h3 class="step-title">Como prefere treinar?</h3>
+          <p class="step-desc">Oferecemos atendimento presencial, online e modelo híbrido.</p>
+          <div class="opt-grid cols3">
+            <div class="opt-card" onclick="selectOpt(this,'mod')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Presencial</div>
+              <div class="opt-card-desc">Academia parceira ou ao ar livre em SP</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'mod')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Online</div>
+              <div class="opt-card-desc">Treinos via app com vídeo-análise</div>
+            </div>
+            <div class="opt-card" onclick="selectOpt(this,'mod')">
+              <div class="opt-card-check"></div>
+              <div class="opt-card-title">Híbrido</div>
+              <div class="opt-card-desc">Combina presencial e online</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Horário -->
+        <div class="w-step" id="ws4">
+          <div class="step-label">04 → Escolha o horário</div>
+          <h3 class="step-title">Quando você prefere?</h3>
+          <p class="step-desc">Selecione um dia e horário para sua avaliação gratuita.</p>
+          <div class="day-row" id="dayRow">
+            <button class="day-btn active" onclick="selectDay(this,'12','Seg')"><span class="day-btn-name">SEG</span><span class="day-btn-num">12</span></button>
+            <button class="day-btn" onclick="selectDay(this,'13','Ter')"><span class="day-btn-name">TER</span><span class="day-btn-num">13</span></button>
+            <button class="day-btn" onclick="selectDay(this,'14','Qua')"><span class="day-btn-name">QUA</span><span class="day-btn-num">14</span></button>
+            <button class="day-btn" onclick="selectDay(this,'15','Qui')"><span class="day-btn-name">QUI</span><span class="day-btn-num">15</span></button>
+            <button class="day-btn" onclick="selectDay(this,'16','Sex')"><span class="day-btn-name">SEX</span><span class="day-btn-num">16</span></button>
+            <button class="day-btn" onclick="selectDay(this,'17','Sáb')"><span class="day-btn-name">SÁB</span><span class="day-btn-num">17</span></button>
+          </div>
+          <div class="time-grid" id="timeGrid">
+            <div class="time-slot" onclick="selectTime(this)">06:00</div>
+            <div class="time-slot taken">07:00</div>
+            <div class="time-slot" onclick="selectTime(this)">08:00</div>
+            <div class="time-slot taken">09:00</div>
+            <div class="time-slot" onclick="selectTime(this)">10:00</div>
+            <div class="time-slot taken">11:00</div>
+            <div class="time-slot" onclick="selectTime(this)">14:00</div>
+            <div class="time-slot" onclick="selectTime(this)">15:00</div>
+            <div class="time-slot taken">16:00</div>
+            <div class="time-slot" onclick="selectTime(this)">17:00</div>
+            <div class="time-slot" onclick="selectTime(this)">18:00</div>
+            <div class="time-slot taken">19:00</div>
+            <div class="time-slot" onclick="selectTime(this)">20:00</div>
+          </div>
+        </div>
+
+        <!-- Step 5: Dados -->
+        <div class="w-step" id="ws5">
+          <div class="step-label">05 → Seus dados</div>
+          <h3 class="step-title">Quase lá!</h3>
+          <p class="step-desc">Preencha seus dados para confirmarmos sua avaliação gratuita.</p>
+          <div class="field-row">
+            <div class="field">
+              <label>Nome completo</label>
+              <input type="text" placeholder="Seu nome">
+            </div>
+            <div class="field">
+              <label>WhatsApp</label>
+              <input type="tel" placeholder="(11) 9 0000-0000">
+            </div>
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input type="email" placeholder="seu@email.com">
+          </div>
+          <div class="field">
+            <label>Como conheceu o APEX?</label>
+            <select>
+              <option value="" style="background:var(--bg2)">Selecione</option>
+              <option style="background:var(--bg2)">Instagram</option>
+              <option style="background:var(--bg2)">Indicação de amigo</option>
+              <option style="background:var(--bg2)">Google</option>
+              <option style="background:var(--bg2)">Outro</option>
+            </select>
+          </div>
+        </div>
+
+      </div><!-- /wizard-body -->
+
+      <!-- Success state -->
+      <div class="wizard-success" id="wizSuccess">
+        <div class="success-ring">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title">Agendamento Enviado!</div>
+        <p class="success-desc">Entraremos em contato em até 2 horas para confirmar sua avaliação gratuita. Fique de olho no seu WhatsApp!</p>
+      </div>
+
+      <!-- Footer nav -->
+      <div class="wizard-footer" id="wizFooter">
+        <button class="btn-back" id="btnBack" onclick="wizBack()" disabled>← Voltar</button>
+        <button class="btn-red" id="btnNext" onclick="wizNext()">Próximo →</button>
+      </div>
+    </div><!-- /wizard-card -->
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="faq-grid">
+    <div class="faq-sticky">
+      <div class="tag">FAQ</div>
+      <h2 class="disp">DÚVIDAS<br>FREQUENTES</h2>
+      <p class="lead" style="margin-top:.9rem;">Tudo que você precisa saber antes de começar sua transformação.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Preciso ter experiência em academia para começar?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>Não. Os programas são totalmente adaptados ao seu nível atual. Começamos com uma avaliação completa para entender seu histórico, limitações e objetivos — e o treino é construído do zero para você, seja iniciante total ou atleta experiente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Qual é a frequência ideal de treinos por semana?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>Depende do seu objetivo e disponibilidade de agenda. Para hipertrofia e emagrecimento recomendamos entre 3 e 5 sessões semanais. Para condicionamento e performance, trabalhamos com 4 a 6 sessões. Na avaliação, definimos juntos a frequência ideal para maximizar seus resultados.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>O acompanhamento online tem a mesma qualidade que o presencial?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>Sim. Utilizamos análise de vídeo para corrigir execução em tempo real, app exclusivo com registro de treinos e evolução, e check-ins semanais por chamada. Nossos alunos online alcançam os mesmos resultados — com a flexibilidade de treinar onde quiserem.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Como funciona a avaliação física gratuita?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>A avaliação dura 60 minutos e inclui: anamnese completa (histórico de saúde e lesões), testes de força e mobilidade, avaliação postural, definição de objetivos e apresentação do método. Ao final, você recebe um diagnóstico detalhado — sem compromisso de contratação.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Posso treinar mesmo com lesões ou limitações físicas?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>Absolutamente. Adaptamos cada exercício às suas condições físicas, trabalhando em conjunto com fisioterapeutas quando necessário. Lesões não são impedimento — são um ponto de partida para um programa mais inteligente que respeita e fortalece seu corpo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Em quanto tempo posso ver resultados reais?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-body">
+          <p>Os primeiros resultados — mais disposição, sono melhor e sensação de força — aparecem em 2 a 3 semanas. Resultados visuais perceptíveis começam entre 4 e 8 semanas, dependendo do objetivo e da consistência. Com 90 dias de treino contínuo, a transformação é inegável.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-glow"></div>
+  <div class="cta-content" id="ctaContent">
+    <div class="tag" style="justify-content:center; margin-bottom:1.2rem;">Sua Transformação Começa Aqui</div>
+    <h2 class="disp">SUA MELHOR<br>VERSÃO<br>TE ESPERA</h2>
+    <p>Agende sua avaliação gratuita e dê o primeiro passo rumo à transformação que você sempre quis. Vagas limitadas.</p>
+    <a href="mailto:contato@apexfit.com.br" class="btn-red" style="font-size:.9rem; padding:1.1rem 2.8rem;">Agendar Avaliação Gratuita →</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+<footer>
+  <div class="logo">APEX<em>.</em></div>
+  <p>© 2026 Apex Personal Trainer · São Paulo, SP</p>
+  <div class="foot-links">
+    <a href="#">Instagram</a>
+    <a href="#">WhatsApp</a>
+    <a href="#">YouTube</a>
+  </div>
+</footer>
+
+<!-- ══ TWEAKS ROOT ════════════════════════════════════════════ -->
+<div id="tweaks-root"></div>
+
+<!-- ══ SCRIPTS ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Nav scroll ─────────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Parallax hero ──────────────────────────── */
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    heroBg.style.transform = `scale(1.08) translateY(${window.scrollY * .22}px)`;
+  }, { passive: true });
+
+  /* ── Counter animation ──────────────────────── */
+  const started = new Set();
+  function animateCounter(el) {
+    if (started.has(el)) return;
+    started.add(el);
+    const target = parseInt(el.dataset.target);
+    const dur = 2000;
+    const t0 = performance.now();
+    const run = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(e * target);
+      if (p < 1) requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+  }
+
+  /* ── Ring chart ─────────────────────────────── */
+  const CIRC = 2 * Math.PI * 32; // r=32 → ~201.06
+  function animateRing(ring) {
+    const pct = parseInt(ring.dataset.pct);
+    ring.style.strokeDasharray = CIRC;
+    ring.style.strokeDashoffset = CIRC * (1 - pct / 100);
+  }
+
+  /* ── IntersectionObserver ───────────────────── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('vis');
+
+      el.querySelectorAll('.counter').forEach(animateCounter);
+      el.querySelectorAll('.ring-fg').forEach(animateRing);
+      el.querySelectorAll('.prog-fill').forEach(f => {
+        setTimeout(() => { f.style.width = f.dataset.w + '%'; }, 350);
+      });
+
+      io.unobserve(el);
+    });
+  }, { threshold: 0.15 });
+
+  /* observe targets */
+  ['statsHead',
+   'aboutVisual', 'aboutText',
+   'chartCard', 'ctaContent'
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+
+  document.querySelectorAll('.stat-card, .svc-card, .ring-card, .testi-card').forEach(el => io.observe(el));
+
+  /* ── Hero counters on load ──────────────────── */
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.hero-pills .counter').forEach(animateCounter);
+    }, 1900);
+  });
+</script>
+
+<!-- ══ WIZARD + FAQ JS ═══════════════════════════════════════ -->
+<script>
+  /* ── Booking Wizard ──────────────────────── */
+  let wizStep = 1;
+  const TOTAL = 5;
+
+  function updateWizHeader() {
+    document.querySelectorAll('.wp-dot').forEach((d, i) => {
+      d.className = 'wp-dot' + (i + 1 < wizStep ? ' done' : i + 1 === wizStep ? ' active' : '');
+    });
+    document.getElementById('wizCounter').textContent =
+      String(wizStep).padStart(2, '0') + '/0' + TOTAL;
+    const btnBack = document.getElementById('btnBack');
+    const btnNext = document.getElementById('btnNext');
+    btnBack.disabled = wizStep === 1;
+    btnNext.textContent = wizStep === TOTAL ? 'Confirmar Agendamento →' : 'Próximo →';
+  }
+
+  function showWizStep(n) {
+    document.querySelectorAll('.w-step').forEach((s, i) => {
+      s.classList.toggle('active', i + 1 === n);
+    });
+    // recalculate min-height based on visible step
+    const active = document.querySelector('.w-step.active');
+    if (active) {
+      document.getElementById('wizBody').style.minHeight =
+        Math.max(320, active.scrollHeight + 72) + 'px';
+    }
+  }
+
+  function wizNext() {
+    if (wizStep === TOTAL) {
+      // Submit
+      document.getElementById('wizBody').style.display = 'none';
+      document.getElementById('wizFooter').style.display = 'none';
+      document.getElementById('wizSuccess').classList.add('show');
+      return;
+    }
+    wizStep = Math.min(wizStep + 1, TOTAL);
+    showWizStep(wizStep);
+    updateWizHeader();
+  }
+
+  function wizBack() {
+    wizStep = Math.max(wizStep - 1, 1);
+    showWizStep(wizStep);
+    updateWizHeader();
+  }
+
+  function selectOpt(el, group) {
+    el.closest('.opt-grid').querySelectorAll('.opt-card').forEach(c => c.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  // Day + time picker (step 4)
+  const timesByDay = {
+    '12': ['06:00','08:00','10:00','14:00','15:00','17:00','18:00','20:00'],
+    '13': ['07:00','09:00','11:00','14:00','16:00','18:00','19:00'],
+    '14': ['06:00','08:00','10:00','15:00','17:00','20:00'],
+    '15': ['07:00','08:00','14:00','15:00','17:00','18:00','19:00'],
+    '16': ['06:00','10:00','11:00','14:00','16:00','18:00','20:00'],
+    '17': ['08:00','09:00','10:00','11:00','15:00','16:00'],
+  };
+  const allTimes = ['06:00','07:00','08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+  let selectedDay = '12';
+
+  function selectDay(btn, dayNum, dayName) {
+    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedDay = dayNum;
+    renderTimes();
+  }
+
+  function renderTimes() {
+    const available = timesByDay[selectedDay] || [];
+    const grid = document.getElementById('timeGrid');
+    grid.innerHTML = allTimes.map(t => {
+      const isFree = available.includes(t);
+      return `<div class="time-slot${isFree ? '' : ' taken'}"
+        ${isFree ? 'onclick="selectTime(this)"' : ''}>${t}</div>`;
+    }).join('');
+  }
+
+  function selectTime(el) {
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  // Init
+  updateWizHeader();
+  renderTimes();
+
+  /* ── FAQ Accordion ───────────────────────── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const body = item.querySelector('.faq-body');
+    const isOpen = item.classList.contains('open');
+
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.faq-body').style.maxHeight = '0';
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+</script>
+
+<!-- ══ TWEAKS PANEL ═══════════════════════════════════════════ -->
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "#e53935",
+  "trainerName": "APEX",
+  "heroTitle": "SUPERE SEUS LIMITES",
+  "ctaText": "Agendar Avaliação Gratuita →",
+  "darkLevel": "medium"
+}/*EDITMODE-END*/;
+
+function TweaksApp() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--red', t.accentColor);
+    document.documentElement.style.setProperty('--red-glow', t.accentColor + '80');
+    document.documentElement.style.setProperty('--red-mid', t.accentColor + '4d');
+    document.documentElement.style.setProperty('--red-dim', t.accentColor + '1a');
+  }, [t.accentColor]);
+
+  React.useEffect(() => {
+    document.querySelectorAll('.logo').forEach(l => {
+      l.innerHTML = t.trainerName + '<em style="font-style:normal;color:var(--red)">.</em>';
+    });
+  }, [t.trainerName]);
+
+  React.useEffect(() => {
+    const bgMap = { deep: '#0c0a0b', medium: '#141214', soft: '#1a171a' };
+    const bg2Map = { deep: '#111013', medium: '#1c191e', soft: '#201d22' };
+    const bg3Map = { deep: '#18151a', medium: '#221e26', soft: '#27232a' };
+    document.documentElement.style.setProperty('--bg',  bgMap[t.darkLevel]  || bgMap.deep);
+    document.documentElement.style.setProperty('--bg2', bg2Map[t.darkLevel] || bg2Map.deep);
+    document.documentElement.style.setProperty('--bg3', bg3Map[t.darkLevel] || bg3Map.deep);
+  }, [t.darkLevel]);
+
+  return (
+    <TweaksPanel>
+      <TweakSection label="Identidade">
+        <TweakText label="Nome / Marca" value={t.trainerName} onChange={v => setTweak('trainerName', v)} />
+      </TweakSection>
+      <TweakSection label="Cores">
+        <TweakColor
+          label="Cor de Destaque"
+          value={t.accentColor}
+          options={['#e53935','#e91e63','#ff6f00','#7b1fa2']}
+          onChange={v => setTweak('accentColor', v)}
+        />
+        <TweakRadio
+          label="Tom do Fundo"
+          value={t.darkLevel}
+          options={['deep','medium','soft']}
+          onChange={v => setTweak('darkLevel', v)}
+        />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+const tweaksRoot = document.getElementById('tweaks-root');
+if (tweaksRoot) {
+  ReactDOM.createRoot(tweaksRoot).render(<TweaksApp />);
+}
+</script>
+
+</body>
+</html>
