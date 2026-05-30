@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>La Derani Concept — Salão de Beleza na Mooca</title>
+
+    <meta name="description"
+        content="Mega Hair, progressivas, unhas em gel e cuidados de beleza na Mooca. Atendimento sofisticado e ambiente pensado para elevar sua autoestima." />
+
+    <meta property="og:title" content="La Derani Concept — Salão na Mooca" />
+    <meta property="og:description" content="Especialistas em Mega Hair, progressivas e unhas na Mooca." />
+    <meta property="og:type" content="website" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #8C6239;
+            --color-primary-hover: #6D4C2B;
+            --color-bg: #FBF9F5;
+            --color-bg-alt: #F3EDE2;
+            --color-text: #1C1C1C;
+            --color-text-muted: #5C5C5C;
+            --color-accent: #C5A059;
+            --color-accent-hover: #AD8740;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .container-site {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--color-primary);
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-secondary:hover {
+            opacity: .8;
+        }
+
+        .btn-whatsapp {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-whatsapp svg {
+            transition: transform .35s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background: #075E54 !important;
+            color: #fff;
+            box-shadow: 0 18px 40px rgba(37, 211, 102, .35);
+        }
+
+        .btn-whatsapp:hover svg {
+            transform: scale(1.12) rotate(-6deg);
+        }
+
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, .22) 50%, rgba(255, 255, 255, 0) 80%);
+            transform: translateX(-120%);
+            transition: transform .7s ease;
+        }
+
+        .btn-whatsapp:hover::before {
+            transform: translateX(120%);
+        }
+
+        .card {
+            background: white;
+            border-radius: 22px;
+            padding: 28px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: .3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .8s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 100px;
+            object-fit: cover;
+            margin: 0 auto 18px;
+            border: 3px solid var(--color-bg-alt);
+            transition: .4s ease;
+        }
+
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 620px;
+            background: var(--color-bg-alt);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .10);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            inset: 0;
+            transition: transform .8s ease;
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, .35), rgba(0, 0, 0, .05));
+        }
+
+        .image-showcase {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            min-height: 300px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .08);
+        }
+
+        .image-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s ease;
+        }
+
+        .image-showcase:hover img {
+            transform: scale(1.04);
+        }
+
+        .about-image {
+            min-height: 560px;
+        }
+
+        .about-image img {
+            object-position: center;
+        }
+
+        /* SERVIÇOS */
+        .service-card {
+            background: #fff;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: .45s ease;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .04);
+            border: 1px solid rgba(0, 0, 0, .04);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, .08);
+        }
+
+        .service-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .7s ease;
+            display: block;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.06);
+        }
+
+        .service-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .service-content h3 {
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 18px;
+            color: #1C1C1C;
+        }
+
+        .service-content p {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* FAQ ACCORDION */
+        .faq-item {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        details summary {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* ANIMAÇÃO E ÍCONE DO HAMBÚRGUER */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: var(--color-text);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .open .hamburger-icon span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .open .hamburger-icon span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .open .hamburger-icon span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* MOBILE RESPONSIVO */
+        @media(max-width:1024px) {
+            .hero-image-wrapper {
+                min-height: 480px;
+            }
+
+            .about-image {
+                min-height: 420px;
+            }
+        }
+
+        @media(max-width:768px) {
+            section {
+                overflow: hidden;
+            }
+
+            #servicos {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .container-site {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            h1 {
+                font-size: 2.9rem !important;
+                line-height: 1.05 !important;
+            }
+
+            h2 {
+                font-size: 2.3rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .hero-image-wrapper {
+                min-height: 300px;
+                border-radius: 24px;
+            }
+
+            .image-showcase {
+                min-height: 220px;
+                border-radius: 22px;
+            }
+
+            .about-image {
+                min-height: 320px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .btn-primary {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 22px;
+            }
+
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .service-card {
+                border-radius: 24px;
+            }
+
+            .service-image {
+                aspect-ratio: 16/11;
+            }
+
+            .service-content {
+                padding: 22px;
+            }
+
+            .service-content h3 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"LocalBusiness",
+      "name":"La Derani Concept",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Rua Javari 378",
+        "addressLocality":"São Paulo",
+        "addressRegion":"SP"
+      },
+      "telephone":"551126183326",
+      "openingHours":"Mo-Sa 09:00-19:00"
+    }
+    </script>
+</head>
+
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 w-full bg-[rgba(251,249,245,.95)] backdrop-blur-md z-50 border-b border-black/5">
+        <div class="container-site py-4 flex items-center justify-between">
+
+            <a href="#" class="flex items-center">
+                <img src="image/logo-preto-stolzl.png" alt="La Derani Concept" class="h-8 md:h-12 w-auto object-contain">
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#servicos" class="hover:text-[var(--color-primary)] transition">Serviços</a>
+                <a href="#sobre" class="hover:text-[var(--color-primary)] transition">Sobre</a>
+                <a href="#equipe" class="hover:text-[var(--color-primary)] transition">Equipe</a>
+                <a href="#faq" class="hover:text-[var(--color-primary)] transition">FAQ</a>
+                <a href="#local" class="hover:text-[var(--color-primary)] transition">Localização</a>
+
+                <a href="https://wa.me/551126183326?text=Olá!%20Quero%20agendar%20um%20horário."
+                    class="btn-primary btn-whatsapp text-xs py-3 px-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                    </svg>
+                    <span>Agendar Horário</span>
+                </a>
+            </nav>
+
+            <button id="menuBtn" class="md:hidden p-3 focus:outline-none" aria-label="Abrir Menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+        </div>
+
+        <div id="mobileNav"
+            class="hidden md:hidden absolute left-0 w-full bg-[rgba(251,249,245,.98)] backdrop-blur-md border-b border-black/5 shadow-lg transition-all duration-300">
+            <div class="flex flex-col p-6 gap-5 text-base font-semibold">
+                <a href="#servicos" class="mobile-link py-2 border-b border-black/5">Serviços</a>
+                <a href="#sobre" class="mobile-link py-2 border-b border-black/5">Sobre</a>
+                <a href="#equipe" class="mobile-link py-2 border-b border-black/5">Equipe</a>
+                <a href="#faq" class="mobile-link py-2 border-b border-black/5">FAQ</a>
+                <a href="#local" class="mobile-link py-2 border-b border-black/5">Localização</a>
+
+                <a href="https://wa.me/551126183326?text=Olá!%20Quero%20agendar%20um%20horário."
+                    class="btn-primary btn-whatsapp justify-center mt-2 w-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                    </svg>
+                    <span>Agendar no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 lg:pt-44 pb-20 lg:pb-28 overflow-hidden">
+        <div class="container-site">
+            <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+                <div class="fade-in show relative z-10">
+                    <span class="uppercase tracking-[4px] text-xs md:text-sm text-[var(--color-primary)] font-semibold">
+                        Salão na Mooca
+                    </span>
+                    <h1 class="text-4xl lg:text-7xl leading-[0.95] mt-4 mb-6 max-w-2xl">
+                        Beleza sofisticada do jeito que você imagina
+                    </h1>
+                    <p class="text-base lg:text-xl text-[var(--color-text-muted)] leading-relaxed max-w-xl">
+                        Mega Hair, progressivas, unhas e cuidados completos em um ambiente pensado para elevar sua
+                        autoestima.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8 md:mt-10">
+                        <a href="https://wa.me/551126183326?text=Olá!%20Quero%20agendar%20um%20horário."
+                            class="btn-primary btn-whatsapp justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                            </svg>
+                            Agendar no WhatsApp
+                        </a>
+                        <a href="#servicos" class="btn-secondary flex items-center justify-center">
+                            Ver serviços →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="fade-in show">
+                    <div class="hero-image-wrapper">
+                        <img src="image/salao.png" alt="Interior sofisticado do salão La Derani Concept">
+                        <div class="hero-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-20 bg-[#F3EEE7] overflow-hidden">
+        <div class="container-site">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in show">
+                <span
+                    class="uppercase tracking-[4px] text-xs md:text-sm text-[var(--color-primary)] font-bold inline-block mb-3">
+                    Serviços
+                </span>
+                <h2 class="text-4xl lg:text-6xl leading-none mb-6">
+                    Cuidados que valorizam sua imagem
+                </h2>
+                <p class="text-base lg:text-lg text-[var(--color-text-muted)] leading-relaxed">
+                    Atendimento pensado para quem busca resultado bonito, durabilidade e praticidade no dia a dia.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop"
+                            alt="Mega Hair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Mega Hair</h3>
+                        <p>Alongamento com acabamento natural para trazer volume, comprimento e mais confiança.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=1200&auto=format&fit=crop"
+                            alt="Progressivas">
+                    </div>
+                    <div class="service-content">
+                        <h3>Progressivas</h3>
+                        <p>Fios alinhados, brilho intenso e redução do frizz com acabamento elegante.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop"
+                            alt="Unhas Gel">
+                    </div>
+                    <div class="service-content">
+                        <h3>Unhas Gel e Fibra</h3>
+                        <p>Alongamentos modernos com acabamento delicado e alta durabilidade.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1200&auto=format&fit=crop"
+                            alt="Coloração">
+                    </div>
+                    <div class="service-content">
+                        <h3>Coloração</h3>
+                        <p>Técnicas para iluminar e renovar o visual sem perder a naturalidade.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1200&auto=format&fit=crop"
+                            alt="Cortes Femininos">
+                    </div>
+                    <div class="service-content">
+                        <h3>Cortes Femininos</h3>
+                        <p>Cortes modernos adaptados ao estilo e rotina de cada cliente.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop"
+                            alt="Barbearia">
+                    </div>
+                    <div class="service-content">
+                        <h3>Barbearia</h3>
+                        <p>Atendimento masculino com acabamento limpo e visual alinhado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-20">
+        <div class="container-site grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="fade-in show">
+                <span class="uppercase tracking-[3px] text-xs md:text-sm text-[var(--color-primary)] font-semibold">
+                    Quem somos
+                </span>
+                <h2 class="text-4xl lg:text-5xl mt-4 mb-6">
+                    Um salão pensado para você se sentir bem
+                </h2>
+                <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                    A La Derani Concept reúne profissionais especializados em beleza, cabelo e unhas em um ambiente
+                    elegante e acolhedor na Mooca.
+                </p>
+                <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                    O foco do atendimento é entender o estilo de cada cliente e entregar um resultado bonito, leve e que
+                    funcione no dia a dia.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                    <div class="card text-center p-5 text-sm font-medium">Atendimento humanizado</div>
+                    <div class="card text-center p-5 text-sm font-medium">Ambiente sofisticado</div>
+                    <div class="card text-center p-5 text-sm font-medium">Agendamento facilitado</div>
+                </div>
+            </div>
+
+            <div class="fade-in show">
+                <div class="image-showcase">
+                    <img src="image/salao.png" alt="Equipe atendendo clientes no salão La Derani Concept">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe" class="py-24 bg-[var(--color-bg-alt)]">
+        <div class="container-site">
+            <div class="text-center max-w-2xl mx-auto mb-16 fade-in show">
+                <span class="uppercase tracking-[3px] text-sm text-[var(--color-primary)] font-semibold">
+                    Equipe
+                </span>
+                <h2 class="text-5xl mt-4 mb-4">
+                    Profissionais da La Derani
+                </h2>
+                <p class="text-[var(--color-text-muted)] text-lg">
+                    Atendimento personalizado com profissionais especializados em diferentes áreas da beleza.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000598909.jpg?v=20250207125400"
+                        alt="Sibeli">
+                    <h3 class="text-3xl">Sibeli</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Cabeleireira</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000599043.jpg?v=20250207130000"
+                        alt="Magda">
+                    <h3 class="text-3xl">Magda</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Manicure</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000632347.jpg?v=20250724210300"
+                        alt="Maithe">
+                    <h3 class="text-3xl">Maithe</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Manicure</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000599038.jpg?v=20250207131300"
+                        alt="Tarcisio">
+                    <h3 class="text-3xl">Tarcisio</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Barbeiro</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000599033.jpg?v=20250207125500"
+                        alt="Vania">
+                    <h3 class="text-3xl">Vania</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Cabeleireira</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000746280.jpg?v=20260513151300"
+                        alt="Socorro">
+                    <h3 class="text-3xl">Socorro</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Manicure</p>
+                </div>
+
+                <div class="card text-center team-card fade-in show">
+                    <img src="https://d39p7gjvbgwtet.cloudfront.net/Pessoas/120x120/p_foto_000746278.jpg?v=20260513150100"
+                        alt="Cristiano">
+                    <h3 class="text-3xl">Cristiano</h3>
+                    <p class="text-[var(--color-text-muted)] mt-2">Cabeleireiro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="comunidade-vip" class="py-20 bg-[var(--color-bg)]">
+        <div class="container-site">
+            <div
+                class="bg-[#F3EEE7] rounded-[32px] p-8 md:p-16 border border-black/5 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-sm">
+
+                <div class="max-w-2xl text-center lg:text-left">
+                    <span
+                        class="uppercase tracking-[4px] text-xs md:text-sm text-[var(--color-primary)] font-bold inline-block mb-3">
+                        Clube La Derani
+                    </span>
+                    <h2 class="text-4xl lg:text-5xl leading-tight mb-4">
+                        Faça parte do nosso Grupo VIP no WhatsApp
+                    </h2>
+                    <p class="text-base lg:text-lg text-[var(--color-text-muted)] leading-relaxed">
+                        Entre na nossa comunidade exclusiva para receber em primeira mão os lançamentos de vagas na
+                        agenda, promoções relâmpago, novidades do salão e dicas de cuidados com o cabelo e unhas.
+                    </p>
+                </div>
+
+                <div class="w-full lg:w-auto flex justify-center shrink-0">
+                    <a href="https://chat.whatsapp.com/EpSkopdvgaLEg88SN3aTdI?mode=gi_t" target="_blank" rel="noopener"
+                        class="btn-primary btn-whatsapp w-full sm:w-auto justify-center text-base py-4 px-8 shadow-xl shadow-emerald-900/5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-whatsapp" viewBox="0 0 24 24">
+                            <path
+                                d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                        </svg>
+                        <span>Quero Entrar no Grupo VIP</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="py-20">
+        <div class="container-site max-w-4xl">
+            <div class="text-center mb-14">
+                <span
+                    class="uppercase tracking-[3px] text-xs md:text-sm text-[var(--color-primary)] font-semibold">Dúvidas</span>
+                <h2 class="text-4xl lg:text-5xl mt-3">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="faq-item">
+                    <details class="group">
+                        <summary class="flex justify-between items-center font-bold text-lg text-[var(--color-text)]">
+                            Preciso agendar horário com antecedência?
+                            <span class="text-xl transition-transform group-open:rotate-180">↓</span>
+                        </summary>
+                        <p class="mt-3 text-[var(--color-text-muted)] leading-relaxed">
+                            Sim, trabalhamos prioritariamente com agendamento para garantir que você seja atendida sem
+                            filas e com total atenção. Você pode agendar facilmente clicando no botão do WhatsApp.
+                        </p>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details class="group">
+                        <summary class="flex justify-between items-center font-bold text-lg text-[var(--color-text)]">
+                            Quais são as técnicas de Mega Hair que vocês utilizam?
+                            <span class="text-xl transition-transform group-open:rotate-180">↓</span>
+                        </summary>
+                        <p class="mt-3 text-[var(--color-text-muted)] leading-relaxed">
+                            Trabalhamos com as técnicas mais modernas e seguras do mercado, focando sempre na saúde do
+                            seu fio natural e em um acabamento perfeitamente invisível.
+                        </p>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details class="group">
+                        <summary class="flex justify-between items-center font-bold text-lg text-[var(--color-text)]">
+                            O salão possui estacionamento ou acessibilidade?
+                            <span class="text-xl transition-transform group-open:rotate-180">↓</span>
+                        </summary>
+                        <p class="mt-3 text-[var(--color-text-muted)] leading-relaxed">
+                            Estamos localizados em uma região de fácil acesso na Mooca, com opções seguras para
+                            estacionar nas proximidades da Rua Javari.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <<section id="local" class="py-20 bg-[var(--color-bg-alt)]">
+        <div class="container-site">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                <div class="fade-in show">
+                    <span class="uppercase tracking-[3px] text-xs md:text-sm text-[var(--color-primary)] font-semibold">
+                        Onde estamos
+                    </span>
+                    <h2 class="text-4xl lg:text-5xl mt-3 mb-6">
+                        Venha conhecer nosso espaço
+                    </h2>
+                    <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                        Estamos na Mooca, em um ambiente totalmente planejado para o seu conforto, sofisticação e
+                        bem-estar.
+                    </p>
+                    <div class="text-sm font-semibold flex flex-col gap-3">
+                        <p class="text-[var(--color-text)]">
+                            📍 Rua Javari, 378 — Mooca, São Paulo - SP
+                        </p>
+                        <p class="text-[var(--color-text-muted)]">
+                            ⏰ Segunda a Sábado: 09h às 19h
+                        </p>
+                        <p class="text-[var(--color-text-muted)]">
+                            📞 (11) 2618-3326
+                        </p>
+                    </div>
+                    <a href="https://maps.google.com/?q=Rua+Javari,+378+Mooca+Sao+Paulo" target="_blank"
+                        class="btn-primary mt-8">
+                        Ver no Google Maps
+                    </a>
+                </div>
+
+                <div
+                    class="rounded-3xl overflow-hidden shadow-lg h-[400px] bg-neutral-200 fade-in show border border-black/5">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.4477823528224!2d-46.60232462376269!3d-23.552362561937965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59336181fa7b%3A0x673dbb1086df1f50!2sRua%20Javari%2C%20378%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003112-000!5e0!3m2!1spt-BR!2sbr!4v1716850000000!5m2!1spt-BR!2sbr"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+        </section>
+
+        <footer class="bg-[#1C1C1C] text-white py-12">
+            <div class="container-site flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <a href="#" class="inline-block">
+                    <img src="image/logo-branco-stolzl.png" alt="La Derani Concept" class="h-8 md:h-10 w-auto object-contain mx-auto md:mx-0">
+                </a>
+                    <p class="text-sm text-neutral-400 mt-1">
+                        © 2026 La Derani Concept. Todos os direitos reservados.
+                    </p>
+                    <p class="text-xs text-neutral-500 mt-2">
+                        Desenvolvido por <a href="https://eabc.com.br" target="_blank"
+                            class="hover:text-[var(--color-accent)] transition font-medium">EABC Digital</a>
+                    </p>
+                </div>
+                <div class="flex gap-6 text-sm text-neutral-400">
+                    <a href="#servicos" class="hover:text-white transition">Serviços</a>
+                    <a href="#sobre" class="hover:text-white transition">Sobre</a>
+                    <a href="#equipe" class="hover:text-white transition">Equipe</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
+                    <a href="#local" class="hover:text-white transition">Localização</a>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            const header = document.querySelector('header');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            // Toggle do Menu
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                header.classList.toggle('open');
+                mobileNav.classList.toggle('hidden');
+            });
+
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    header.classList.remove('open');
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            // Fechar se clicar fora do escopo do menu
+            document.addEventListener('click', (e) => {
+                if (!header.contains(e.target)) {
+                    header.classList.remove('open');
+                    mobileNav.classList.add('hidden');
+                }
+            });
+        </script>
+</body>
+
+</html>

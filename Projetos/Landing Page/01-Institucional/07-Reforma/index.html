@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>EABC Reformas • Construções & Reformas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, .45);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            transition: .4s;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #ffbf00;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        .menu a:hover {
+            color: #ffbf00;
+        }
+
+        .btn {
+            background: #ffbf00;
+            color: #000;
+            padding: 15px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: .4s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255, 191, 0, .3);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, .88), rgba(0, 0, 0, .45));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoom 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(1)
+            }
+
+            to {
+                transform: scale(1.08)
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 191, 0, .15);
+            border: 1px solid rgba(255, 191, 0, .3);
+            color: #ffbf00;
+            padding: 12px 18px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            animation: fadeUp 1.4s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeUp 1.6s ease;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* STATS */
+
+        .stats {
+            padding: 90px 0;
+            background: #151515;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-card {
+            background: #1c1c1c;
+            border-radius: 24px;
+            padding: 40px;
+            transition: .4s;
+            border: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 191, 0, .3);
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            color: #ffbf00;
+        }
+
+        .stat-card p {
+            color: #bbb;
+            margin-top: 12px;
+        }
+
+        /* SECTION */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title span {
+            color: #ffbf00;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-top: 15px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            padding: 120px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: .5s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+        }
+
+        .service-image {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1s;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* CAROUSEL */
+
+        .gallery {
+            padding: 120px 0;
+            background: #151515;
+            overflow: hidden;
+        }
+
+        .carousel {
+            margin-top: 60px;
+        }
+
+        .track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: scroll 35s linear infinite;
+        }
+
+        .track:hover {
+            animation-play-state: paused;
+        }
+
+        .slide {
+            width: 420px;
+            height: 280px;
+            border-radius: 28px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1s;
+        }
+
+        .slide:hover img {
+            transform: scale(1.08);
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 120px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #ffbf00, #ff9800);
+            border-radius: 40px;
+            padding: 70px;
+            color: #000;
+        }
+
+        .cta-box h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        .cta-box .btn {
+            background: #000;
+            color: #fff;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #1b1a1d;
+            padding: 90px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            color: #ffbf00;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand span {
+            color: #bbb;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand p,
+        .footer-contact p,
+        .footer-map p {
+            color: #9c9c9c;
+            line-height: 1.9;
+        }
+
+        .socials {
+            display: flex;
+            gap: 14px;
+            margin: 30px 0;
+        }
+
+        .socials a {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            background: #ffbf00;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            margin-top: 30px;
+        }
+
+        .footer-links h4,
+        .footer-contact h4,
+        .footer-map h4 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .footer-links a,
+        .footer-contact a {
+            display: block;
+            margin-bottom: 16px;
+            color: #9c9c9c;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .footer-links a:hover,
+        .footer-contact a:hover {
+            color: #ffbf00;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 240px;
+            border: 0;
+            border-radius: 24px;
+            margin-bottom: 18px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #8b8b8b;
+        }
+
+        .footer-bottom a {
+            color: #ffbf00;
+            text-decoration: none;
+        }
+
+        /* FLOAT BUTTON */
+
+        .whatsapp-float {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2rem;
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, .7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* BOTÃO WHATSAPP ACESSÍVEL */
+
+        .footer-contact .btn {
+            background: #ffbf00;
+            color: #3a3a3a;
+            /* cinza escuro acessível */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .35s ease;
+            line-height: 1;
+        }
+
+        .footer-contact .btn svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .footer-contact .btn:hover {
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 191, 0, .35);
+        }
+
+        .footer-contact .btn:hover svg {
+            color: #000;
+        }
+
+        /* FOOTER PREMIUM */
+
+        footer {
+            background: linear-gradient(90deg, #2d2a2a 0%, #252325 100%);
+            padding: 90px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 1fr;
+            gap: 70px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h2 {
+            color: #ffbf00;
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand span {
+            color: #b7b7b7;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 28px;
+        }
+
+        .footer-brand p {
+            color: #a1a1a1;
+            line-height: 1.9;
+            max-width: 340px;
+            font-size: 1.05rem;
+        }
+
+        /* ÍCONES SOCIAIS */
+
+        .socials {
+            display: flex;
+            gap: 16px;
+            margin: 35px 0 45px;
+        }
+
+        .socials a {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: .35s;
+            text-decoration: none;
+        }
+
+        .socials a:hover {
+            background: #ffbf00;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        .socials svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* LINKS */
+
+        .footer-links h4,
+        .footer-contact h4,
+        .footer-map h4 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #b1b1b1;
+            text-decoration: none;
+            margin-bottom: 18px;
+            transition: .3s;
+            font-size: 1.08rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffbf00;
+            padding-left: 6px;
+        }
+
+        /* CONTATO */
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .footer-contact-icon {
+            color: #ffbf00;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .footer-contact-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-contact-text {
+            color: #d7d7d7;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .footer-contact-text span {
+            display: block;
+            color: #8e8e8e;
+            font-size: .95rem;
+        }
+
+        /* BOTÃO */
+
+        .footer-contact .btn {
+            background: #ffbf00;
+            color: #3a3a3a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .35s ease;
+            line-height: 1;
+            margin-top: 12px;
+        }
+
+        .footer-contact .btn svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .footer-contact .btn:hover {
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(255, 191, 0, .35);
+        }
+
+        /* MAPA */
+
+        .footer-map iframe {
+            width: 100%;
+            height: 240px;
+            border: none;
+            border-radius: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-map p {
+            color: #8d8d8d;
+            line-height: 1.7;
+        }
+
+        /* FOOTER BOTTOM */
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom p {
+            color: #7d7d7d;
+            font-size: .95rem;
+        }
+
+        .footer-bottom a {
+            color: #a8a8a8;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #ffbf00;
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width:900px) {
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:900px) {
+
+            .menu {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .slide {
+                width: 320px;
+                height: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 40px 30px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav">
+
+            <div class="logo">
+                EABC <span>REFORMAS</span>
+            </div>
+
+            <nav class="menu">
+                <a href="#servicos">Serviços</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <a href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de solicitar um orçamento."
+                target="_blank" class="btn">
+                Solicitar Orçamento
+            </a>
+
+        </div>
+    </header>
+
+    <section class="hero">
+
+        <img class="hero-bg"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1974&auto=format&fit=crop" alt="">
+
+        <div class="container hero-content">
+
+            <div class="badge">
+                ✔ Reformas Premium em São Paulo
+            </div>
+
+            <h1>
+                Transformamos ambientes em espaços sofisticados.
+            </h1>
+
+            <p>
+                Projetos residenciais e comerciais com acabamento impecável, qualidade premium e execução profissional.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de fazer um orçamento para reforma."
+                    target="_blank" class="btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 24 24">
+
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                    </svg>
+
+                    Orçamento Grátis no WhatsApp
+                </a>
+
+                <a href="#projetos" class="btn btn-outline">
+                    Ver Projetos
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="stats reveal">
+
+        <div class="container">
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>+12</h3>
+                    <p>Anos de experiência</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>+350</h3>
+                    <p>Projetos entregues</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Clientes satisfeitos</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>24h</h3>
+                    <p>Atendimento rápido</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="services reveal" id="servicos">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>NOSSOS SERVIÇOS</span>
+                <h2>Excelência em cada detalhe</h2>
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+
+                    <div class="service-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="service-content">
+                        <h3>Reformas Residenciais</h3>
+                        <p>Modernização completa de ambientes com acabamento premium e alto padrão.</p>
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <div class="service-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="service-content">
+                        <h3>Design de Interiores</h3>
+                        <p>Projetos modernos, elegantes e personalizados para transformar espaços.</p>
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <div class="service-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="service-content">
+                        <h3>Construção & Acabamento</h3>
+                        <p>Equipe especializada em pintura, elétrica, hidráulica e acabamento fino.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="gallery reveal" id="projetos">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>PROJETOS</span>
+                <h2>Ambientes transformados</h2>
+            </div>
+
+            <div class="carousel">
+
+                <div class="track">
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                    <div class="slide">
+                        <img
+                            src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1974&auto=format&fit=crop">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta reveal" id="contato">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>
+                    Seu projeto merece um acabamento impecável.
+                </h2>
+
+                <p>
+                    Solicite agora um orçamento personalizado e descubra como podemos transformar seu ambiente.
+                </p>
+
+                <a href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de fazer um orçamento para reforma."
+                    target="_blank" class="btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 24 24">
+
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                    </svg>
+
+                    Solicitar Orçamento
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- DEPOIMENTOS -->
+    <!-- ========================= -->
+
+    <section class="testimonials reveal" id="depoimentos">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>DEPOIMENTOS</span>
+                <h2>O que nossos clientes dizem</h2>
+
+                <p>
+                    A satisfação dos nossos clientes é a nossa maior recompensa.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+
+                <!-- CARD -->
+
+                <div class="testimonial-card">
+
+                    <div class="stars">★★★★★</div>
+
+                    <p class="testimonial-text">
+                        “A reforma ficou impecável. Equipe extremamente organizada, pontual e muito cuidadosa com cada
+                        detalhe do apartamento.”
+                    </p>
+
+                    <div class="testimonial-tag">
+                        Reforma Residencial
+                    </div>
+
+                    <div class="testimonial-footer">
+
+                        <div class="testimonial-avatar">
+                            M
+                        </div>
+
+                        <div>
+                            <h4>Mariana Costa</h4>
+                            <span>Santos — SP</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="testimonial-card featured">
+
+                    <div class="stars">★★★★★</div>
+
+                    <p class="testimonial-text">
+                        “Excelente atendimento e acabamento de alto padrão. Recomendo para quem busca qualidade e
+                        confiança.”
+                    </p>
+
+                    <div class="testimonial-tag">
+                        Reforma Comercial
+                    </div>
+
+                    <div class="testimonial-footer">
+
+                        <div class="testimonial-avatar">
+                            R
+                        </div>
+
+                        <div>
+                            <h4>Ricardo Mendes</h4>
+                            <span>Guarujá — SP</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="testimonial-card">
+
+                    <div class="stars">★★★★★</div>
+
+                    <p class="testimonial-text">
+                        “Superaram nossas expectativas. Desde o primeiro contato até a entrega final, tudo foi
+                        impecável.”
+                    </p>
+
+                    <div class="testimonial-tag">
+                        Reforma de Apartamento
+                    </div>
+
+                    <div class="testimonial-footer">
+
+                        <div class="testimonial-avatar">
+                            A
+                        </div>
+
+                        <div>
+                            <h4>Amanda Ribeiro</h4>
+                            <span>Praia Grande — SP</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- GOOGLE -->
+
+            <div class="google-rating">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
+
+                    <path fill="#FFC107"
+                        d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12S17.4 12 24 12c3 0 5.8 1.1 7.9 2.9l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z" />
+
+                    <path fill="#FF3D00"
+                        d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3 0 5.8 1.1 7.9 2.9l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
+
+                    <path fill="#4CAF50"
+                        d="M24 44c5.2 0 10-2 13.6-5.2l-6.3-5.3C29.2 35.1 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-8H6.2C9.5 39.5 16.1 44 24 44z" />
+
+                    <path fill="#1976D2"
+                        d="M43.6 20.5H42V20H24v8h11.3c-1.1 3-3.4 5.3-6.3 6.5l6.3 5.3C39.2 36.2 44 30.7 44 24c0-1.3-.1-2.7-.4-3.5z" />
+                </svg>
+
+                <div class="google-stars">
+                    ★★★★★
+                </div>
+
+                <span>5.0 no Google</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FAQ -->
+    <!-- ========================= -->
+
+    <section class="faq reveal" id="faq">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>DÚVIDAS FREQUENTES</span>
+
+                <h2>Perguntas Frequentes</h2>
+
+                <p>
+                    Tire suas dúvidas sobre nossos serviços.
+                </p>
+            </div>
+
+            <div class="faq-container">
+
+                <!-- ITEM -->
+
+                <div class="faq-item active">
+
+                    <button class="faq-question">
+                        Qual o prazo médio de uma reforma?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        O prazo varia conforme o tamanho do projeto, mas geralmente reformas residenciais levam entre 15
+                        e 45 dias.
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Vocês fornecem o material?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Sim. Podemos fornecer tanto a mão de obra quanto os materiais necessários para a execução
+                        completa.
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Vocês atendem outras cidades?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Sim. Atendemos Santos, Guarujá, Praia Grande e toda a Baixada Santista.
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Como solicitar um orçamento?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Basta clicar no botão de WhatsApp e enviar algumas informações sobre o projeto.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CTA FAQ -->
+
+            <div class="faq-cta">
+
+                <h3>
+                    Não encontrou sua resposta?
+                </h3>
+
+                <p>
+                    Nossa equipe está pronta para tirar todas as suas dúvidas.
+                </p>
+
+                <a href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de tirar algumas dúvidas."
+                    target="_blank" class="btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 24 24">
+
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                    </svg>
+
+                    Falar no WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <style>
+        /* ========================= */
+        /* TESTIMONIALS */
+        /* ========================= */
+
+        .testimonials {
+            padding: 120px 0;
+            background: linear-gradient(90deg, #2d2a2a 0%, #252325 100%);
+        }
+
+        .testimonials .section-title p {
+            color: #b5b5b5;
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 30px;
+            padding: 35px;
+            transition: .4s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 191, 0, .4);
+        }
+
+        .testimonial-card.featured {
+            border-color: rgba(255, 191, 0, .5);
+        }
+
+        .stars {
+            color: #ffbf00;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            color: #d4d4d4;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-tag {
+            background: rgba(255, 191, 0, .12);
+            color: #ffbf00;
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #6d5520;
+            color: #ffbf00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .testimonial-footer h4 {
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-footer span {
+            color: #9d9d9d;
+            font-size: .95rem;
+        }
+
+        /* GOOGLE */
+
+        .google-rating {
+            margin: 50px auto 0;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            padding: 16px 26px;
+            border-radius: 60px;
+        }
+
+        .google-stars {
+            color: #ffbf00;
+            letter-spacing: 2px;
+        }
+
+        .google-rating span {
+            color: #d2d2d2;
+        }
+
+        /* ========================= */
+        /* FAQ */
+        /* ========================= */
+
+        .faq {
+            padding: 120px 0;
+            background: #f6f6f6;
+        }
+
+        .faq .section-title h2 {
+            color: #222;
+        }
+
+        .faq .section-title p {
+            color: #666;
+            margin-top: 18px;
+            line-height: 1.8;
+        }
+
+        .faq-container {
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            border: none;
+            background: none;
+            padding: 28px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2b2b2b;
+            cursor: pointer;
+        }
+
+        .faq-question span {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #fff4d4;
+            color: #d29a00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: .4s ease;
+            padding: 0 30px;
+            color: #666;
+            line-height: 1.9;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 30px 30px;
+        }
+
+        /* CTA FAQ */
+
+        .faq-cta {
+            margin-top: 70px;
+            background: linear-gradient(90deg, #2d2a2a 0%, #252325 100%);
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .faq-cta h3 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .faq-cta p {
+            color: #b5b5b5;
+            margin-bottom: 30px;
+        }
+
+        /* RESPONSIVO */
+
+        @media(max-width:768px) {
+
+            .faq-question {
+                font-size: 1rem;
+                gap: 20px;
+            }
+
+            .faq-cta {
+                padding: 40px 25px;
+            }
+
+        }
+    </style>
+
+    <script>
+
+        /* FAQ */
+
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+
+                item.classList.toggle('active');
+
+            });
+
+        });
+
+    </script>
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <!-- COLUNA 1 -->
+
+                <div class="footer-brand">
+
+                    <h2>TOBIAS</h2>
+                    <span>Reformas e Construções</span>
+
+                    <p>
+                        Transformando espaços com qualidade e dedicação em Santos e Baixada Santista há mais de 10 anos.
+                    </p>
+
+                    <div class="socials">
+
+                        <a href="https://wa.me/5511998255020" target="_blank">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                viewBox="0 0 24 24">
+
+                                <path
+                                    d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                            </svg>
+
+                        </a>
+
+                        <a href="https://instagram.com/eabcdigital#" target="_blank">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+
+                                <path
+                                    d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 1.8h8.5c2.19 0 3.95 1.76 3.95 3.95v8.5c0 2.19-1.76 3.95-3.95 3.95h-8.5A3.94 3.94 0 0 1 3.8 16.25v-8.5c0-2.19 1.76-3.95 3.95-3.95zm8.95 1.35a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3zM12 6.84A5.16 5.16 0 1 0 17.16 12 5.17 5.17 0 0 0 12 6.84zm0 1.8A3.36 3.36 0 1 1 8.64 12 3.35 3.35 0 0 1 12 8.64z" />
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="footer-links">
+
+                        <h4>Links</h4>
+
+                        <a href="#servicos">Serviços</a>
+                        <a href="#sobre">Sobre Nós</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#faq">Perguntas Frequentes</a>
+
+                    </div>
+
+                </div>
+
+                <!-- COLUNA 2 -->
+
+                <div class="footer-contact">
+
+                    <h4>Contato</h4>
+
+                    <div class="footer-contact-item">
+
+                        <div class="footer-contact-icon">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+
+                                <path
+                                    d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.11.37 2.3.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.28.2 2.47.57 3.58a1 1 0 01-.25 1.01z" />
+                            </svg>
+
+                        </div>
+
+                        <div class="footer-contact-text">
+                            (11) 99825-5020
+                            <span>Seg–Sex 8h–18h | Sáb 8h–12h</span>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-contact-item">
+
+                        <div class="footer-contact-icon">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                viewBox="0 0 24 24">
+
+                                <path
+                                    d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                            </svg>
+
+                        </div>
+
+                        <div class="footer-contact-text">
+                            WhatsApp: (11) 99825-5020
+                        </div>
+
+                    </div>
+
+                    <div class="footer-contact-item">
+
+                        <div class="footer-contact-icon">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z" />
+                            </svg>
+
+                        </div>
+
+                        <div class="footer-contact-text">
+                            R. Digital, 100
+                            <span>São Paulo – SP, 09015-000</span>
+                            <span>Atendemos São Paulo e toda região metropolitana.</span>
+                        </div>
+
+                    </div>
+
+                    <a href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de fazer um orçamento para reforma."
+                        target="_blank" class="btn">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+                        </svg>
+
+                        Solicitar Orçamento
+
+                    </a>
+
+                </div>
+
+                <!-- COLUNA 3 -->
+
+                <div class="footer-map">
+
+                    <h4>Nossa Localização</h4>
+
+                    <iframe src="https://www.google.com/maps?q=São+Paulo&output=embed" allowfullscreen=""
+                        loading="lazy"></iframe>
+
+                    <p>
+                        Atendemos São Paulo e toda região metropolitana.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 TOBIAS Reformas e Construções. Todos os direitos reservados.
+                </p>
+
+                <p>
+                    Santos — SP | (11) 99825-5020
+                </p>
+
+                <p>
+                    Site desenvolvido por
+                    <a href="https://eabc.com.br" target="_blank">
+                        EABC Digital
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <a class="whatsapp-float"
+        href="https://wa.me/5511998255020?text=Olá! Vim pelo site e gostaria de solicitar um orçamento."
+        target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+
+            <path
+                d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.52 0 .19 5.33.19 11.88c0 2.09.54 4.13 1.58 5.94L0 24l6.37-1.67a11.8 11.8 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.14-3.43-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.78.99 1.01-3.69-.24-.38a9.86 9.86 0 0 1-1.52-5.23c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.89 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+        </svg>
+    </a>
+
+    <script>
+
+        const reveals = document.querySelectorAll('.reveal');
+
+        window.addEventListener('scroll', () => {
+
+            reveals.forEach(reveal => {
+
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 120;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+
+            });
+
+        });
+
+        window.addEventListener('scroll', () => {
+
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0,0,0,.85)';
+            } else {
+                header.style.background = 'rgba(0,0,0,.45)';
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
